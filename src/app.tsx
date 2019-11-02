@@ -1,4 +1,4 @@
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, {Component, Config} from '@tarojs/taro'
 import Index from './pages/index'
 
 import './app.scss'
@@ -20,31 +20,73 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/search/index',
+      'pages/classify/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '五联创客',
       navigationBarTextStyle: 'black'
-    }
+    }, tabBar: {
+      color: '#7e7578',
+      selectedColor: '#EB3939',
+      backgroundColor: '#fff',
+      borderStyle: 'black',
+      list: [
+        {
+          pagePath: 'pages/index/index',
+          text: '首页',
+          iconPath: 'statics/imgs/tabbar/home_no.png',
+          selectedIconPath:  'statics/imgs/tabbar/home.png',
+        }, {
+          pagePath: 'pages/index/index',
+          text: '代言',
+          iconPath: 'statics/imgs/tabbar/community_no.png',
+          selectedIconPath:  'statics/imgs/tabbar/community.png',
+        },
+        {
+          pagePath: 'pages/index/index',
+          text: '精选',
+          iconPath: 'statics/imgs/tabbar/concentration_no.png',
+          selectedIconPath:  'statics/imgs/tabbar/concentration.png',
+        },
+        {
+          pagePath: 'pages/index/index',
+          text: '购物车',
+          iconPath: 'statics/imgs/tabbar/shop_no.png',
+          selectedIconPath:  'statics/imgs/tabbar/shop.png',
+        },
+        {
+          pagePath: 'pages/index/index',
+          text: '我的',
+          iconPath: 'statics/imgs/tabbar/my_no.png',
+          selectedIconPath:  'statics/imgs/tabbar/my.png',
+        }
+      ]
+    },
+  };
+
+  componentDidMount() {
   }
 
-  componentDidMount () {}
+  componentDidShow() {
+  }
 
-  componentDidShow () {}
+  componentDidHide() {
+  }
 
-  componentDidHide () {}
-
-  componentDidCatchError () {}
+  componentDidCatchError() {
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
-      <Index />
+      <Index/>
     )
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App/>, document.getElementById('app'))

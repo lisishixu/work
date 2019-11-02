@@ -1,4 +1,10 @@
+/* Custom Theme */
+$color-brand: #eb3939;
+$color-brand-light: #f06b6b;
+$color-brand-dark: #bc2e2e;
+
 @import "~taro-ui/dist/style/index.scss";
+
 
 // 公用样式
 .inline {
@@ -9,6 +15,53 @@
   }
 }
 
+.bg-color {
+  &--white {
+    background-color: white !important;
+  }
+
+  &--f2f2f2 {
+    background-color: #f2f2f2 !important;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+
+.a__items--center {
+  align-items: center;
+}
+
+
+.j__content {
+  &--start {
+    justify-content: start;
+  }
+
+  &--spbe {
+    justify-content: space-between;
+  }
+}
+
+.clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+  }
+}
+
+.container {
+  width: 96%;
+  padding-left: 3%;
+  padding-right: 3%;
+  background-color: white;
+}
 
 // 覆盖at-ui的默认样式
 .at-search-bar::after {

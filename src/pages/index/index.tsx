@@ -1,11 +1,12 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Swiper, SwiperItem, Image} from '@tarojs/components'
+import {View, Text, Swiper, SwiperItem, Image, Navigator} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
 import {AtGrid, AtSearchBar} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
+import {ClassifyData, SwiperData} from "../../data";
 
 export interface Props {
 
@@ -16,6 +17,7 @@ export interface State {
   location: LocationModel
   swipers: SwiperModel[]
   classify: ClassifyModel[]
+  adBanner: string
 }
 
 export default class Index extends Component<Props, State> {
@@ -36,38 +38,11 @@ export default class Index extends Component<Props, State> {
     this.state = {
       value: '',
       location: {
-        city: ''
+        city: '郑州'
       },
-      swipers: [
-        {
-          imgurl: '/static/imgs/swiper-1.png'
-        },
-        {
-          imgurl: '/static/imgs/swiper-1.png'
-        }
-      ],
-      classify: [
-        {
-          imgurl: '/static/imgs/swiper-1.png',
-          name: '家居百货'
-        },
-        {
-          imgurl: '/static/imgs/swiper-1.png',
-          name: '家居百货'
-        },
-        {
-          imgurl: '/static/imgs/swiper-1.png',
-          name: '家居百货'
-        },
-        {
-          imgurl: '/static/imgs/swiper-1.png',
-          name: '家居百货'
-        },
-        {
-          imgurl: '/static/imgs/swiper-1.png',
-          name: '家居百货'
-        }
-      ]
+      swipers: [],
+      classify: [],
+      adBanner: '../../static/imgs/banner.png'
     }
   }
 
@@ -75,6 +50,10 @@ export default class Index extends Component<Props, State> {
   }
 
   componentDidMount() {
+    this.setState({
+      swipers: SwiperData,
+      classify: ClassifyData
+    })
   }
 
   componentWillUnmount() {
@@ -92,8 +71,8 @@ export default class Index extends Component<Props, State> {
 
   onClassify = (item, index) => {
     console.log(item);
-    Taro.showToast({
-      title: `点击的是${index}`
+    Taro.navigateTo({
+      url: `/pages/classify/index?id=${index || item}`
     })
   };
 
@@ -101,30 +80,23 @@ export default class Index extends Component<Props, State> {
   render() {
     return (
       <View className='index'>
-        <View className="at-row  at-row__align--center">
+
+        <View className="at-row  at-row__align--center container">
           <View className="at-col at-col-1 at-col--auto location">
-            <View className="location__icon inline--block">
-              <IconFont name='bianji1' size={32} color='#888'/>
-            </View>
+            <IconFont name='bianji1' size={32} color='#888'/>
             <Text className={"location__text"}>{this.state.location.city || '定位中'}</Text>
           </View>
-          <View className="at-col  search">
+          <Navigator url={'/pages/search/index'} className="at-col  search">
             <AtSearchBar
+              disabled
               value={this.state.value}
               placeholder={"搜索商品"}
               onChange={this.onChange.bind(this)}
             />
-          </View>
+          </Navigator>
         </View>
 
-
-        <Swiper
-          className='swiper'
-          indicatorColor='#999'
-          indicatorActiveColor='#333'
-          circular
-          indicatorDots
-          autoplay>
+        <Swiper className='swiper container' autoplay>
           {this.state.swipers.map((it, index) => {
             return <SwiperItem key={'swiper' + index}>
               <View className=''>
@@ -134,54 +106,14 @@ export default class Index extends Component<Props, State> {
           })}
         </Swiper>
 
-        <AtGrid columnNum={5} hasBorder={false}
+        <AtGrid className="bg-color--white"
+                columnNum={5} hasBorder={false}
                 onClick={this.onClassify}
-                data={
-                  [
-                    {
-                      image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
-                      value: '找折扣'
-                    },
-                    {
-                      image: 'https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
-                      value: '领会员'
-                    },
-                    {
-                      image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
-                      value: '新品首发'
-                    },
-                    {
-                      image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',
-                      value: '领京豆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '手机馆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '手机馆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '手机馆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '手机馆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '手机馆'
-                    },
-                    {
-                      image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                      value: '全部分类'
-                    }
-                  ]
-                }/>
+                data={this.state.classify}/>
 
-
+        <View className="banner">
+          <Image src={this.state.adBanner} className="banner__img"></Image>
+        </View>
 
       </View>
     )

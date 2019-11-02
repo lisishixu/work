@@ -27,7 +27,7 @@ const config = {
   defineConstants: {},
   copy: {
     patterns: [
-      {from: 'src/static/', to: `dist/${process.env.TARO_ENV}/static/`, ignore: '*.rar'},
+      {from: 'src/statics/', to: `dist/${process.env.TARO_ENV}/statics/`, ignore: '*.rar'},
     ],
     options: {}
   },
