@@ -1,6 +1,6 @@
 import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
-import {apiUpload} from "../constants/api";
+// import {apiUpload} from "../constants/api";
 
 /**
  * 封装的统一请求方法
@@ -106,7 +106,7 @@ export const uploadFile = (filePath, callback) => {
   });
   console.log('filePath', filePath);
   Taro.uploadFile({
-    url: apiUpload,
+    url: 'apiUpload',
     filePath,
     name: 'imgs',
     header: {
