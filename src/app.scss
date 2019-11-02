@@ -1,0 +1,16 @@
+@import "~taro-ui/dist/style/index.scss";
+
+// 公用样式
+.inline {
+  display: inline;
+
+  &--block {
+    display: inline-block;
+  }
+}
+
+
+// 覆盖at-ui的默认样式
+.at-search-bar::after {
+  border: none; //去掉搜索组件下边框
+}

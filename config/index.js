@@ -26,7 +26,9 @@ const config = {
   },
   defineConstants: {},
   copy: {
-    patterns: [],
+    patterns: [
+      {from: 'src/static/', to: `dist/${process.env.TARO_ENV}/static/`, ignore: '*.rar'},
+    ],
     options: {}
   },
   weapp: {
@@ -63,6 +65,7 @@ const config = {
     }
   },
   h5: {
+    esnextModules: ['taro-ui'],
     publicPath: '/',
     staticDirectory: 'static',
     module: {
