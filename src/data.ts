@@ -1,6 +1,7 @@
 // 虚假数据，用于开发时调试
 
 import {GoodsModel} from "./models/GoodsModel";
+import {EvaluateModel} from "./models/EvaluateModel";
 
 export const SwiperData = [
   {
@@ -80,5 +81,28 @@ export const GoodsData: GoodsModel[] = [
     product_name: "小浣熊儿童沐浴露",
     product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg",
     sales_volume: 10
+  }
+];
+
+
+export const EvaluateData: EvaluateModel[] = [
+  {
+    user: {
+      headimg: 'https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg',
+      name: '小**米虫',
+    },
+    content: '偶买噶，他们家的小龙虾也太好吃了吧！'
+  }, {
+    user: {
+      headimg: 'https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg',
+      name: '小**米虫',
+    },
+    content: '偶买噶，他们家的小龙虾也太好吃了吧！'
+  }, {
+    user: {
+      headimg: 'https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg',
+      name: '小**米虫',
+    },
+    content: '偶买噶，他们家的小龙虾也太好吃了吧！'
   }
 ];

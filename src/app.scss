@@ -15,6 +15,14 @@ $color-brand-dark: #bc2e2e;
   }
 }
 
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
 .bg-color {
   &--white {
     background-color: white !important;
@@ -32,6 +40,14 @@ $color-brand-dark: #bc2e2e;
 
 .flex {
   display: flex;
+
+  &__1 {
+    flex: 1;
+  }
+
+  &__2 {
+    flex: 2;
+  }
 }
 
 .a__items--center {
@@ -88,78 +104,89 @@ $color-brand-dark: #bc2e2e;
 }
 
 .f {
-  &--12 {
-    font-size: 12px;
+  &__size {
+    font-size: initial;
+
+    &--12 {
+      font-size: 12px;
+    }
+
+    &--13 {
+      font-size: 13px;
+    }
+
+    &--14 {
+      font-size: 14px;
+    }
+
+    &--15 {
+      font-size: 15px;
+    }
+
+    &--16 {
+      font-size: 16px;
+    }
+
+    &--17 {
+      font-size: 17px;
+    }
+
+    &--18 {
+      font-size: 18px;
+    }
+
+    &--19 {
+      font-size: 19px;
+    }
+
+    &--21 {
+      font-size: 20px;
+    }
+
+    &--22 {
+      font-size: 22px;
+    }
+
+    &--23 {
+      font-size: 23px;
+    }
+
+    &--24 {
+      font-size: 24px;
+    }
+
+    &--25 {
+      font-size: 25px;
+    }
+
+    &--26 {
+      font-size: 26px;
+    }
+
+    &--27 {
+      font-size: 27px;
+    }
+
+    &--28 {
+      font-size: 28px;
+    }
+
+    &--29 {
+      font-size: 29px;
+    }
+
+    &--30 {
+      font-size: 30px;
+    }
   }
 
-  &--13 {
-    font-size: 13px;
-  }
+  &__weight {
+    font-weight: inherit;
 
-  &--14 {
-    font-size: 14px;
+    &--bold {
+      font-weight: bold;
+    }
   }
-
-  &--15 {
-    font-size: 15px;
-  }
-
-  &--16 {
-    font-size: 16px;
-  }
-
-  &--17 {
-    font-size: 17px;
-  }
-
-  &--18 {
-    font-size: 18px;
-  }
-
-  &--19 {
-    font-size: 19px;
-  }
-
-  &--21 {
-    font-size: 20px;
-  }
-
-  &--22 {
-    font-size: 22px;
-  }
-
-  &--23 {
-    font-size: 23px;
-  }
-
-  &--24 {
-    font-size: 24px;
-  }
-
-  &--25 {
-    font-size: 25px;
-  }
-
-  &--26 {
-    font-size: 26px;
-  }
-
-  &--27 {
-    font-size: 27px;
-  }
-
-  &--28 {
-    font-size: 28px;
-  }
-
-  &--29 {
-    font-size: 29px;
-  }
-
-  &--30 {
-    font-size: 30px;
-  }
-
 
 }
 
@@ -351,13 +378,16 @@ $color-brand-dark: #bc2e2e;
   }
 }
 
+.small-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  line-height: 100px;
+}
+
+
 // 覆盖at-ui的默认样式
 .at-search-bar::after {
   border: none; //去掉搜索组件下边框
 }
-
-// 覆盖iconfont
-.icon {
-  display: inline-block;
-}
-

@@ -1,9 +1,12 @@
 .detail {
+  min-height: 100vh;
+
   .goods__cover {
     width: 100%;
     height: 546px;
   }
 
+  // 秒杀提示
   .seckill {
     display: flex;
     align-items: center;
@@ -11,7 +14,7 @@
     position: relative;
     z-index: 9;
     height: 110px;
-    line-height: 1.4;
+    line-height: 1.6;
     color: white;
     margin-top: -20px;
     background-color: #F12737;
@@ -19,6 +22,24 @@
 
     &-price {
       flex: 1;
+
+      &__now {
+        display: flex;
+        align-items: center;
+      }
+
+      .tag {
+        font-size: 20px;
+        width: 70px;
+        background: rgba(242, 58, 58, 1);
+        border-radius: 12px;
+        margin-left: 12px;
+        padding: 6px 10px;
+      }
+
+      &__old {
+        font-size: 24px;
+      }
     }
 
     &-time {
@@ -37,8 +58,8 @@
       }
 
       .progress {
-        width: 246px;
-        height: 30px;
+        width: 260px;
+        height: 40px;
         position: relative;
         margin-left: auto;
         margin-right: 20px;
@@ -47,15 +68,208 @@
           position: absolute;
           font-size: 18px;
           height: 100%;
-          left: 0;
-          right: 0;
           top: 0;
+          right: 0;
           bottom: 0;
+          left: 0;
+          padding-right: 10%;
           padding-left: 40%;
-          line-height: 30px;
-          color: #333;
+          line-height: 40px;
+          color: white;
         }
       }
     }
   }
+
+
+  .price {
+    display: flex;
+    align-items: center;
+
+    &__now {
+      color: #EB3939;
+      font-size: 34px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    &__old {
+      color: #888;
+      margin-left: 20px;
+      font-size: 28px;
+    }
+
+    .tag {
+      color: white;
+      font-size: 20px;
+      width: 70px;
+      background: rgba(242, 58, 58, 1);
+      border-radius: 20px;
+      margin-left: 12px;
+      padding: 2px 10px;
+      font-weight: initial;
+    }
+  }
+
+  // 标题
+  .title {
+    flex: 1;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  // 收藏按钮
+  .btn-collect {
+    width: 21%;
+    flex-shrink: 0;
+    margin-left: auto;
+    border: none;
+    text-align: right;
+    background: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 26px;
+
+    &:after {
+      border: none;
+    }
+
+    .text {
+      margin-left: 10px;
+    }
+  }
+
+  .evaluate {
+
+    .user__headimg {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    .user__name {
+      font-size: 28px;
+    }
+
+    &__content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgba(16, 16, 16, 1);
+      line-height: 48px;
+    }
+  }
+
+  .recommend {
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: calc((100% - 2%) / 3);
+      margin-right: 1%;
+      margin-bottom: 30px;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      .cover {
+        width: 224px;
+        height: 196px;
+      }
+
+      .title {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(51, 51, 51, 1);
+        line-height: 36px;
+      }
+
+      .price {
+        font-size: 28px;
+        font-weight: 500;
+        color: rgba(241, 39, 55, 1);
+      }
+    }
+  }
+
+  .guide {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    &-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: rgba(51, 51, 51, 1);
+      line-height: 36px;
+      text-align: center;
+    }
+
+    .iconfont {
+      width: 28px;
+      margin: 0 auto;
+    }
+  }
+
+  .goods-action {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 110px;
+    background-color: white;
+    border-top: 1px solid #ccc;
+
+    .icon {
+      width: 44px;
+      margin: 6px auto;
+    }
+
+    .btn {
+      border: none;
+      background: none;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      font-size: 28px;
+      text-align: center;
+      line-height: 100%;
+      color: #666;
+      border-radius: 0;
+
+      &:after {
+        border: none;
+      }
+    }
+
+    .add-cart, .now-buy {
+      color: white;
+      height: 80px;
+      line-height: 80px;
+      font-weight: 500;
+    }
+
+    .add-cart {
+      margin-left: 10px;
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+      background: linear-gradient(to right, #ffd01e, #ff8917);
+
+    }
+
+    .now-buy {
+      margin-right: 10px;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      background: linear-gradient(to right, #ff6034, #ee0a24);
+    }
+  }
+
 }
+
