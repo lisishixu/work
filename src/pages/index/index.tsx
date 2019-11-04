@@ -1,12 +1,13 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Swiper, SwiperItem, Image, Navigator} from '@tarojs/components'
+import {View, Text, Swiper, SwiperItem, Image, Navigator, Progress} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
-import {AtGrid, AtSearchBar,AtCountdown} from 'taro-ui'
+import {AtGrid, AtSearchBar, AtCountdown, AtTabs, AtTabsPane, AtButton, AtDivider} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
-import {ClassifyData, SwiperData} from "../../data";
+import {ClassifyData, GoodsData, SwiperData} from "../../data";
+import {GoodsModel} from "../../models/GoodsModel";
 export interface Props {
 
 }
@@ -16,8 +17,10 @@ export interface State {
   location: LocationModel
   swipers: SwiperModel[]
   classify: ClassifyModel[]
-  adBanner: string
-  imgData:any
+  adBanner: string,
+  goodsList:GoodsModel[]
+  imgData:any,
+  current:number
 }
 
 export default class Index extends Component<Props, State> {
@@ -46,7 +49,9 @@ export default class Index extends Component<Props, State> {
       imgData:[
         '../../statics/imgs/banner1.png',
         '../../statics/imgs/banner2.png',
-      ]
+      ],
+      current:0,
+      goodsList:GoodsData
     }
   }
 
@@ -79,8 +84,11 @@ export default class Index extends Component<Props, State> {
       url: `/pages/classify/index?id=${index || item}`
     })
   };
-
-
+  handleClick (value) {
+    this.setState({
+      current: value
+    })
+  };
   render() {
     return (
       <View className='index'>
@@ -124,16 +132,151 @@ export default class Index extends Component<Props, State> {
             return    <View className='at-col' key={'img'+index}><Image src={it} className={"recommend_Img"}></Image></View>
           })}
         </View>
-        <View className={'count-down bg-color--F12737'}>
-          <IconFont name='huo' size={32} color='#fff'></IconFont>
-          <Text className={'c--fff f--30'}>秒杀抢购</Text>
-          <Text className={'c--fff f--22'}></Text>
-          <Text className={'c--fff f--22'}></Text>
-          <AtCountdown
-            isCard
-            minutes={1}
-            seconds={10}
-          />
+        <View className={'bg-color--white'} style={{padding:'44px 0 0',marginBottom:'11px'}}>
+          <View className={'count-down bg-color--F12737 kill-Time'}>
+            <View className={'inline--block margin-right--10'}><IconFont name='huo'size={32} color='#fff'></IconFont></View>
+            <Text className={'c--fff f--30 margin-right--10'}>秒杀抢购</Text>
+            <Text className={'c--fff f--22'}>先到先得，赶紧抢货</Text>
+            <View className={'fr'}>
+              <Text className={'c--fff f--22 margin-right--10'}>距离结束</Text>
+              <AtCountdown
+                format={{ hours: ':', minutes: ':', seconds: '' }}
+                isCard
+                minutes={1}
+                seconds={10}
+              />
+            </View>
+          </View>
+          <AtTabs
+            current={this.state.current}
+            scroll
+            tabList={[
+              { title: '标签页1', },
+              { title: '标签页2' },
+              { title: '标签页3' },
+              { title: '标签页4' },
+              { title: '标签页5' },
+              { title: '标签页6' }
+            ]}
+            onClick={this.handleClick.bind(this)}>
+            <AtTabsPane current={this.state.current} index={0}>
+              <View style='font-size:18px;text-align:center;'>
+                <View className={'container text--left'}>
+                  {this.state.goodsList.map((it, index) => {
+                    return  <View  key={'img'+index} style={{border:'1px solid #F5F5F5',marginTop:'20px'}}>
+                      <Image src={it.product_img} className={"recommend_Img"}></Image>
+                      <View style={{padding:'0px 10px'}}>
+                        <View className={'f--28 c--010 margin-top--20'}>{it.product_name}
+                          <View className={'margin-top--20'}>
+                            <Text className={'c--eb3 f--30 margin-right--20'}>￥{it.product_original}</Text><Text className={'c--808 f--24'}>￥{it.product_price}</Text>
+                          </View>
+                        </View>
+                        <View className={'flex'} style={{padding:'10px 0'}}>
+                          <Progress percent={it.product_jindu} style={{width:'30%'}} borderRadius={20} activeColor={'#F12737'}/>
+                          <Text className={'f--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
+                          <View style={'margin-left:auto'}>
+                            <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
+                          </View>
+                        </View>
+                      </View>
+
+                    </View>
+
+                  })}
+                </View>
+              </View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={1}>
+              <View style='font-size:18px;text-align:center;'>已开抢</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={2}>
+              <View style='font-size:18px;text-align:center;'>已开抢</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={3}>
+              <View style='font-size:18px;text-align:center;'>
+                <View className={'container text--left'}>
+                  {this.state.goodsList.map((it, index) => {
+                    return  <View  key={'img'+index} style={{border:'1px solid #F5F5F5',marginTop:'20px'}}>
+                      <Image src={it.product_img} className={"recommend_Img"}></Image>
+                      <View style={{padding:'0px 10px'}}>
+                        <View className={'f--28 c--010 margin-top--20'}>{it.product_name}
+                          <View className={'margin-top--20'}>
+                            <Text className={'c--eb3 f--30 margin-right--20'}>￥{it.product_original}</Text><Text className={'c--808 f--24'}>￥{it.product_price}</Text>
+                          </View>
+                        </View>
+                        <View className={'flex'} style={{padding:'10px 0'}}>
+                          <Progress percent={it.product_jindu} style={{width:'30%'}} borderRadius={20} activeColor={'#F12737'}/>
+                          <Text className={'f--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
+                          <View style={'margin-left:auto'}>
+                            <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
+                          </View>
+                        </View>
+                      </View>
+
+                    </View>
+
+                  })}
+                </View>
+              </View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={4}>
+              <View style='font-size:18px;text-align:center;'>
+                <View className={'container text--left'}>
+                  {this.state.goodsList.map((it, index) => {
+                    return  <View  key={'img'+index} style={{border:'1px solid #F5F5F5',marginTop:'20px'}}>
+                      <Image src={it.product_img} className={"recommend_Img"}></Image>
+                      <View style={{padding:'0px 10px'}}>
+                        <View className={'f--28 c--010 margin-top--20'}>{it.product_name}
+                          <View className={'margin-top--20'}>
+                            <Text className={'c--eb3 f--30 margin-right--20'}>￥{it.product_original}</Text><Text className={'c--808 f--24'}>￥{it.product_price}</Text>
+                          </View>
+                        </View>
+                        <View className={'flex'} style={{padding:'10px 0'}}>
+                          <Progress percent={it.product_jindu} style={{width:'30%'}} borderRadius={20} activeColor={'#F12737'}/>
+                          <Text className={'f--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
+                          <View style={'margin-left:auto'}>
+                            <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
+                          </View>
+                        </View>
+                      </View>
+
+                    </View>
+
+                  })}
+                </View>
+              </View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={5}>
+              <View style='font-size:18px;text-align:center;'>
+                <View className={'container'}>
+                  {this.state.goodsList.map((it, index) => {
+                    return  <View  key={'img'+index} style={{border:'1px solid #F5F5F5',marginTop:'20px'}}>
+                      <Image src={it.product_img} className={"recommend_Img"}></Image>
+                      <View style={{padding:'0px 10px'}}>
+                        <View className={'f--28 c--010 margin-top--20'}>{it.product_name}
+                          <View className={'margin-top--20'}>
+                            <Text className={'c--eb3 f--30 margin-right--20'}>￥{it.product_original}</Text><Text className={'c--808 f--24'}>￥{it.product_price}</Text>
+                          </View>
+                        </View>
+                        <View className={'flex'} style={{padding:'10px 0'}}>
+                          <Progress percent={it.product_jindu} style={{width:'30%'}} borderRadius={20} activeColor={'#F12737'}/>
+                          <Text className={'f--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
+                          <View style={'margin-left:auto'}>
+                            <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
+                          </View>
+                        </View>
+                      </View>
+
+                    </View>
+
+                  })}
+                </View>
+              </View>
+            </AtTabsPane>
+          </AtTabs>
+        </View>
+        <View className={'container margin-bottom--20'}>
+          <AtDivider content='为你推荐' fontColor='#F12737' lineColor='#F12737' />
         </View>
 
       </View>

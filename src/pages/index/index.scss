@@ -76,4 +76,21 @@ page, .index {
     left: 25PX;
     height: 2PX;
   }
+  .at-tabs{
+    width: 94%;
+    margin: 0 3%;
+  }
+  .page .recommend_Img, .index .recommend_Img{
+    display: block;
+    width: 100%;
+  }
+  .at-button--small{
+    padding: 0 40px;
+    line-height: 45px;
+    height: 45px;
+  }
+  .at-divider__line{
+    width: 60%;
+    left: 20%;
+  }
 }

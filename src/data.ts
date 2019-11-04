@@ -64,7 +64,8 @@ export const GoodsData: GoodsModel[] = [
     product_name: "测试",
     product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/d7a02f65-6cdb-4622-b80d-4e1d4eac2e24.jpg",
     sales_volume: 13,
-    product_detail: ""
+    product_detail: "",
+    product_jindu:10
   },
   {
     product_original: 100,
@@ -72,7 +73,9 @@ export const GoodsData: GoodsModel[] = [
     product_price: 20,
     product_name: "沐浴露",
     product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e9be43e0-5130-43fd-8fbf-e38e3edd857d.jpg",
-    sales_volume: 5
+    sales_volume: 5,
+    product_jindu:30
+
   },
   {
     product_original: 100,
@@ -80,7 +83,8 @@ export const GoodsData: GoodsModel[] = [
     product_price: 0,
     product_name: "小浣熊儿童沐浴露",
     product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg",
-    sales_volume: 10
+    sales_volume: 10,
+    product_jindu:20
   }
 ];
 
