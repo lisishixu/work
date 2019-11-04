@@ -23,155 +23,15 @@ $color-brand-dark: #bc2e2e;
   &--f2f2f2 {
     background-color: #f2f2f2 !important;
   }
-  &--F12737{
-    background-color:#F12737 !important;
+
+  &--F12737 {
+    background-color: #F12737 !important;
   }
 
 }
 
 .flex {
   display: flex;
-}
-
-.text{
-  &--center{
-    text-align: center;
-  }
-  &--left{
-    text-align: left;
-  }
-  &--right{
-    text-align: right;
-  }
-}
-
-.vertical{
-  &--middle{
-    vertical-align: middle;
-  }
-  &--top{
-    vertical-align: top;
-  }
-  &--bottom{
-    vertical-align: bottom;
-  }
-  &--center{
-    vertical-align: center;
-  }
-}
-
-.f{
-    &--12{
-       font-size: 12px;
-     }
-    &--13{
-     font-size: 13px;
-   }
-    &--14{
-     font-size: 14px;
-   }
-    &--15{
-     font-size: 15px;
-   }
-    &--16{
-     font-size: 16px;
-   }
-    &--17{
-     font-size: 17px;
-   }
-    &--18{
-     font-size: 18px;
-   }
-    &--19{
-     font-size: 19px;
-   }
-    &--21{
-     font-size: 20px;
-   }
-    &--22{
-     font-size: 22px;
-   }
-    &--23{
-     font-size: 23px;
-   }
-    &--24{
-     font-size: 24px;
-   }
-    &--25{
-     font-size: 25px;
-   }
-    &--26{
-   font-size: 26px;
-  }
-    &--27{
-   font-size: 27px;
-  }
-    &--28{
-   font-size: 28px;
-  }
-    &--29{
-   font-size: 29px;
-  }
-    &--30{
-   font-size: 30px;
-  }
-
-
-}
-
-.c{
-  &--fff{
-    color: #fff;
-  }
-    &--010{
-    color: #101010;
-  }
-    //常用红色
-    &--eb3{
-    color: #EB3939;
-    }
-    &--808{
-    color: #808080;
-  }
-    &--333{
-    color: #333;
-  }
-    &--666{
-    color: #666;
-  }
-    &--999{
-    color: #999;
-  }
-    &--faf{
-    color: #fafafa;
-  }
-    &--4d4{
-    color: #4d4d4d;
-  }
-}
-.fl{
-  float: left;
-}
-.fr{
-  float: right;
-}
-.overhide{
-  overflow: hidden;
-}
-.ellipsis{
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis ;
-  &-2{
-    display: -webkit-box;
-    overflow: hidden;
-    white-space: normal !important;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical
-  }
 }
 
 .a__items--center {
@@ -187,6 +47,188 @@ $color-brand-dark: #bc2e2e;
   &--spbe {
     justify-content: space-between;
   }
+}
+
+.text {
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  // 删除线效果
+  &--line-through {
+    text-decoration: line-through;
+  }
+
+}
+
+.vertical {
+  &--middle {
+    vertical-align: middle;
+  }
+
+  &--top {
+    vertical-align: top;
+  }
+
+  &--bottom {
+    vertical-align: bottom;
+  }
+
+  &--center {
+    vertical-align: center;
+  }
+}
+
+.f {
+  &--12 {
+    font-size: 12px;
+  }
+
+  &--13 {
+    font-size: 13px;
+  }
+
+  &--14 {
+    font-size: 14px;
+  }
+
+  &--15 {
+    font-size: 15px;
+  }
+
+  &--16 {
+    font-size: 16px;
+  }
+
+  &--17 {
+    font-size: 17px;
+  }
+
+  &--18 {
+    font-size: 18px;
+  }
+
+  &--19 {
+    font-size: 19px;
+  }
+
+  &--21 {
+    font-size: 20px;
+  }
+
+  &--22 {
+    font-size: 22px;
+  }
+
+  &--23 {
+    font-size: 23px;
+  }
+
+  &--24 {
+    font-size: 24px;
+  }
+
+  &--25 {
+    font-size: 25px;
+  }
+
+  &--26 {
+    font-size: 26px;
+  }
+
+  &--27 {
+    font-size: 27px;
+  }
+
+  &--28 {
+    font-size: 28px;
+  }
+
+  &--29 {
+    font-size: 29px;
+  }
+
+  &--30 {
+    font-size: 30px;
+  }
+
+
+}
+
+.c {
+  &--fff {
+    color: #fff;
+  }
+
+  &--010 {
+    color: #101010;
+  }
+
+  //常用红色
+  &--eb3 {
+    color: #EB3939;
+  }
+
+  &--808 {
+    color: #808080;
+  }
+
+  &--333 {
+    color: #333;
+  }
+
+  &--666 {
+    color: #666;
+  }
+
+  &--999 {
+    color: #999;
+  }
+
+  &--faf {
+    color: #fafafa;
+  }
+
+  &--4d4 {
+    color: #4d4d4d;
+  }
+}
+
+.overhide {
+  overflow: hidden;
+}
+
+.ellipsis {
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &-2 {
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical
+  }
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
 }
 
 .clearfix {
@@ -207,11 +249,115 @@ $color-brand-dark: #bc2e2e;
   background-color: white;
 }
 
-.text--line-through {
-  text-decoration: line-through;
+.margin {
+
+  margin: 0;
+
+  &--auto0 {
+    margin: auto 0;
+  }
+
+  &--10 {
+    margin: 10px;
+  }
+
+
+  &-top {
+    &--auto {
+      margin-top: auto;
+    }
+
+    &--10 {
+      margin-top: 10px;
+    }
+
+    &--20 {
+      margin-top: 20px;
+    }
+
+    &--30 {
+      margin-top: 30px;
+    }
+
+    &--40 {
+      margin-top: 40px;
+    }
+  }
+
+  &-right {
+    &--auto {
+      margin-right: auto;
+    }
+
+    &--10 {
+      margin-right: 10px;
+    }
+
+    &--20 {
+      margin-right: 20px;
+    }
+
+    &--30 {
+      margin-right: 30px;
+    }
+
+    &--40 {
+      margin-right: 40px;
+    }
+  }
+
+  &-bottom {
+    &--auto {
+      margin-bottom: auto;
+    }
+
+    &--10 {
+      margin-bottom: 10px;
+    }
+
+    &--20 {
+      margin-bottom: 20px;
+    }
+
+    &--30 {
+      margin-bottom: 30px;
+    }
+
+    &--40 {
+      margin-bottom: 40px;
+    }
+  }
+
+  &-left {
+    &--auto {
+      margin-left: auto;
+    }
+
+    &--10 {
+      margin-left: 10px;
+    }
+
+    &--20 {
+      margin-left: 20px;
+    }
+
+    &--30 {
+      margin-left: 30px;
+    }
+
+    &--40 {
+      margin-left: 40px;
+    }
+  }
 }
 
 // 覆盖at-ui的默认样式
 .at-search-bar::after {
   border: none; //去掉搜索组件下边框
 }
+
+// 覆盖iconfont
+.icon {
+  display: inline-block;
+}
+
