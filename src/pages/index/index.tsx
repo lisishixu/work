@@ -124,7 +124,7 @@ export default class Index extends Component<Props, State> {
             return    <View className='at-col' key={'img'+index}><Image src={it} className={"recommend_Img"}></Image></View>
           })}
         </View>
-        <View className={'count-down'}>
+        <View className={'count-down '}>
           <IconFont name='huo' size={32} color='#fff'></IconFont>
           <Text className={''}>秒杀抢购</Text>
         </View>
