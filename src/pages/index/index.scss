@@ -57,4 +57,23 @@ page, .index {
   .recommend-box .at-col:nth-child(2){
     padding-left: 1%;
   }
+  .kill-Time{
+      margin:0 3% 33px;
+      padding: 14px 14px 20px;
+      border-radius: 0 0 30% 30%;
+  }
+  .at-countdown__separator{
+    color: #fff;
+  }
+  .at-countdown--card .at-countdown__time-box::after{
+    height: 0;
+  }
+  .at-countdown--card .at-countdown__time-box{
+    padding: 0 0;
+  }
+  .at-tabs__item-underline{
+    width: 30PX;
+    left: 25PX;
+    height: 2PX;
+  }
 }

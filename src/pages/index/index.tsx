@@ -2,7 +2,7 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Swiper, SwiperItem, Image, Navigator} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
-import {AtGrid, AtSearchBar,AtCountdown} from 'taro-ui'
+import {AtGrid, AtSearchBar,AtCountdown,AtTabs, AtTabsPane} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
@@ -17,7 +17,8 @@ export interface State {
   swipers: SwiperModel[]
   classify: ClassifyModel[]
   adBanner: string
-  imgData:any
+  imgData:any,
+current:number
 }
 
 export default class Index extends Component<Props, State> {
@@ -46,7 +47,8 @@ export default class Index extends Component<Props, State> {
       imgData:[
         '../../statics/imgs/banner1.png',
         '../../statics/imgs/banner2.png',
-      ]
+      ],
+      current:0
     }
   }
 
@@ -79,7 +81,11 @@ export default class Index extends Component<Props, State> {
       url: `/pages/classify/index?id=${index || item}`
     })
   };
-
+  handleClick (value) {
+    this.setState({
+      current: value
+    })
+  };
 
   render() {
     return (
@@ -124,16 +130,52 @@ export default class Index extends Component<Props, State> {
             return    <View className='at-col' key={'img'+index}><Image src={it} className={"recommend_Img"}></Image></View>
           })}
         </View>
-        <View className={'count-down bg-color--F12737'}>
-          <IconFont name='huo' size={32} color='#fff'></IconFont>
-          <Text className={'c--fff f--30'}>秒杀抢购</Text>
-          <Text className={'c--fff f--22'}></Text>
-          <Text className={'c--fff f--22'}></Text>
-          <AtCountdown
-            isCard
-            minutes={1}
-            seconds={10}
-          />
+        <View className={'bg-color--white'} style={'padding:44px 0 0'}>
+          <View className={'count-down bg-color--F12737 kill-Time'}>
+            <View className={'inline--block margin-right--10'}><IconFont name='huo'size={32} color='#fff'></IconFont></View>
+            <Text className={'c--fff f--30 margin-right--10'}>秒杀抢购</Text>
+            <Text className={'c--fff f--22'}>先到先得，赶紧抢货</Text>
+            <View className={'fr'}>
+              <Text className={'c--fff f--22 margin-right--10'}>距离结束</Text>
+              <AtCountdown
+                format={{ hours: ':', minutes: ':', seconds: '' }}
+                isCard
+                minutes={1}
+                seconds={10}
+              />
+            </View>
+          </View>
+          <AtTabs
+            current={this.state.current}
+            scroll
+            tabList={[
+              { title: '标签页1',},
+              { title: '标签页2' },
+              { title: '标签页3' },
+              { title: '标签页4' },
+              { title: '标签页5' },
+              { title: '标签页6' }
+            ]}
+            onClick={this.handleClick.bind(this)}>
+            <AtTabsPane current={this.state.current} index={0}>
+              <View style='font-size:18px;text-align:center;height:100px;'>已开抢</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={1}>
+              <View style='font-size:18px;text-align:center;height:100px;'>已开抢</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={2}>
+              <View style='font-size:18px;text-align:center;height:100px;'>已开抢</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={3}>
+              <View style='font-size:18px;text-align:center;height:100px;'>抢购中</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={4}>
+              <View style='font-size:18px;text-align:center;height:100px;'>即将开始</View>
+            </AtTabsPane>
+            <AtTabsPane current={this.state.current} index={5}>
+              <View style='font-size:18px;text-align:center;height:100px;'>即将开始</View>
+            </AtTabsPane>
+          </AtTabs>
         </View>
 
       </View>
