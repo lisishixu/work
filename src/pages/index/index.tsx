@@ -124,15 +124,18 @@ export default class Index extends Component<Props, State> {
             return    <View className='at-col' key={'img'+index}><Image src={it} className={"recommend_Img"}></Image></View>
           })}
         </View>
-        <View className={'count-down '}>
+        <View className={'count-down bg-color--F12737'}>
           <IconFont name='huo' size={32} color='#fff'></IconFont>
-          <Text className={''}>秒杀抢购</Text>
+          <Text className={'c--fff f--30'}>秒杀抢购</Text>
+          <Text className={'c--fff f--22'}></Text>
+          <Text className={'c--fff f--22'}></Text>
+          <AtCountdown
+            isCard
+            minutes={1}
+            seconds={10}
+          />
         </View>
-        <AtCountdown
-          isCard
-          minutes={1}
-          seconds={10}
-        />
+
       </View>
     )
   }
