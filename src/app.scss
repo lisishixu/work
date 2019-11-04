@@ -63,6 +63,10 @@ $color-brand-dark: #bc2e2e;
   background-color: white;
 }
 
+.text--line-through {
+  text-decoration: line-through;
+}
+
 // 覆盖at-ui的默认样式
 .at-search-bar::after {
   border: none; //去掉搜索组件下边框

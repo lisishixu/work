@@ -1,5 +1,7 @@
 // 虚假数据，用于开发时调试
 
+import {GoodsModel} from "./models/GoodsModel";
+
 export const SwiperData = [
   {
     imgurl: '/statics/imgs/swiper-1.png'
@@ -49,5 +51,34 @@ export const ClassifyData = [
   {
     image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
     value: '全部分类'
+  }
+];
+
+
+export const GoodsData: GoodsModel[] = [
+  {
+    product_original: 100,
+    product_id: 26,
+    product_price: 60,
+    product_name: "测试",
+    product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/d7a02f65-6cdb-4622-b80d-4e1d4eac2e24.jpg",
+    sales_volume: 13,
+    product_detail: ""
+  },
+  {
+    product_original: 100,
+    product_id: 27,
+    product_price: 20,
+    product_name: "沐浴露",
+    product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e9be43e0-5130-43fd-8fbf-e38e3edd857d.jpg",
+    sales_volume: 5
+  },
+  {
+    product_original: 100,
+    product_id: 25,
+    product_price: 0,
+    product_name: "小浣熊儿童沐浴露",
+    product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/e692021d-a1e8-412c-b7be-eacf573ef170.jpg",
+    sales_volume: 10
   }
 ];
