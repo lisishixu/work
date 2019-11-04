@@ -2,12 +2,11 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Swiper, SwiperItem, Image, Navigator} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
-import {AtGrid, AtSearchBar} from 'taro-ui'
+import {AtGrid, AtSearchBar,AtCountdown} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
 import {ClassifyData, SwiperData} from "../../data";
-
 export interface Props {
 
 }
@@ -18,6 +17,7 @@ export interface State {
   swipers: SwiperModel[]
   classify: ClassifyModel[]
   adBanner: string
+  imgData:any
 }
 
 export default class Index extends Component<Props, State> {
@@ -42,7 +42,11 @@ export default class Index extends Component<Props, State> {
       },
       swipers: [],
       classify: [],
-      adBanner: '../../static/imgs/banner.png'
+      adBanner: '../../statics/imgs/banner.png',
+      imgData:[
+        '../../statics/imgs/banner1.png',
+        '../../statics/imgs/banner2.png',
+      ]
     }
   }
 
@@ -83,7 +87,7 @@ export default class Index extends Component<Props, State> {
 
         <View className="at-row  at-row__align--center container">
           <View className="at-col at-col-1 at-col--auto location">
-            <IconFont name='bianji1' size={32} color='#888'/>
+            <IconFont name='weizhi' size={32} color='#888'/>
             <Text className={"location__text"}>{this.state.location.city || '定位中'}</Text>
           </View>
           <Navigator url={'/pages/search/index'} className="at-col  search">
@@ -115,6 +119,20 @@ export default class Index extends Component<Props, State> {
           <Image src={this.state.adBanner} className="banner__img"></Image>
         </View>
 
+        <View className='at-row container recommend-box'>
+          {this.state.imgData.map((it, index) => {
+            return    <View className='at-col' key={'img'+index}><Image src={it} className={"recommend_Img"}></Image></View>
+          })}
+        </View>
+        <View className={'count-down'}>
+          <IconFont name='huo' size={32} color='#fff'></IconFont>
+          <Text className={''}>秒杀抢购</Text>
+        </View>
+        <AtCountdown
+          isCard
+          minutes={1}
+          seconds={10}
+        />
       </View>
     )
   }

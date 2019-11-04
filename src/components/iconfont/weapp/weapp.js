@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // lingdang | more | iconset0254 | dianzan | 3 | houtui | sousuo | xiazai19 | zhijiao-triangle | jiaochacross80 | toubaoxuzhi | dingdan | shangcheng | shu | shu1 | shoucang1 | qizhi | shouye | close_icon | selected | set | dianpu | unselected | tubiaoshangshengqushi | douzi | gwc | xingxing | dizhi | baobeifuli | px_daoxu | tubiaozhizuomoban | youjiantou | kechengbushi | xiaoxi | paixu | lipin | dianpushouye | shengxu | shijian | qiehuan | jiahao | jifenduihuan | bianji | dianpu_fenlei | kuaidiche-X | wode | laba | dizhi1 | shanchu-copy-copy | shiwuzhongxin_tushuguan | weixinzhifu | hongbao | changyongicon- | jiangxu | gouwuche | bianji1 | shoucang
+    // icon | weixin | iconfonterweima | weizhi | fanhui | 13 | iconfontjikediancanicon20 | yaoqinghaoyou | tuijian | dailizizhizizhiqiyezizhi | shanchu | weixin-copy | tupian | xiangji | mingpian1 | haoyou | xuanze1 | kuaisukaidian | fenxiang-1 | QQ | yaoqing | pengyouquan | morentouxiang | xingji | guanbi | upload | xiala | xiaoxi | web-icon- | tubiao- | xuanze-duoxuan-tianchong | yonghu_shouyi | kefu | shuangsechangyongtubiao- | jiludanzilishijilu | jilu | jiantou_xiangyouliangci_o | guanyu1 | shangjia | shezhi | ren | ziyuan | kehu | tianjiazhaopian | saoyisao | sousuo | huo | weixinzhifu | zhifubao | shoucang | haoyou1 | dingding | wallet | qiehuan
     name: {
       type: String,
     },
