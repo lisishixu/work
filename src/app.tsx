@@ -26,6 +26,7 @@ class App extends Component {
       'pages/goods/detail',
       'pages/goods/new',
       'pages/goods/good',
+      'pages/goods/choiceness',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -50,7 +51,7 @@ class App extends Component {
           selectedIconPath:  'statics/imgs/tabbar/community.png',
         },
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/goods/choiceness',
           text: '精选',
           iconPath: 'statics/imgs/tabbar/concentration_no.png',
           selectedIconPath:  'statics/imgs/tabbar/concentration.png',
