@@ -163,7 +163,7 @@ export default class Index extends Component<Props, State> {
             current={this.state.current}
             scroll
             tabList={[
-              {title: '标签页1',},
+              {title: '标签页1'},
               {title: '标签页2'},
               {title: '标签页3'},
               {title: '标签页4'},
