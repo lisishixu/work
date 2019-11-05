@@ -93,4 +93,20 @@ page, .index {
     width: 60%;
     left: 20%;
   }
+  .RecommendList{
+    .at-col{
+      margin-bottom: 20px;
+    }
+    .at-col:nth-child(odd){
+      padding-right: 10px;
+    }
+    .at-col:nth-child(even){
+      padding-left: 10px;
+    }
+  }
+  .RecommendList--img{
+    width: 100%;
+    height: 256px;
+  }
+
 }

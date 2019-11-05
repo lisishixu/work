@@ -10,7 +10,6 @@ import {EvaluateModel} from '../../models/EvaluateModel';
 export interface Props {
 
 }
-
 export interface State {
   isSeckill: boolean,//是不是秒杀抢购
   goods: GoodsModel,
@@ -23,7 +22,6 @@ export default class GoodsDetail extends Component<Props, State> {
   config: Config = {
     navigationStyle: 'custom'
   };
-
   static defaultProps = {};
 
   constructor(props) {
@@ -35,22 +33,16 @@ export default class GoodsDetail extends Component<Props, State> {
       recommendGoods: GoodsData
     }
   }
-
   componentWillMount() {
   }
-
   componentDidMount() {
   }
-
   componentWillUnmount() {
   }
-
   componentDidShow() {
   }
-
   componentDidHide() {
   }
-
   render() {
     return (
       <View className='detail bg-color--f2f2f2'>
@@ -59,7 +51,6 @@ export default class GoodsDetail extends Component<Props, State> {
                  this.setState({isSeckill: !this.state.isSeckill})
                }}>
         </Image>
-
         {this.state.isSeckill ?
           <Block>
             <View className="container seckill">
@@ -74,7 +65,6 @@ export default class GoodsDetail extends Component<Props, State> {
                   <Text className={"text--line-through"}>￥16.8</Text>
                 </View>
               </View>
-
               <View className="seckill-time">
                 <View>距结束
                   <AtCountdown
@@ -127,14 +117,9 @@ export default class GoodsDetail extends Component<Props, State> {
               </View>
               <Text className="ellipsis-2 title">{this.state.goods.product_name}</Text>
             </View>
-
           </Block>}
-
-
         <View className="container bg-color--white ">
-
         </View>
-
         <View className="margin-top--20 container evaluate">
           <View className="small-title">
             <View>
@@ -189,24 +174,19 @@ export default class GoodsDetail extends Component<Props, State> {
               <IconFont name={'xiala'} color={'#F12737'} size={26}/>
             </View>
           </View>
-
           <View>
-
             <Text className="block margin-top--20 f__weight--bold f__size--30">1.消费者下单</Text>
             <Text className="c--666 f__size--28">每天下单时间：00:00 - 23:00</Text>
 
             <Text className="block margin-top--20 f__weight--bold f__size--30">2.货物自提</Text>
             <Text className="c--666 f__size--28">消费者根据自己下单相对应的门店，凭自提码提货.提货时间根据门店的营业时间</Text>
-
             <Text className="block margin-top--20 f__weight--bold f__size--30">3.100%售后</Text>
             <Text className="c--666 f__size--28">消费者遇到任何问题，可以直接与下单的门店沟通自取</Text>
           </View>
         </View>
-
         <View style={{height: '80px', opacity: 0}}>
         </View>
         <View className='goods-action flex a__items--center'>
-
           <Navigator url={'/pages/index/index'} openType={"switchTab"}
                      className={"flex__1 btn"}>
             <View className="icon">
@@ -228,10 +208,7 @@ export default class GoodsDetail extends Component<Props, State> {
           </Button>
           <Button className="flex__2 btn add-cart">加入购物车</Button>
           <Button className="flex__2 btn now-buy">立即购买</Button>
-
-
         </View>
-
       </View>
     )
   }

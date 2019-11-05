@@ -1,6 +1,5 @@
 // 虚假数据，用于开发时调试
 
-import {GoodsModel} from "./models/GoodsModel";
 import {EvaluateModel} from "./models/EvaluateModel";
 
 export const SwiperData = [
@@ -56,7 +55,7 @@ export const ClassifyData = [
 ];
 
 
-export const GoodsData: GoodsModel[] = [
+export const GoodsData = [
   {
     product_original: 100,
     product_id: 26,
