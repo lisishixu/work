@@ -57,6 +57,7 @@ export default class GoodsChoiceness extends Component<Props, State> {
 
 
   render() {
+    const {goodsList} = this.state;
     return (
       <View className='choiceness bg-color--f2f2f2'>
 
@@ -76,7 +77,7 @@ export default class GoodsChoiceness extends Component<Props, State> {
             return <AtTabsPane key={'goodslist' + num}
                                current={this.state.current}
                                index={num}>
-              {this.state.goodsList.map((it, index) => {
+              {goodsList.map((it, index) => {
                 return <View className="goods" key={'goods' + index}>
                   <Image className="goods__cover" src={it.product_img}>
                     <Text className={`goods__index goods__index--${index + 1}`}>{index + 1}</Text>

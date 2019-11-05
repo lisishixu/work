@@ -9,6 +9,7 @@ import {ClassifyModel} from "../../models/ClassifyModel";
 import {ClassifyData, GoodsData, SwiperData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import {SeckillGoodsModel} from "../../models/SeckillGoodsModel";
+import GoodsList from "../../components/goods-list/goods-list";
 
 export interface Props {
 
@@ -125,24 +126,23 @@ export default class Index extends Component<Props, State> {
                 onClick={this.onClassify}
                 data={this.state.classify}/>
 
-        <View className="banner">
+        <Navigator url={'/pages/member/index'} className="banner">
           <Image src={this.state.adBanner} className="banner__img"/>
-        </View>
+        </Navigator>
 
         <View className='at-row container recommend-box'>
           <Navigator url={`/pages/goods/good`} className='at-col'>
             <Image src={'../../statics/imgs/banner1.png'}
-                   className={"recommend_Img"}/>
+                   className={"recommend_img"}/>
           </Navigator>
           <Navigator url={`/pages/goods/new`} className='at-col'>
             <Image src={'../../statics/imgs/banner2.png'}
-                   className={"recommend_Img"}/>
+                   className={"recommend_img"}/>
           </Navigator>
         </View>
 
-
         <View className={'bg-color--white'} style={{padding: '32px 0 0', marginBottom: '11px'}}>
-          <View className={'count-down bg-color--F12737 kill-Time'}>
+          <View className={'count-down bg-color--F12737 kill-time'}>
             <View className={'inline--block margin-right--10'}>
               <IconFont name='huo' size={32} color='#fff'/>
             </View>
@@ -178,7 +178,7 @@ export default class Index extends Component<Props, State> {
                   <View className={"text--left"}>
                     {goodsList.map((it, index) => {
                       return <View key={'img' + index} style={{border: '1px solid #F5F5F5', marginTop: '20px'}}>
-                        <Image src={it.product_img} className={"recommend_Img"}/>
+                        <Image src={it.product_img} className={"recommend_img"}/>
                         <View style={{padding: '0px 10px'}}>
                           <View className={'f__size--28 c--010 margin-top--20'}>{it.product_name}
                             <View className={'margin-top--20'}>
@@ -210,24 +210,7 @@ export default class Index extends Component<Props, State> {
         <View className={'container margin-bottom--20'}>
           <AtDivider content='为你推荐' fontColor='#F12737' lineColor='#F12737'/>
         </View>
-        <View className='at-row at-row--wrap RecommendList container bg-color--f2f2f2'>
-          {this.state.recommendList.map((it, index) => {
-            return <Navigator url={`/pages/goods/detail?id=${it.product_id}`} className='at-col at-col-6'>
-              <View key={'img' + index} style={{background: '#fff'}}>
-                <Image src={it.product_img} className={"RecommendList--img"}/>
-                <View style={'padding:5px'}>
-                  <View className={'margin-top--10 '} style={'height:40px'}>
-                    <Text className={'c--333 f__size--24'}>{it.product_name}</Text>
-                  </View>
-                  <View>
-                    <Text className={'c--eb3 f__size--30 margin-right--20'}>￥{it.product_price}</Text><Text
-                    className={'f__size--24 c--808 text--line-through'}>￥{it.product_original}</Text>
-                  </View>
-                </View>
-              </View>
-            </Navigator>
-          })}
-        </View>
+        <GoodsList data={this.state.recommendList}/>
       </View>
     )
   }

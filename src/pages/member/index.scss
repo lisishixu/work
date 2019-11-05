@@ -1,0 +1,83 @@
+.user {
+  height: 140px;
+  line-height: 2;
+}
+
+.card {
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 340px;
+  }
+
+  &-box {
+    width: 700px;
+    position: relative;
+    z-index: 9;
+    padding-top: 60px;
+    margin: 0 auto;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__price {
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    font-size: 50px;
+    font-weight: 400;
+    color: white;
+
+    &:before {
+      content: '￥';
+      font-size: 50%;
+      font-weight: normal;
+    }
+  }
+
+}
+
+.tip-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 70px;
+
+  &__text {
+    display: block;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 30px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }
+
+  &__line {
+    width: 304px;
+    height: 20px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    margin: 30px auto;
+  }
+}
+
+
+.at-grid__flex .content-inner__text {
+  font-size: 26px;
+}

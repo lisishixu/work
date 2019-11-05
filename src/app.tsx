@@ -28,7 +28,8 @@ class App extends Component {
       'pages/goods/new',
       'pages/goods/good',
       'pages/goods/choiceness',
-      'pages/cart/index'
+      'pages/cart/index',
+      'pages/member/index',
     ],
     window: {
       backgroundTextStyle: 'light',

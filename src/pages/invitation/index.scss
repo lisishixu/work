@@ -1,7 +1,7 @@
-.invitation-box{
+.invitation-box {
   position: relative;
 
-  .btn--step{
+  .btn--step {
     background: #9897FE;
     color: #fff;
     border: none;
@@ -12,25 +12,29 @@
     font-size: 32px;
     bottom: 30px;
   }
-  .step--detail{
+
+  .step--detail {
     display: flex;
     justify-content: space-around;
     padding-bottom: 28px;
     border-bottom: 1px solid #DCDCDC;
-    .detail--num{
+
+    .detail--num {
       display: inline-block;
     }
-    .detail--num .view{
+
+    .detail--num .view {
       background: #9897FE;
       margin: 0 auto;
       width: 60px;
-      height:60px;
+      height: 60px;
       padding: 22px;
       border-radius: 50%;
       margin-bottom: 20px;
       position: relative;
     }
-    .detail--num .view:after{
+
+    .detail--num .view:after {
       content: '';
       width: 90px;
       height: 1px;
@@ -39,29 +43,36 @@
       left: 100%;
       top: 50%;
     }
-    .detail--num:nth-child(4) .view:after{
+
+    .detail--num:nth-child(4) .view:after {
       content: '';
-      width: 0px;
-      height: 0px;
+      width: 0;
+      height: 0;
     }
   }
-  .at-divider__line{
+
+  .at-divider__line {
     width: 50%;
     margin: 0 25%;
   }
-  .RecommendList{
-    .at-col{
+
+  .RecommendList {
+    .at-col {
       margin-bottom: 20px;
     }
-    .at-col:nth-child(odd){
+
+    .at-col:nth-child(odd) {
       padding-right: 10px;
     }
-    .at-col:nth-child(even){
+
+    .at-col:nth-child(even) {
       padding-left: 10px;
     }
   }
-  .RecommendList--img{
+
+  .RecommendList--img {
     width: 100%;
     height: 256px;
   }
+
 }
