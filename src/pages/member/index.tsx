@@ -49,6 +49,12 @@ export default class Member extends Component<Props, State> {
   componentDidHide() {
   }
 
+  onOpen = () => {
+    Taro.navigateTo({
+      url: `/pages/member/buy`
+    })
+  };
+
   render() {
     return (
       <View className='index'>
@@ -121,7 +127,7 @@ export default class Member extends Component<Props, State> {
 
         <GoodsList data={this.state.goods}/>
 
-        <FixedButton text={'立即注册开通五联创客店主'} onClick={thisVoid}/>
+        <FixedButton text={'立即注册开通五联创客店主'} onClick={this.onOpen}/>
 
       </View>
     )
