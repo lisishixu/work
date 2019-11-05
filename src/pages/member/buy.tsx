@@ -2,6 +2,7 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text} from '@tarojs/components'
 import './buy.scss'
 import BuyGuide from "../../components/buy-guide/buy-guide";
+import MemberRights from "../../components/member-rights/member-rights";
 
 export interface Props {
 
@@ -43,6 +44,7 @@ export default class MemberBuy extends Component<Props, State> {
     return (
       <View className='buy'>
         <Text>1</Text>
+        <MemberRights/>
         <BuyGuide/>
 
       </View>

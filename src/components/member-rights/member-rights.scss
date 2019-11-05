@@ -1,0 +1,5 @@
+// 2019-11-5 由于小程序、Taro-UI特性，在组件内使用taro-ui时无法覆盖原有样式，因此在这里写的样式是无效的。此处效果额外写在了app.scss
+
+.at-grid__flex .content-inner__text {
+  font-size: 26px;
+}

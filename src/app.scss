@@ -391,3 +391,6 @@ $color-brand-dark: #bc2e2e;
 .at-search-bar::after {
   border: none; //去掉搜索组件下边框
 }
+.at-grid__flex .content-inner__text {
+  font-size: 26px;
+}
