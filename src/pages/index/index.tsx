@@ -91,6 +91,7 @@ export default class Index extends Component<Props, State> {
   };
 
   render() {
+    const {goodsList} = this.state;
     return (
       <View className='index'>
 
@@ -175,7 +176,7 @@ export default class Index extends Component<Props, State> {
               return <AtTabsPane current={this.state.current} index={num} key={'tab' + num}>
                 <View style={{fontSize: '18px', textAlign: 'center'}}>
                   <View className={"text--left"}>
-                    {this.state.goodsList.map((it, index) => {
+                    {goodsList.map((it, index) => {
                       return <View key={'img' + index} style={{border: '1px solid #F5F5F5', marginTop: '20px'}}>
                         <Image src={it.product_img} className={"recommend_Img"}/>
                         <View style={{padding: '0px 10px'}}>

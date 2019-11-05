@@ -270,6 +270,39 @@
       background: linear-gradient(to right, #ff6034, #ee0a24);
     }
   }
+  .shop-Detai{
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+    bottom: 20px;
+    Text{
+      color: #333;
+      font-size: 26px;
+    }
+    .box-before:before{
+      content: '';
+      width: 1px;
+      height: 85%;
+      background: #ccc;
+      position: absolute;
+      left: 51%;
+      top: 10%;
+    }
+    .shop-box{
+      text-align: center;
+      width: calc(50% - 1px);
+      display: inline-block;
 
+      View{
+        border-bottom: 1px solid #ccc;
+        padding: 20px 0;
+      }
+    }
+  }
+  .at-divider__line{
+    width: 80%;
+    left: 10%;
+  }
 }
 

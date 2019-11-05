@@ -3,7 +3,7 @@ import {View, Image, Text, Progress, Button, Navigator, RichText, Block} from '@
 import './detail.scss'
 import {GoodsModel} from "../../models/GoodsModel";
 import {EvaluateData, GoodsData} from "../../data";
-import {AtAvatar, AtCountdown} from "taro-ui";
+import {AtAvatar, AtCountdown, AtDivider} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import {EvaluateModel} from '../../models/EvaluateModel';
 
@@ -118,7 +118,32 @@ export default class GoodsDetail extends Component<Props, State> {
               <Text className="ellipsis-2 title">{this.state.goods.product_name}</Text>
             </View>
           </Block>}
-        <View className="container bg-color--white ">
+        <View className="container bg-color--white margin-top--20">
+          <AtDivider content='  商品详情  ' fontColor='#333333' lineColor='#CCCCCC' />
+          <View className={'shop-Detai'}>
+              <View className={'box-before shop-box'}>
+                <View>
+                  <Text>品牌：山盟</Text>
+                </View>
+                <View>
+                  <Text>规格：125ml*瓶</Text>
+                </View>
+                <View>
+                  <Text>保质期：15天</Text>
+                </View>
+              </View>
+            <View className={'shop-box'}>
+              <View>
+                <Text>名称：旺仔复原乳</Text>
+              </View>
+              <View>
+                <Text>产地：中国</Text>
+              </View>
+              <View>
+                <Text>暂无</Text>
+              </View>
+            </View>
+          </View>
         </View>
         <View className="margin-top--20 container evaluate">
           <View className="small-title">

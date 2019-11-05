@@ -27,6 +27,7 @@ class App extends Component {
       'pages/goods/new',
       'pages/goods/good',
       'pages/goods/choiceness',
+      'pages/cart/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -57,7 +58,7 @@ class App extends Component {
           selectedIconPath:  'statics/imgs/tabbar/concentration.png',
         },
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/cart/index',
           text: '购物车',
           iconPath: 'statics/imgs/tabbar/shop_no.png',
           selectedIconPath:  'statics/imgs/tabbar/shop.png',
