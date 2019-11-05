@@ -30,6 +30,7 @@ class App extends Component {
       'pages/goods/choiceness',
       'pages/cart/index',
       'pages/member/index',
+      'pages/member/buy',
     ],
     window: {
       backgroundTextStyle: 'light',
