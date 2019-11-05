@@ -21,9 +21,29 @@
     &__index {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 1%;
       color: white;
-      background-image: url('../../statics/imgs/icon-index1@2x.png');
+      width: 34px;
+      height: 46px;
+      text-align: center;
+      font-size: 28px;
+      background: url('../../statics/imgs/icon-index4.png') no-repeat top left;
+      background-size: 100% 100%;
+
+      &--1 {
+        background: url('../../statics/imgs/icon-index1.png') no-repeat top left;
+        background-size: 100% 100%;
+      }
+
+      &--2 {
+        background: url('../../statics/imgs/icon-index2.png') no-repeat top left;
+        background-size: 100% 100%;
+      }
+
+      &--3 {
+        background: url('../../statics/imgs/icon-index3.png') no-repeat top left;
+        background-size: 100% 100%;
+      }
     }
 
     &__content {
