@@ -7,6 +7,7 @@ import {AtAvatar, AtCountdown, AtDivider} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import {EvaluateModel} from '../../models/EvaluateModel';
 import BuyGuide from "../../components/buy-guide/buy-guide";
+import GoodsList from "../../components/goods-list/goods-list";
 
 export interface Props {
 
@@ -128,27 +129,27 @@ export default class GoodsDetail extends Component<Props, State> {
           </Block>}
         <View className="container bg-color--white margin-top--20">
           <AtDivider content='  商品详情  ' fontColor='#333333' lineColor='#CCCCCC'/>
-          <View className={'shop-Detai'}>
+          <View className={'shop-detail'}>
             <View className={'box-before shop-box'}>
-              <View>
-                <Text>品牌：山盟</Text>
+              <View className={"view"}>
+                <Text className={'text'}>品牌：山盟</Text>
               </View>
-              <View>
-                <Text>规格：125ml*瓶</Text>
+              <View className={"view"}>
+                <Text className={'text'}>规格：125ml*瓶</Text>
               </View>
-              <View>
-                <Text>保质期：15天</Text>
+              <View className={"view"}>
+                <Text className={'text'}>保质期：15天</Text>
               </View>
             </View>
             <View className={'shop-box'}>
-              <View>
-                <Text>名称：旺仔复原乳</Text>
+              <View className={"view"}>
+                <Text className={'text'}>名称：旺仔复原乳</Text>
               </View>
-              <View>
-                <Text>产地：中国</Text>
+              <View className={"view"}>
+                <Text className={'text'}>产地：中国</Text>
               </View>
-              <View>
-                <Text>暂无</Text>
+              <View className={"view"}>
+                <Text className={'text'}>暂无</Text>
               </View>
             </View>
           </View>
@@ -180,15 +181,9 @@ export default class GoodsDetail extends Component<Props, State> {
             <Navigator className="c--eb3 f__size--30">查看更多</Navigator>
           </View>
           <View className="recommend-wrap">
-            {this.state.recommendGoods.map((it, index) => {
-              return <View className="recommend__item" key={'re' + index}>
-                <Image className={'cover'} src={it.product_img}>
-                </Image>
-                <Text className="title">{it.product_name}</Text>
-                <Text className="price">￥{it.product_price}</Text>
-              </View>
-            })}
+
           </View>
+          <GoodsList data={this.state.recommendGoods}/>
         </View>
 
         <View className="container margin-top--20">
