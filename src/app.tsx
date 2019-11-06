@@ -33,7 +33,8 @@ class App extends Component {
       'pages/member/index',
       'pages/member/buy',
       'pages/friendRegistration/index',
-      'pages/myRecommend/index'
+      'pages/myRecommend/index',
+      'pages/endorsement/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -50,30 +51,30 @@ class App extends Component {
           pagePath: 'pages/index/index',
           text: '首页',
           iconPath: 'statics/imgs/tabbar/home_no.png',
-          selectedIconPath:  'statics/imgs/tabbar/home.png',
+          selectedIconPath: 'statics/imgs/tabbar/home.png',
         }, {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/endorsement/index',
           text: '代言',
           iconPath: 'statics/imgs/tabbar/community_no.png',
-          selectedIconPath:  'statics/imgs/tabbar/community.png',
+          selectedIconPath: 'statics/imgs/tabbar/community.png',
         },
         {
           pagePath: 'pages/goods/choiceness',
           text: '精选',
           iconPath: 'statics/imgs/tabbar/concentration_no.png',
-          selectedIconPath:  'statics/imgs/tabbar/concentration.png',
+          selectedIconPath: 'statics/imgs/tabbar/concentration.png',
         },
         {
           pagePath: 'pages/cart/index',
           text: '购物车',
           iconPath: 'statics/imgs/tabbar/shop_no.png',
-          selectedIconPath:  'statics/imgs/tabbar/shop.png',
+          selectedIconPath: 'statics/imgs/tabbar/shop.png',
         },
         {
           pagePath: 'pages/index/index',
           text: '我的',
           iconPath: 'statics/imgs/tabbar/my_no.png',
-          selectedIconPath:  'statics/imgs/tabbar/my.png',
+          selectedIconPath: 'statics/imgs/tabbar/my.png',
         }
       ]
     },

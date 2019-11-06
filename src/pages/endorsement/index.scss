@@ -1,0 +1,122 @@
+.index {
+  min-height: 100vh;
+  background-color: #f2f2f2;
+
+  .page-header {
+    height: 100px;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    .tabs {
+      position: absolute;
+      left: calc((100% - 120px * 2) / 2);
+
+      .btn {
+        border: none;
+        background: none;
+        padding: 0;
+        display: inline-block;
+        font-size: 32px;
+        width: 100px;
+        margin: 0 10px;
+
+        &:after {
+          border: none;
+        }
+
+        &.current {
+          color: #EB3939;
+        }
+      }
+    }
+  }
+
+
+  .dynamics {
+
+    &__item {
+      background-color: white;
+      margin-bottom: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .btn-concern {
+        border: none;
+        color: white;
+        background: #EB3939;
+        padding: 0;
+        font-size: 30px;
+        width: 120px;
+        height: 50px;
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:after {
+          border: none;
+        }
+      }
+    }
+
+    &__content {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgba(16, 16, 16, 1);
+      line-height: 40px;
+    }
+
+    &__imgs {
+      margin-top: 20px;
+
+      &--3 {
+        .img {
+          width: 32%;
+          height: 180px;
+          margin-right: 1%;
+        }
+      }
+    }
+
+    &__card {
+      border: 1px solid #ccc;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .time {
+        color: #666;
+        font-size: 28px;
+      }
+
+      .btn {
+        border: none;
+        color: #666;
+        background: none;
+        padding: 0;
+        font-size: 28px;
+        height: 50px;
+        margin: 0 10px;
+        display: inline-flex;
+        align-items: center;
+
+        &:after {
+          border: none;
+        }
+      }
+    }
+  }
+}
