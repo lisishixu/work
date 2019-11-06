@@ -1,0 +1,38 @@
+.state-tip {
+  &__img {
+    display: block;
+    width: 50%;
+    margin: 40px auto;
+  }
+
+  &__text {
+    max-width: 60%;
+    display: block;
+    color: #888;
+    font-size: 30px;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  &--small {
+    .state-tip {
+      &__img {
+        display: block;
+        width: 20%;
+        margin: 40px auto;
+      }
+    }
+  }
+
+  &--large {
+    .state-tip {
+      &__img {
+        display: block;
+        width: 80%;
+        margin: 40px auto;
+      }
+    }
+  }
+
+
+}
