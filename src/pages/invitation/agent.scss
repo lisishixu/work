@@ -1,0 +1,22 @@
+.agent{
+  .detail--num .view{
+    background: #F12737 !important;
+  }
+  .detail--num .view:after{
+    background: #F12737 !important;
+  }
+  .agent-title{
+    margin-top: 320px;
+    margin-bottom: 66px;
+    text-align: center;
+    color: #F23A3A;
+    font-size: 30px;
+    .agent-title--bt{
+      width: 30px;
+      height: 5px;
+      margin: 39px auto 0;
+      background: #F23A3A;
+      border-radius: 100px;
+    }
+  }
+}

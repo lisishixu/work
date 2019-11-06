@@ -1,38 +1,10 @@
 .index{
-  min-height: 100vh;
+  min-height:150vh;
   background: #f8f8f8;
   position: relative;
-  .reward{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    width: 94%;
-    margin:0 3%;
-    position: absolute;
-    top:320px;
-    .reward-box{
-      background: #fff;
-      padding:41px 68px 65px;
-      border-radius: 10px;
-      .reward--font{
-        background: #F12737;
-        padding: 10px;
-        color: #fff;
-        font-size: 40px;
-        border-radius: 10px;
-        margin-bottom: 39px;
-      }
-    }
-    .reward-box:nth-child(1){
-      margin-right: 7px;
-    }
-    .reward-box:nth-child(2){
-      margin-left: 7px;
-    }
-  }
   .tab--content{
     position: relative;
-    top: 320px;
+    top: 280px;
     .at-tabs__item-underline{
       width: 15%;
       left: 42.5%;
@@ -49,6 +21,7 @@
   .friend--step{
     display: flex;
     justify-content: space-around;
+    position: relative;
     .view{
       background: #F12737;
       margin: 0 auto;

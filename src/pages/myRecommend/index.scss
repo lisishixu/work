@@ -1,0 +1,21 @@
+.index{
+  .at-box{
+    border-top: 1px solid #DCDCDC;
+    display: flex;
+    padding: 20px 30px;
+    padding-bottom: 32px;
+    .at-box--left{
+      margin-right: 16px;
+      .img{
+        width:200px;
+        height: 170px;
+      }
+    }
+    .at-box--right{
+        margin-left: 16px;
+      .rigt--font{
+        margin-top: 50px;
+      }
+    }
+  }
+}

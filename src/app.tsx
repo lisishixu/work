@@ -23,6 +23,7 @@ class App extends Component {
       'pages/index/index',
       'pages/search/index',
       'pages/invitation/index',
+      'pages/invitation/agent',
       'pages/classify/index',
       'pages/goods/detail',
       'pages/goods/new',
@@ -31,7 +32,8 @@ class App extends Component {
       'pages/cart/index',
       'pages/member/index',
       'pages/member/buy',
-      'pages/friendRegistration/index'
+      'pages/friendRegistration/index',
+      'pages/myRecommend/index'
     ],
     window: {
       backgroundTextStyle: 'light',
