@@ -5,6 +5,16 @@
 
   .cover {
     width: 100%;
+    min-height: 600px;
+  }
+
+  .price {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    &__num{
+      font-size: 40px;
+      margin-left: 16px;
+    }
   }
 
   .shop-detail {

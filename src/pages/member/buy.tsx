@@ -55,7 +55,19 @@ export default class MemberBuy extends Component<Props, State> {
   render() {
     return (
       <View className='buy'>
-        <Image className={"cover"} src={'/statics/imgs/swiper-1.png'}/>
+
+        <Image className={"cover"} mode={"widthFix"} src={'/statics/imgs/swiper-1.png'}/>
+
+
+        <View className="bg-color--white text--center price">
+          <Text className="c--666 f__size--30">礼包套餐价</Text>
+          <Text className="c--eb3 f__weight--bold price__num ">￥198</Text>
+        </View>
+
+        <View className="container ">
+          <Text className="block text--center margin-bottom--20">旺仔 复原乳牛奶 125ml*瓶/份旺仔 复原乳牛奶 125ml*瓶/份</Text>
+          <Text className="f__size--28 c--eb3 margin-bottom--20"> 购买任意礼包套餐，就即可获得超值礼包和五联创客店铺，享受五联创客</Text>
+        </View>
 
         <View className="bg-color--white">
           <View style={{width: '266px', margin: '0 auto '}}>
