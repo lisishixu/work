@@ -6,10 +6,13 @@ import {EvaluateData, GoodsData} from "../../data";
 import {AtAvatar, AtCountdown, AtDivider} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import {EvaluateModel} from '../../models/EvaluateModel';
+import BuyGuide from "../../components/buy-guide/buy-guide";
+import GoodsList from "../../components/goods-list/goods-list";
 
 export interface Props {
 
 }
+
 export interface State {
   isSeckill: boolean,//是不是秒杀抢购
   goods: GoodsModel,
@@ -33,16 +36,22 @@ export default class GoodsDetail extends Component<Props, State> {
       recommendGoods: GoodsData
     }
   }
+
   componentWillMount() {
   }
+
   componentDidMount() {
   }
+
   componentWillUnmount() {
   }
+
   componentDidShow() {
   }
+
   componentDidHide() {
   }
+
   render() {
     return (
       <View className='detail bg-color--f2f2f2'>
@@ -119,28 +128,28 @@ export default class GoodsDetail extends Component<Props, State> {
             </View>
           </Block>}
         <View className="container bg-color--white margin-top--20">
-          <AtDivider content='  商品详情  ' fontColor='#333333' lineColor='#CCCCCC' />
-          <View className={'shop-Detai'}>
-              <View className={'box-before shop-box'}>
-                <View>
-                  <Text>品牌：山盟</Text>
-                </View>
-                <View>
-                  <Text>规格：125ml*瓶</Text>
-                </View>
-                <View>
-                  <Text>保质期：15天</Text>
-                </View>
+          <AtDivider content='  商品详情  ' fontColor='#333333' lineColor='#CCCCCC'/>
+          <View className={'shop-detail'}>
+            <View className={'box-before shop-box'}>
+              <View className={"view"}>
+                <Text className={'text'}>品牌：山盟</Text>
               </View>
+              <View className={"view"}>
+                <Text className={'text'}>规格：125ml*瓶</Text>
+              </View>
+              <View className={"view"}>
+                <Text className={'text'}>保质期：15天</Text>
+              </View>
+            </View>
             <View className={'shop-box'}>
-              <View>
-                <Text>名称：旺仔复原乳</Text>
+              <View className={"view"}>
+                <Text className={'text'}>名称：旺仔复原乳</Text>
               </View>
-              <View>
-                <Text>产地：中国</Text>
+              <View className={"view"}>
+                <Text className={'text'}>产地：中国</Text>
               </View>
-              <View>
-                <Text>暂无</Text>
+              <View className={"view"}>
+                <Text className={'text'}>暂无</Text>
               </View>
             </View>
           </View>
@@ -172,15 +181,9 @@ export default class GoodsDetail extends Component<Props, State> {
             <Navigator className="c--eb3 f__size--30">查看更多</Navigator>
           </View>
           <View className="recommend-wrap">
-            {this.state.recommendGoods.map((it, index) => {
-              return <View className="recommend__item" key={'re' + index}>
-                <Image className={'cover'} src={it.product_img}>
-                </Image>
-                <Text className="title">{it.product_name}</Text>
-                <Text className="price">￥{it.product_price}</Text>
-              </View>
-            })}
+
           </View>
+          <GoodsList data={this.state.recommendGoods}/>
         </View>
 
         <View className="container margin-top--20">
@@ -191,24 +194,8 @@ export default class GoodsDetail extends Component<Props, State> {
           </RichText>
         </View>
 
+        <BuyGuide/>
 
-        <View className="container margin-top--20 guide">
-          <View className="guide-title">
-            <Text>五联创客购物指南</Text>
-            <View className="iconfont">
-              <IconFont name={'xiala'} color={'#F12737'} size={26}/>
-            </View>
-          </View>
-          <View>
-            <Text className="block margin-top--20 f__weight--bold f__size--30">1.消费者下单</Text>
-            <Text className="c--666 f__size--28">每天下单时间：00:00 - 23:00</Text>
-
-            <Text className="block margin-top--20 f__weight--bold f__size--30">2.货物自提</Text>
-            <Text className="c--666 f__size--28">消费者根据自己下单相对应的门店，凭自提码提货.提货时间根据门店的营业时间</Text>
-            <Text className="block margin-top--20 f__weight--bold f__size--30">3.100%售后</Text>
-            <Text className="c--666 f__size--28">消费者遇到任何问题，可以直接与下单的门店沟通自取</Text>
-          </View>
-        </View>
         <View style={{height: '80px', opacity: 0}}>
         </View>
         <View className='goods-action flex a__items--center'>

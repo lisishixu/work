@@ -1,13 +1,13 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Image} from '@tarojs/components'
 import './index.scss'
-import {AtAvatar, AtDivider, AtGrid} from "taro-ui";
+import {AtAvatar, AtDivider} from "taro-ui";
 import {UserModel} from "../../models/UserModel";
 import {GoodsData, UserData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import GoodsList from "../../components/goods-list/goods-list";
 import FixedButton from "../../components/fixed-button/fixed-button";
-import {thisVoid} from "../../utils/helper";
+import MemberRights from "../../components/member-rights/member-rights";
 
 export interface Props {
 
@@ -49,6 +49,12 @@ export default class Member extends Component<Props, State> {
   componentDidHide() {
   }
 
+  onOpen = () => {
+    Taro.navigateTo({
+      url: `/pages/member/buy`
+    })
+  };
+
   render() {
     return (
       <View className='index'>
@@ -78,42 +84,7 @@ export default class Member extends Component<Props, State> {
           <Image src={'/statics/imgs/line.png'} className={'tip-title__line'}/>
         </View>
 
-        <AtGrid columnNum={4} hasBorder={false} data={
-          [
-            {
-              image: '/statics/imgs/icon-gwsq.png',
-              value: '购物省钱'
-            },
-            {
-              image: '/statics/imgs/icon-fxzq.png',
-              value: '分享赚钱'
-            },
-            {
-              image: '/statics/imgs/icon-cyjh.png',
-              value: '创业机会'
-            },
-            {
-              image: '/statics/imgs/icon-czhl.png',
-              value: '超值好礼'
-            },
-            {
-              image: '/statics/imgs/icon-spyhj.png',
-              value: '商品优惠价'
-            },
-            {
-              image: '/statics/imgs/icon-fwzx.png',
-              value: '服务专享'
-            },
-            {
-              image: '/statics/imgs/icon-fwfy.png',
-              value: '服务返佣'
-            },
-            {
-              image: '/statics/imgs/icon-tgjlj.png',
-              value: '推广奖励金'
-            }
-          ]
-        }/>
+        <MemberRights isColor={true}/>
 
         <View style={{width: '266px', margin: '0 auto '}}>
           <AtDivider content='请选择任一礼包，购买注册' fontSize={30} fontColor='#666' lineColor='#ccc'/>
@@ -121,7 +92,7 @@ export default class Member extends Component<Props, State> {
 
         <GoodsList data={this.state.goods}/>
 
-        <FixedButton text={'立即注册开通五联创客店主'} onClick={thisVoid}/>
+        <FixedButton text={'立即注册开通五联创客店主'} onClick={this.onOpen}/>
 
       </View>
     )

@@ -1,3 +1,124 @@
-.buy{
+.buy {
+  min-height: 100vh;
+  background-color: #f2f2f2;
+
+
+  .cover {
+    width: 100%;
+    min-height: 600px;
+  }
+
+  .price {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    &__num{
+      font-size: 40px;
+      margin-left: 16px;
+    }
+  }
+
+  .shop-detail {
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+    bottom: 20px;
+
+    .text {
+      color: #333;
+      font-size: 26px;
+    }
+
+    .box-before:before {
+      content: '';
+      width: 1px;
+      height: 85%;
+      background: #ccc;
+      position: absolute;
+      left: 51%;
+      top: 10%;
+    }
+
+    .shop-box {
+      text-align: center;
+      width: calc(50% - 1px);
+      display: inline-block;
+
+      .view {
+        border-bottom: 1px solid #ccc;
+        padding: 20px 0;
+      }
+    }
+  }
+
+  .evaluate {
+
+    .user__headimg {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    .user__name {
+      font-size: 28px;
+    }
+
+    &__content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgba(16, 16, 16, 1);
+      line-height: 48px;
+    }
+  }
+
+
+  .goods-action {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 110px;
+    background-color: white;
+    border-top: 1px solid #ccc;
+
+    .icon {
+      width: 44px;
+      margin: 6px auto;
+    }
+
+    .btn {
+      border: none;
+      background: none;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      font-size: 28px;
+      text-align: center;
+      line-height: 100%;
+      color: #666;
+      border-radius: 0;
+
+      &:after {
+        border: none;
+      }
+    }
+
+    .now-buy {
+      flex: 4;
+      color: white;
+      height: 80px;
+      background: rgba(241, 39, 55, 1);
+      border-radius: 40px;
+      font-size: 34px;
+      line-height: 80px;
+      border: none;
+      padding: 0 20px;
+      margin: 0 20px;
+    }
+
+  }
 
 }
