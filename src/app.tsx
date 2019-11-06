@@ -31,6 +31,7 @@ class App extends Component {
       'pages/cart/index',
       'pages/member/index',
       'pages/member/buy',
+      'pages/friendRegistration/index'
     ],
     window: {
       backgroundTextStyle: 'light',

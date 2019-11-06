@@ -171,7 +171,6 @@ export default class Index extends Component<Props, State> {
               {title: '标签页6'}
             ]}
             onClick={this.handleClick.bind(this)}>
-
             {[0, 1, 2, 3, 4, 5].map(num => {
               return <AtTabsPane current={this.state.current} index={num} key={'tab' + num}>
                 <View style={{fontSize: '18px', textAlign: 'center'}}>
@@ -187,18 +186,14 @@ export default class Index extends Component<Props, State> {
                             </View>
                           </View>
                           <View className={'flex'} style={{padding: '10px 0'}}>
-                            <Progress percent={it.product_jindu} style={{width: '30%'}} borderRadius={20}
-                                      activeColor={'#F12737'}/>
+                            <Progress percent={it.product_jindu} style={{width: '30%'}} borderRadius={20} activeColor={'#F12737'}/>
                             <Text className={'f__size--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
                             <Navigator url={`/pages/goods/detail?id=${it.product_id}`} style={'margin-left:auto'}>
-                              <AtButton type='primary' size={'small'} circle={true}
-                                        className={'rush--buy'}>马上抢购</AtButton>
+                              <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
                             </Navigator>
                           </View>
                         </View>
-
                       </View>
-
                     })}
                   </View>
                 </View>

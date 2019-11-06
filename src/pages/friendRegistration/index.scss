@@ -1,0 +1,63 @@
+.index{
+  min-height: 100vh;
+  background: #f8f8f8;
+  position: relative;
+  .reward{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 94%;
+    margin:0 3%;
+    position: absolute;
+    top:320px;
+    .reward-box{
+      background: #fff;
+      padding:41px 68px 65px;
+      border-radius: 10px;
+      .reward--font{
+        background: #F12737;
+        padding: 10px;
+        color: #fff;
+        font-size: 40px;
+        border-radius: 10px;
+        margin-bottom: 39px;
+      }
+    }
+    .reward-box:nth-child(1){
+      margin-right: 7px;
+    }
+    .reward-box:nth-child(2){
+      margin-left: 7px;
+    }
+  }
+  .tab--content{
+    position: relative;
+    top: 320px;
+    .at-tabs__item-underline{
+      width: 15%;
+      left: 42.5%;
+      height: 7px;
+      border-radius: 20PX;
+    }
+    .at-tabs__header{
+      background: transparent;
+    }
+    .at-tabs__underline{
+      height: 0px !important;
+    }
+  }
+  .friend--step{
+    display: flex;
+    justify-content: space-around;
+    .view{
+      background: #F12737;
+      margin: 0 auto;
+      width: 60px;
+      height: 60px;
+      padding: 22px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      position: relative;
+    }
+  }
+}
