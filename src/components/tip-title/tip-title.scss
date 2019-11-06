@@ -1,0 +1,29 @@
+.tip-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 70px;
+
+  &__text {
+    display: block;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 30px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }
+
+  &__line {
+    width: 304px;
+    height: 20px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    margin: 30px auto;
+  }
+}

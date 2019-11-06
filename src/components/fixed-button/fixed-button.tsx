@@ -5,6 +5,7 @@ import './fixed-button.scss'
 export interface Props {
   text: string
   onClick?: Function
+  paddingTop?: string
 }
 
 export interface State {
@@ -46,9 +47,9 @@ export default class FixedButton extends Component<Props, State> {
   render() {
     return (
       <Block>
-        <View className="height" style={{height: '60px', opacity: 0}}>
+        <View className="fixed-height" style={{paddingTop: this.props.paddingTop}}>
+          <Button className={"fixed-button"} onClick={this.onFixedButton}>{this.props.text}</Button>
         </View>
-        <Button className={"fixed-button"} onClick={this.onFixedButton}>{this.props.text}</Button>
       </Block>
     )
   }

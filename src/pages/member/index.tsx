@@ -8,6 +8,7 @@ import {GoodsModel} from "../../models/GoodsModel";
 import GoodsList from "../../components/goods-list/goods-list";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import MemberRights from "../../components/member-rights/member-rights";
+import TipTitle from "../../components/tip-title/tip-title";
 
 export interface Props {
 
@@ -79,10 +80,7 @@ export default class Member extends Component<Props, State> {
           <Image src={'../../statics/imgs/card--bg.png'} className="card__bg"/>
         </View>
 
-        <View className="tip-title">
-          <Text className={'tip-title__text'}>店主可享以下权限</Text>
-          <Image src={'/statics/imgs/line.png'} className={'tip-title__line'}/>
-        </View>
+        <TipTitle value={'店主可享以下权限'}/>
 
         <MemberRights isColor={true}/>
 
