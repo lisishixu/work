@@ -35,6 +35,8 @@ class App extends Component {
       'pages/friendRegistration/index',
       'pages/myRecommend/index',
       'pages/endorsement/index',
+      'pages/invitation/agent',
+      'pages/myShare/index'
     ],
     window: {
       backgroundTextStyle: 'light',
