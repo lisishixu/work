@@ -1,9 +1,16 @@
 .index{
     .share-box{
       display: flex;
+      align-items: center;
+      -moz-box-align: center;
+      -webkit-box-align: center;
+      padding: 20px 20px 30px;
+      border-bottom: 1px solid #DCDCDC;
+
       .share--img{
         width: 194px;
         height: 170px;
+        border-radius: 5px;
       }
       .share--label{
         width: 30px;
@@ -13,6 +20,54 @@
         display: block;
         padding: 5px;
         text-align: center;
+        margin-right: 20px;
+        &.checked{
+          background: #F12737;
+        }
+      }
+      .sha-box--right{
+        height: 170px;
+        flex: 1;
+        margin-left: 32px;
+        position: relative;
+        .right-btm{
+          margin-top: 90px;
+        }
       }
     }
+  .share-footer{
+    display: flex;
+    align-items: center;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+    padding: 35px 20px 30px;
+    border-top: 1px solid #E6E6E6;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    .all--checked{
+      width: 35px;
+      height: 35px;
+      display: inline-block;
+      border: 1px solid #E6E6E6;
+      border-radius: 50%;
+      margin-right: 18px;
+      &.checked{
+        background: #F12737;
+      }
+    }
+    .footer--del{
+      width:200px;
+      height:80px;
+      background:rgba(241,39,55,1);
+      border-radius:40px;
+      text-align: center;
+      line-height: 80px;
+      color: #fff;
+      position: absolute;
+      right: 20px;
+    }
+  }
+
 }
