@@ -149,23 +149,24 @@ export default class Index extends Component<Props, State> {
       content: '真的要删除商品吗？'
     }).then(res => {
       if (res.confirm) {
+        let newArr;
         const {cartList} = this.state;
         let {checkedNumber} = this.state;
+
         if (index >= 0) {
+          // 删除单个
           const it = cartList[index];
           if (it['checked']) {
             checkedNumber--;
           }
           cartList.splice(index, 1);
         } else {
-          cartList.forEach((it, index) => {
-            if (it['checked']) {
-              checkedNumber--;
-              cartList.splice(index, 1);
-            }
-          });
+          // 批量删除
+          newArr = cartList.filter(item => !item['checked']);
+          checkedNumber = 0;
         }
-        this.setState({cartList, checkedNumber}, () => {
+
+        this.setState({cartList: newArr, checkedNumber}, () => {
           this.computeTotalPrice()
         })
       }
