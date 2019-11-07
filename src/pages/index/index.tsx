@@ -111,15 +111,16 @@ export default class Index extends Component<Props, State> {
           </Navigator>
         </View>
 
-        <Swiper className='swiper container' autoplay>
-          {this.state.swipers.map((it, index) => {
-            return <SwiperItem key={'swiper' + index}>
-              <View className=''>
+
+        <View className="container">
+          <Swiper className='swiper' autoplay>
+            {this.state.swipers.map((it, index) => {
+              return <SwiperItem key={'swiper' + index}>
                 <Image className={"swiper__img"} src={it.imgurl}/>
-              </View>
-            </SwiperItem>
-          })}
-        </Swiper>
+              </SwiperItem>
+            })}
+          </Swiper>
+        </View>
 
         <AtGrid className="bg-color--white"
                 columnNum={5} hasBorder={false}
@@ -186,10 +187,12 @@ export default class Index extends Component<Props, State> {
                             </View>
                           </View>
                           <View className={'flex'} style={{padding: '10px 0'}}>
-                            <Progress percent={it.product_jindu} style={{width: '30%'}} borderRadius={20} activeColor={'#F12737'}/>
+                            <Progress percent={it.product_jindu} style={{width: '30%'}} borderRadius={20}
+                                      activeColor={'#F12737'}/>
                             <Text className={'f__size--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
                             <Navigator url={`/pages/goods/detail?id=${it.product_id}`} style={'margin-left:auto'}>
-                              <AtButton type='primary' size={'small'} circle={true} className={'rush--buy'}>马上抢购</AtButton>
+                              <AtButton type='primary' size={'small'} circle={true}
+                                        className={'rush--buy'}>马上抢购</AtButton>
                             </Navigator>
                           </View>
                         </View>

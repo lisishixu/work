@@ -41,6 +41,17 @@ export default class Index extends Component<Props, State> {
   componentDidHide() {
   }
 
+  onShowImgs = (index) => {
+    Taro.previewImage({
+      urls: [
+        '/statics/imgs/swiper-1.png',
+        '/statics/imgs/swiper-1.png',
+        '/statics/imgs/swiper-1.png',
+      ],
+      current: index
+    })
+  };
+
   render() {
     return (
       <View className='index'>
@@ -59,7 +70,7 @@ export default class Index extends Component<Props, State> {
 
         <ScrollView className="dynamics">
           {[0, 1, 2, 3, 4].map(it => {
-            return <View className="container dynamics__item">
+            return <View className="container dynamics__item" key={'dy' + it}>
               <View className="dynamics__header flex a__items--center j__content--spbe">
                 <View className="user flex a__items--center">
                   <AtAvatar circle size={"small"} image={''}/>
@@ -76,7 +87,7 @@ export default class Index extends Component<Props, State> {
                   法国巴黎——塞纳河畔左岸的咖啡，埃菲尔铁塔下的誓词，卢浮宫博物馆奇妙游熏陶你的文艺气息。
                 </Text>
                 <View className="dynamics__imgs dynamics__imgs--3">
-                  <Image src={'/statics/imgs/swiper-1.png'} className={"img"}/>
+                  <Image src={'/statics/imgs/swiper-1.png'} className={"img"} onClick={this.onShowImgs.bind(1)}/>
                   <Image src={'/statics/imgs/swiper-1.png'} className={"img"}/>
                   <Image src={'/statics/imgs/swiper-1.png'} className={"img"}/>
                 </View>

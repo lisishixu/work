@@ -2,58 +2,68 @@
   &-list {
     display: flex;
     flex-wrap: wrap;
-    width: 96%;
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-
-  &-item {
-    width: calc((100% - 6% - 10px) / 2);
-    margin: 10px;
-    background: white;
-    border: 1px solid #f2f2f2;
-  }
-
-  &__cover {
     width: 100%;
-    height: 256px;
-    object-fit: cover;
-  }
+    margin: 0 auto;
+
+    .goods {
+      // Note 增加层级，避免组件样式被覆盖
+      &-item {
+        width: calc((100% - 6% - 10px) / 2);
+        margin: 16px;
+        background: white;
+        border: 1px solid #f2f2f2;
+
+        &:nth-child(odd) {
+          margin-right: auto;
+        }
+
+        &:nth-child(even) {
+          margin-left: auto;
+        }
+      }
+
+      &__cover {
+        width: 100%;
+        height: 256px;
+        object-fit: cover;
+      }
 
 
-  &__name {
-    display: -webkit-box;
-    overflow: hidden;
-    white-space: normal !important;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    color: #333;
-    font-size: 28px;
-    height: 40px;
-    margin-top: 6px;
-  }
+      &__name {
+        display: -webkit-box;
+        overflow: hidden;
+        white-space: normal !important;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        color: #333;
+        font-size: 28px;
+        height: 40px;
+        margin-top: 6px;
+      }
 
-  &__price {
-    //c--eb3 f__size--30 margin-right--20
-    color: #EB3939;
-    font-size: 30px;
-    margin-right: 20px;
-    font-weight: bold;
+      &__price {
+        //c--eb3 f__size--30 margin-right--20
+        color: #EB3939;
+        font-size: 30px;
+        margin-right: 20px;
+        font-weight: bold;
 
-    &--old {
-      //f__size--24 c--808 text--line-through
-      font-size: 24px;
-      color: #888;
-      text-decoration: line-through;
+        &--old {
+          //f__size--24 c--808 text--line-through
+          font-size: 24px;
+          color: #888;
+          text-decoration: line-through;
+        }
+      }
+
+      &__brokerage {
+        font-size: 22px;
+        color: #EB3939;
+        border: 1px solid #F12737;
+        padding: 0 3px;
+      }
     }
-  }
-
-  &__brokerage{
-    font-size: 22px;
-    color: #EB3939;
-    border: 1px solid #F12737;
-    padding: 0 3px;
   }
 }
