@@ -1,0 +1,120 @@
+.index {
+  min-height: 100vh;
+  background-color: #f2f2f2;
+
+  .header {
+    padding: 20px 0 20px 3%;
+    height: 300px;
+    border-radius: 0 0 30% 30%;
+    background: linear-gradient(180deg, #F12737, rgba(235, 107, 57, 1));
+
+    .user {
+      margin-left: 30px;
+      color: white;
+
+      &__id {
+        display: block;
+        margin-top: 10px;
+        font-size: 26px;
+        color: #f0f0f0;
+      }
+    }
+
+
+    .btn-switch {
+      background: #FFCC00;
+      color: white;
+      border-radius: 50px 0 0 50px;
+      height: 60px;
+      font-size: 28px;
+      margin-right: 0;
+    }
+  }
+
+
+  .order-nav {
+    margin-top: -160px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    margin-left: 3%;
+    margin-right: 3%;
+
+    .btn-all {
+      background: none;
+      font-size: 30px;
+      margin: 0;
+
+      .text {
+        font-size: 24px;
+        color: #999;
+      }
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed #dedede;
+      height: 2.8rem;
+      margin: 0 3%;
+    }
+
+    &__main {
+      margin-top: 30px;
+      padding-bottom: 30px;
+
+      .link {
+        width: 20%;
+        text-align: center;
+      }
+
+      .status {
+        display: block;
+        font-size: 26px;
+        font-weight: 500;
+        color: rgba(77, 77, 77, 0.9);
+        line-height: 37px;
+      }
+
+      .number {
+        display: block;
+        margin-top: 10px;
+        font-size: 36px;
+        font-weight: 500;
+        color: rgba(77, 77, 77, 0.9);
+        line-height: 37px;
+      }
+    }
+  }
+
+  .banner {
+    width: 94%;
+    display: block;
+    margin: 20px auto;
+  }
+
+  .grid-nav {
+    margin: 3%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    .at-grid {
+      padding-top: 10px;
+    }
+
+    .at-grid__flex-item {
+      height: 180px;
+    }
+  }
+}
+
+.btn {
+  border: none;
+  display: flex;
+  align-items: center;
+
+  &:after {
+    border: none;
+  }
+}

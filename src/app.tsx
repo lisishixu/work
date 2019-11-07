@@ -35,7 +35,8 @@ class App extends Component {
       'pages/myRecommend/index',
       'pages/endorsement/index',
       'pages/invitation/agent',
-      'pages/myShare/index'
+      'pages/myShare/index',
+      'pages/center/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -72,7 +73,7 @@ class App extends Component {
           selectedIconPath: 'statics/imgs/tabbar/shop.png',
         },
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/center/index',
           text: '我的',
           iconPath: 'statics/imgs/tabbar/my_no.png',
           selectedIconPath: 'statics/imgs/tabbar/my.png',
