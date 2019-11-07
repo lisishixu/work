@@ -16,7 +16,8 @@ export interface State {
 export default class Index extends Component<Props, State> {
 
   config: Config = {
-    navigationStyle: "custom"
+    // navigationStyle: "custom" 支付宝端暂不支持
+    navigationBarTitleText:""
   };
 
   static defaultProps = {};
@@ -63,9 +64,6 @@ export default class Index extends Component<Props, State> {
           </View>
         </View>
 
-        <View style={{marginTop: '80px'}}>
-        </View>
-
         <AtSearchBar value={''} placeholder={'搜索笔记、商品和用户'} onChange={thisVoid}/>
 
         <ScrollView className="dynamics">
@@ -105,15 +103,15 @@ export default class Index extends Component<Props, State> {
                 <Text className="time">今天 10:54</Text>
                 <View className="action">
                   <Button className="btn">
-                    <View className="inline"><IconFont name={"shanchu"} size={30}/></View>
+                    <View className="inline margin-right--10"><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
                     <Text>4551</Text>
                   </Button>
                   <Button className="btn">
-                    <View className="inline"><IconFont name={"shanchu"} size={30}/></View>
+                    <View className="inline margin-right--10"><IconFont name={"13"} size={30} color={'#666'}/></View>
                     <Text>4551</Text>
                   </Button>
                   <Button className="btn">
-                    <View className="inline"><IconFont name={"shanchu"} size={30}/></View>
+                    <View className="inline margin-right--10"><IconFont name={"xiaoxi"} size={30} color={'#666'}/></View>
                     <Text>4551</Text>
                   </Button>
                 </View>
