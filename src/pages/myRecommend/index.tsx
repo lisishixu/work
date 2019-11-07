@@ -41,7 +41,7 @@ export default class index extends Component<Props, State> {
             <View className='index'>
               <View className={'at-box'}>
                 <View className={'at-box--left'}>
-                  <Image src={'../../statics/imgs/ceshi.png'} className={'img'}></Image>
+                  <Image src={'../../statics/imgs/banner.png'} className={'img'}></Image>
                 </View>
                 <View className={'at-box--right'}>
                   <View className={'f__size--28 c--010'}> 辣椒包精选组 1包装*200G  来自大山 纯手工 绿色无添加</View>

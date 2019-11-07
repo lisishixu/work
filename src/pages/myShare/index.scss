@@ -1,0 +1,19 @@
+.index{
+    .share-box{
+      display: flex;
+      .share--img{
+        width: 194px;
+        height: 170px;
+      }
+      .share--label{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color:#E4E4E4;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        margin-top: 50%;
+      }
+    }
+}

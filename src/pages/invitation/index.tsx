@@ -80,12 +80,9 @@ export default class Invitation extends Component<Props, State> {
             <Text className={'f__size--25 margin-top--30'} style={'color:#9897FE'}>你得现金</Text>
           </View>
         </View>
-
         <AtDivider content='更多商品' fontColor='#F12737' lineColor='#F12737'/>
         <GoodsList data={this.state.recommendList} isShowBrokerage={true} isShowOldPrice={false}/>
-
         <FixedButton text={'邀请好友 立赚现金'} onClick={thisVoid}/>
-
       </View>
     )
   }

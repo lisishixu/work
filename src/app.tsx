@@ -33,7 +33,8 @@ class App extends Component {
       'pages/member/index',
       'pages/member/buy',
       'pages/friendRegistration/index',
-      'pages/myRecommend/index'
+      'pages/myRecommend/index',
+      'pages/myShare/index'
     ],
     window: {
       backgroundTextStyle: 'light',
