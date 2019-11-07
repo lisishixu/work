@@ -1,8 +1,8 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Button, Navigator,Image} from '@tarojs/components'
+import {View, Text, Button, Navigator, Image} from '@tarojs/components'
 import './index.scss'
 import {AtAvatar, AtGrid} from "taro-ui";
-import {thisVoid} from "../../utils/helper";
+import {checkIdentity} from "../../utils/helper";
 import IconFont from '../../components/iconfont';
 
 export interface Props {
@@ -10,7 +10,9 @@ export interface Props {
 }
 
 export interface State {
-
+  bannerImg: string
+  bannerLink: string
+  grid: []
 }
 
 export default class Index extends Component<Props, State> {
@@ -25,10 +27,170 @@ export default class Index extends Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      bannerImg: '',
+      bannerLink: '',
+      grid: []
+    }
   }
 
   componentWillMount() {
+    const initData = {
+      user: {
+        bannerImg: '/statics/imgs/center/user-banner.png',
+        bannerLink: '/pages/invitation/agent',
+        grid: [
+          {
+            image: '/statics/imgs/center/icon-kskd.png',
+            value: '一键开店',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-dlzz.png',
+            value: '申请代理',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-hy.png',
+            value: '邀请好友',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sy.png',
+            value: '我的收益',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-fx.png',
+            value: '我的分享',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sc.png',
+            value: '我的收藏',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-xx.png',
+            value: '消息中心',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-kf.png',
+            value: '联系客服',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sz.png',
+            value: '系统设置',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-gy.png',
+            value: '关于我们',
+            url: '/'
+          },
+        ]
+      },
+      agent: {
+        bannerImg: '/statics/imgs/center/agent-banner.png',
+        bannerLink: '/pages/invitation/agent',
+        grid: [
+          {
+            image: '/statics/imgs/center/icon-kskd.png',
+            value: '一键开店',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-dlzz.png',
+            value: '申请代理',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-hy.png',
+            value: '邀请好友',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sy.png',
+            value: '我的收益',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-fx.png',
+            value: '我的分享',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sc.png',
+            value: '我的收藏',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-xx.png',
+            value: '消息中心',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-kf.png',
+            value: '联系客服',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sz.png',
+            value: '系统设置',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-gy.png',
+            value: '关于我们',
+            url: '/'
+          },
+        ]
+      },
+      merchant: {
+        bannerImg: '/statics/imgs/center/merchant-banner.png',
+        bannerLink: '/pages/invitation/agent',
+        grid: [
+          {
+            image: '/statics/imgs/center/icon-yqsj.png',
+            value: '邀请商家',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-hy2.png',
+            value: '邀请会员',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-mp.png',
+            value: '我的名片',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sy.png',
+            value: '我的收益',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-qb.png',
+            value: '我的业绩',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-tx2.png',
+            value: '我的账户',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sc2.png',
+            value: '我的收藏',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-tj.png',
+            value: '我的推荐',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-xx.png',
+            value: '消息中心',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sz.png',
+            value: '系统设置',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-gy2.png',
+            value: '关于我们',
+            url: '/'
+          },
+        ]
+      }
+    };
+    switch (checkIdentity()) {
+      case "user":
+        break;
+      // @ts-ignore
+      case 'shop':
+        break;
+    }
+    // @ts-ignore
+    this.setState(initData.user)
   }
 
   componentDidMount() {
@@ -42,6 +204,13 @@ export default class Index extends Component<Props, State> {
 
   componentDidHide() {
   }
+
+  onGrid = (item) => {
+    if (!item) return;
+    Taro.navigateTo({
+      url: item.url
+    })
+  };
 
   render() {
     return (
@@ -94,46 +263,14 @@ export default class Index extends Component<Props, State> {
             </Navigator>
           </View>
         </View>
-        <Navigator url={'/pages/invitation/agent'}>
-          <Image className={"banner"} src={'/statics/imgs/center/user-banner.png'} mode={"widthFix"}/>
+        <Navigator url={this.state.bannerLink}>
+          <Image className={"banner"} src={this.state.bannerImg} mode={"widthFix"}/>
         </Navigator>
         <View className="continaer grid-nav">
           <AtGrid className="bg-color--white"
                   columnNum={3} hasBorder={false}
-                  onClick={thisVoid}
-                  data={[
-                    {
-                      image: '/statics/imgs/center/icon-kskd.png',
-                      value: '一键开店'
-                    }, {
-                      image: '/statics/imgs/center/icon-dlzz.png',
-                      value: '申请代理'
-                    }, {
-                      image: '/statics/imgs/center/icon-hy.png',
-                      value: '邀请好友'
-                    }, {
-                      image: '/statics/imgs/center/icon-sy.png',
-                      value: '我的收益'
-                    }, {
-                      image: '/statics/imgs/center/icon-fx.png',
-                      value: '我的分享'
-                    }, {
-                      image: '/statics/imgs/center/icon-sc.png',
-                      value: '我的收藏'
-                    }, {
-                      image: '/statics/imgs/center/icon-xx.png',
-                      value: '消息中心'
-                    }, {
-                      image: '/statics/imgs/center/icon-kf.png',
-                      value: '联系客服'
-                    },{
-                      image: '/statics/imgs/center/icon-sz.png',
-                      value: '系统设置'
-                    },{
-                      image: '/statics/imgs/center/icon-gy.png',
-                      value: '关于我们'
-                    },
-                  ]}/>
+                  onClick={this.onGrid}
+                  data={this.state.grid}/>
         </View>
 
       </View>

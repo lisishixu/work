@@ -72,6 +72,18 @@ export const openUrl = (url) => {
 
 
 // 没有任何效果的事件
-export const thisVoid=()=>{
+export const thisVoid = () => {
 
+};
+
+
+// 检测用户权限是否符合
+export const checkIdentity = (type: string | null = null) => {
+  // 获取缓存的用户数据，或者调用后端接口
+
+  // 数据判断
+  if (type) return 'user' === type;
+  // 如果没有传递类型，返回类型
+
+  return 'user';
 };
