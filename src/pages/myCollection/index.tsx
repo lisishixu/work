@@ -38,6 +38,6 @@ export default class Index extends Component<Props, State> {
   componentDidHide() {
   }
   render() {
-       return <ShaAndCollection nullTitle={'暂无分享'} isBtn={'删除'}  isfont={false} isalert={'你確定刪除此商品吗?'} data={this.state.sharelist}/>
+    return <ShaAndCollection nullTitle={'暂无收藏'} isBtn={'取消收藏'}  isfont={true} isalert={'你確定取消收藏嗎?'} data={this.state.sharelist}/>
   }
 }
