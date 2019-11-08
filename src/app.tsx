@@ -37,6 +37,7 @@ class App extends Component {
       'pages/invitation/agent',
       'pages/myShare/index',
       'pages/myCollection/index',
+      'pages/center/index',
       'pages/news/index',
       'pages/news/notice'
     ],
