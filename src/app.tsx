@@ -76,7 +76,7 @@ class App extends Component {
           selectedIconPath: 'statics/imgs/tabbar/shop.png',
         },
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/center/index',
           text: '我的',
           iconPath: 'statics/imgs/tabbar/my_no.png',
           selectedIconPath: 'statics/imgs/tabbar/my.png',

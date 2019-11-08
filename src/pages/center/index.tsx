@@ -1,9 +1,10 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Button, Navigator, Image} from '@tarojs/components'
+import {View, Navigator, Image} from '@tarojs/components'
 import './index.scss'
-import {AtAvatar, AtGrid} from "taro-ui";
+import {AtGrid} from "taro-ui";
 import {checkIdentity} from "../../utils/helper";
-import IconFont from '../../components/iconfont';
+import CenterHeader from "./components/header";
+import OrderNav from "../../components/order-nav/order-nav";
 
 export interface Props {
 
@@ -12,7 +13,9 @@ export interface Props {
 export interface State {
   bannerImg: string
   bannerLink: string
-  grid: []
+  grid: [],
+  identity: string,
+  orderLen: any
 }
 
 export default class Index extends Component<Props, State> {
@@ -30,13 +33,22 @@ export default class Index extends Component<Props, State> {
     this.state = {
       bannerImg: '',
       bannerLink: '',
-      grid: []
+      grid: [],
+      identity: 'user',
+      orderLen: {
+        'waiting': 1,
+        'pickup': 6,
+        'success': 6,
+        'evaluation': 6,
+        'reimburse': 2,
+      }
     }
   }
 
   componentWillMount() {
     const initData = {
       user: {
+        identity: 'user',
         bannerImg: '/statics/imgs/center/user-banner.png',
         bannerLink: '/pages/invitation/agent',
         grid: [
@@ -51,7 +63,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-hy.png',
             value: '邀请好友',
-            url: '/'
+            url: '/pages/friendRegistration/index'
           }, {
             image: '/statics/imgs/center/icon-sy.png',
             value: '我的收益',
@@ -59,11 +71,11 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-fx.png',
             value: '我的分享',
-            url: '/'
+            url: '/pages/myShare/index'
           }, {
             image: '/statics/imgs/center/icon-sc.png',
             value: '我的收藏',
-            url: '/'
+            url: '/pages/news/index'
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
@@ -84,33 +96,42 @@ export default class Index extends Component<Props, State> {
         ]
       },
       agent: {
+        identity: 'agent',
         bannerImg: '/statics/imgs/center/agent-banner.png',
         bannerLink: '/pages/invitation/agent',
         grid: [
           {
-            image: '/statics/imgs/center/icon-kskd.png',
-            value: '一键开店',
-            url: '/'
-          }, {
             image: '/statics/imgs/center/icon-dlzz.png',
-            value: '申请代理',
-            url: '/'
+            value: '邀请代理',
+            url: '/pages/invitation/agent'
           }, {
             image: '/statics/imgs/center/icon-hy.png',
-            value: '邀请好友',
-            url: '/'
+            value: '邀请用户',
+            url: '/pages/friendRegistration/index'
           }, {
             image: '/statics/imgs/center/icon-sy.png',
-            value: '我的收益',
+            value: '我的代理',
             url: '/'
           }, {
             image: '/statics/imgs/center/icon-fx.png',
-            value: '我的分享',
+            value: '我的商家',
             url: '/'
           }, {
             image: '/statics/imgs/center/icon-sc.png',
-            value: '我的收藏',
+            value: '我的收益',
             url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-xx.png',
+            value: '我的业绩',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-kf.png',
+            value: '我的账户',
+            url: '/'
+          }, {
+            image: '/statics/imgs/center/icon-sz.png',
+            value: '我的收藏',
+            url: '/pages/news/index'
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
@@ -131,6 +152,7 @@ export default class Index extends Component<Props, State> {
         ]
       },
       merchant: {
+        identity: 'merchant',
         bannerImg: '/statics/imgs/center/merchant-banner.png',
         bannerLink: '/pages/invitation/agent',
         grid: [
@@ -161,7 +183,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sc2.png',
             value: '我的收藏',
-            url: '/'
+            url: '/pages/news/index'
           }, {
             image: '/statics/imgs/center/icon-tj.png',
             value: '我的推荐',
@@ -205,8 +227,16 @@ export default class Index extends Component<Props, State> {
   componentDidHide() {
   }
 
+  // 根据点击状态切换身份
+  onSwitch = (identity) => {
+    this.setState({identity},()=>{
+       // todo 身份切换完成，重新获取数据
+    });
+  };
+
   onGrid = (item) => {
     if (!item) return;
+    console.info('请在代码中补充需要访问的路径');
     Taro.navigateTo({
       url: item.url
     })
@@ -215,57 +245,18 @@ export default class Index extends Component<Props, State> {
   render() {
     return (
       <View className='index'>
-        <View className="header">
-          <View className="flex a__items--center">
-            <AtAvatar circle size={"large"}/>
-            <View className="user">
-              <Text className="user__name">包子君</Text>
-              <Text className="user__id">ID:12345674878674</Text>
-            </View>
-            <Button className="btn btn-switch">
-              <View className="line margin-right--10">
-                <IconFont name={"qiehuan"} size={30} color={'white'}/>
-              </View>
-              <Text>切换至商户</Text>
-            </Button>
-          </View>
-        </View>
-        <View className="order-nav">
-          <View className="order-nav__header">
-            <Text>我的订单</Text>
-            <Button className="btn btn-all">
-              <Text className={"text"}>全部</Text>
-              <View className="line margin-left--10">
-                <IconFont name={"jiantou_xiangyouliangci_o"} size={30} color={'#ccc'}/>
-              </View>
-            </Button>
-          </View>
-          <View className="flex order-nav__main">
-            <Navigator className="link">
-              <Text className="status">待付款</Text>
-              <Text className="number">1</Text>
-            </Navigator>
-            <Navigator className="link">
-              <Text className="status">待取货</Text>
-              <Text className="number">6</Text>
-            </Navigator>
-            <Navigator className="link">
-              <Text className="status">已完成</Text>
-              <Text className="number">6</Text>
-            </Navigator>
-            <Navigator className="link">
-              <Text className="status">评价</Text>
-              <Text className="number">6</Text>
-            </Navigator>
-            <Navigator className="link">
-              <Text className="status">退款/售后</Text>
-              <Text className="number">2</Text>
-            </Navigator>
-          </View>
-        </View>
+
+        <CenterHeader identity={this.state.identity}
+                      onSwitch={value => {
+                        this.onSwitch(value)
+                      }}/>
+
+        <OrderNav data={this.state.orderLen}/>
+
         <Navigator url={this.state.bannerLink}>
           <Image className={"banner"} src={this.state.bannerImg} mode={"widthFix"}/>
         </Navigator>
+
         <View className="continaer grid-nav">
           <AtGrid className="bg-color--white"
                   columnNum={3} hasBorder={false}
