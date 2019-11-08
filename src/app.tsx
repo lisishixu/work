@@ -38,8 +38,10 @@ class App extends Component {
       'pages/myShare/index',
       'pages/myCollection/index',
       'pages/center/index',
-      'pages/news/index',
-      'pages/news/notice'
+      'pages/message/index',
+      'pages/message/notice',
+      'pages/message/comment',
+      'pages/message/addfans'
     ],
     window: {
       backgroundTextStyle: 'light',

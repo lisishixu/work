@@ -1,0 +1,21 @@
+.comment{
+  .comment-box{
+    padding: 23px 40px 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:before{
+      content: '';
+      height: 1px;
+      width: 90%;
+      background: #DCDCDC;
+      position: absolute;
+      bottom: 8%;
+      left: 4%;
+    }
+    &:first-child{
+      border-top: 1px solid #DCDCDC;
+    }
+  }
+
+}

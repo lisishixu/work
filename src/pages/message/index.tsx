@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text} from '@tarojs/components'
+import {View, Text, Navigator} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
 import {AtListItem} from "taro-ui";
@@ -41,13 +41,15 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='news'>
         <View className={'news-box'}>
-          <View>
-            <View className={'news-item'} style={'background:#F9AA12'}>
-              <IconFont name={'xiaoxi'} size={50} color={'#fff'}></IconFont>
-              <View className={'item--num'}>2</View>
+          <Navigator url={'/page/news/comment'}>
+            <View>
+              <View className={'news-item'} style={'background:#F9AA12'}>
+                <IconFont name={'xiaoxi'} size={50} color={'#fff'}></IconFont>
+                <View className={'item--num'}>2</View>
+              </View>
+              <Text className={'f__size--24 c--33'}>评论</Text>
             </View>
-            <Text className={'f__size--24 c--33'}>评论</Text>
-          </View>
+          </Navigator>
           <View>
             <View className={'news-item'} style={'background:#689BFF'}>
               <IconFont name={'haoyou1'} size={50} color={'#fff'}></IconFont>
@@ -62,13 +64,15 @@ export default class Index extends Component<Props, State> {
             </View>
             <Text className={'f__size--24 c--33'}>赞</Text>
           </View>
-          <View>
-            <View className={'news-item'} style={'background:#00CCC0'}>
-              <IconFont name={'xihuan'} size={50} color={'#fff'}></IconFont>
-              <View className={'item--num'}>5</View>
+          <Navigator url={'/pages/news/notice'}>
+            <View>
+              <View className={'news-item'} style={'background:#00CCC0'}>
+                <IconFont name={'tongzhi'} size={50} color={'#fff'}></IconFont>
+                <View className={'item--num'}>5</View>
+              </View>
+              <Text className={'f__size--24 c--33'}>通知</Text>
             </View>
-            <Text className={'f__size--24 c--33'}>通知</Text>
-          </View>
+          </Navigator>
         </View>
         <AtListItem
           title='标题文字'

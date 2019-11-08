@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import './index.scss'
+// import './index.scss'
 import {GoodsData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import ShaAndCollection from "../../components/shareAndCollection/shaAndCollection";

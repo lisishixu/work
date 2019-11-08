@@ -1,0 +1,28 @@
+.addfans{
+    .addfans-box{
+      display: flex;
+      align-items: center;
+      padding: 30px 40px 40px;
+      position: relative;
+      &:before{
+        content: '';
+        height: 1px;
+        width: 84%;
+        background: #DCDCDC;
+        position: absolute;
+        bottom: 5%;
+        left: 10%;
+      }
+      .backFans{
+        flex: 1;
+        text-align: right;
+        .text{
+          padding: 10px 40px;
+          border: 1px solid #F12737;
+          border-radius: 100px;
+          font-size: 26px;
+          color:#F12737 ;
+        }
+      }
+    }
+}
