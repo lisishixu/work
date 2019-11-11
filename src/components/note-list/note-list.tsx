@@ -124,12 +124,12 @@ export default class NoteList extends Component<Props, State> {
                   <View className="inline margin-right--10"><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
                   <Text>4551</Text>
                 </Button>
-                <Button className="btn" onClick={() => this.props.onClick('share', index, it)}>
-                  <View className="inline margin-right--10"><IconFont name={"13"} size={30} color={'#666'}/></View>
-                  <Text>4551</Text>
-                </Button>
                 <Button className="btn" onClick={() => this.props.onClick('comment', index, it)}>
                   <View className="inline margin-right--10"><IconFont name={"xiaoxi"} size={30} color={'#666'}/></View>
+                  <Text>4551</Text>
+                </Button>
+                <Button className="btn" onClick={() => this.props.onClick('share', index, it)}>
+                  <View className="inline margin-right--10"><IconFont name={"13"} size={30} color={'#666'}/></View>
                   <Text>4551</Text>
                 </Button>
               </View>
