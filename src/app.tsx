@@ -33,7 +33,8 @@ class App extends Component {
       'pages/member/buy',
       'pages/friendRegistration/index',
       'pages/myRecommend/index',
-      'pages/endorsement/index',
+      'pages/note/index',
+      'pages/note/detail',
       'pages/invitation/agent',
       'pages/myShare/index',
       'pages/myCollection/index',
@@ -62,7 +63,7 @@ class App extends Component {
           iconPath: 'statics/imgs/tabbar/home_no.png',
           selectedIconPath: 'statics/imgs/tabbar/home.png',
         }, {
-          pagePath: 'pages/endorsement/index',
+          pagePath: 'pages/note/index',
           text: '代言',
           iconPath: 'statics/imgs/tabbar/community_no.png',
           selectedIconPath: 'statics/imgs/tabbar/community.png',

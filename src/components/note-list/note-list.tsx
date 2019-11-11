@@ -98,7 +98,7 @@ export default class NoteList extends Component<Props, State> {
               </Button>}
             </View>
 
-            <Navigator url={'/pages/'} className="note__content" >
+            <Navigator url={'/pages/note/detail?id='} className="note__content" >
               <Text className="content__text">
                 法国巴黎——塞纳河畔左岸的咖啡，埃菲尔铁塔下的誓词，卢浮宫博物馆奇妙游熏陶你的文艺气息。
               </Text>
