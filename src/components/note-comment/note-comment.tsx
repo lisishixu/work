@@ -81,6 +81,7 @@ export default class NoteComment extends Component<Props, State> {
           <View className="content" onClick={() => this.setState({isOpened: true})}>
             聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机
           </View>
+        {/*  todo 二级回复样式暂未制作 */}
         </View>
         <AtActionSheet isOpened={this.state.isOpened} cancelText='取消' onClose={() => this.setState({isOpened: false})}>
           <AtActionSheetItem onClick={this.onReply}>
