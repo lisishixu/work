@@ -18,7 +18,8 @@ export default class FixedButton extends Component<Props, State> {
   config: Config = {};
 
   static defaultProps = {
-    onClick: null
+    onClick: null,
+    bottom: '2vh'
   };
 
   constructor(props) {
