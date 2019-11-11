@@ -44,7 +44,8 @@ class App extends Component {
       'pages/message/comment',
       'pages/message/addfans',
       'pages/register/index',
-      'pages/register/payVip'
+      'pages/register/payVip',
+      'pages/user-homepage/index',
     ],
     window: {
       backgroundTextStyle: 'light',
