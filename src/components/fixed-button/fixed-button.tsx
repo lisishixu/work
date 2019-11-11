@@ -46,14 +46,12 @@ export default class FixedButton extends Component<Props, State> {
   };
 
   render() {
-    let currentStyle = '';
-    const {paddingTop, bottom} = this.props;
-    if (paddingTop) currentStyle += `paddingTop: ${paddingTop}`;
-    if (bottom) currentStyle += `bottom: ${bottom}`;
     return (
       <Block>
-        <View className="fixed-height" style={currentStyle}>
-          <Button className={"fixed-button"} onClick={this.onFixedButton}>{this.props.text}</Button>
+        <View className="fixed-height" style={{paddingTop: this.props.paddingTop}}>
+          <Button className={"fixed-button"}
+                  style={{bottom: this.props.bottom}}
+                  onClick={this.onFixedButton}>{this.props.text}</Button>
         </View>
       </Block>
     )
