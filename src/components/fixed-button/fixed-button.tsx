@@ -6,6 +6,7 @@ export interface Props {
   text: string
   onClick?: Function
   paddingTop?: string
+  bottom?: string
 }
 
 export interface State {
@@ -47,7 +48,7 @@ export default class FixedButton extends Component<Props, State> {
   render() {
     return (
       <Block>
-        <View className="fixed-height" style={{paddingTop: this.props.paddingTop}}>
+        <View className="fixed-height" style={{paddingTop: this.props.paddingTop,bottom:this.props.bottom}}>
           <Button className={"fixed-button"} onClick={this.onFixedButton}>{this.props.text}</Button>
         </View>
       </Block>
