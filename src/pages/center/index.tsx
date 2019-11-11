@@ -47,6 +47,7 @@ export default class Index extends Component<Props, State> {
 
   componentWillMount() {
     const initData = {
+      //用戶
       user: {
         identity: 'user',
         bannerImg: '/statics/imgs/center/user-banner.png',
@@ -79,7 +80,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
-            url: '/'
+            url: '/pages/message/index'
           }, {
             image: '/statics/imgs/center/icon-kf.png',
             value: '联系客服',
@@ -95,6 +96,7 @@ export default class Index extends Component<Props, State> {
           },
         ]
       },
+      //代理
       agent: {
         identity: 'agent',
         bannerImg: '/statics/imgs/center/agent-banner.png',
@@ -135,7 +137,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
-            url: '/'
+            url: '/pages/message/index'
           }, {
             image: '/statics/imgs/center/icon-kf.png',
             value: '联系客服',
@@ -151,6 +153,7 @@ export default class Index extends Component<Props, State> {
           },
         ]
       },
+      //商家
       merchant: {
         identity: 'merchant',
         bannerImg: '/statics/imgs/center/merchant-banner.png',
@@ -191,7 +194,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
-            url: '/'
+            url: '/pages/message/index'
           }, {
             image: '/statics/imgs/center/icon-sz.png',
             value: '系统设置',

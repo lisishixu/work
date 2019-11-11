@@ -1,0 +1,17 @@
+.index {
+  padding-top: 100px;
+  border-top: 1px solid #DCDCDC;
+  .text {
+    font-size: 40px;
+    color: #000;
+    margin-left: 28px;
+    margin-bottom: 50px;
+  }
+  .at-input__children > view, .at-input__children div, .at-input__children span, .at-input__children text, .at-input__children image, .at-input__children .taro-img {
+    color: #666666;
+    font-size: 24px;
+  }
+  .at-input__children::after{
+    border-left-width:0px;
+  }
+}
