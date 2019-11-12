@@ -1,0 +1,21 @@
+.index{
+  .at-textarea{
+    border: none;
+    border-top: 1px solid #DCDCDC;
+  }
+  .at-image-picker{
+    margin-bottom: 50px;
+  }
+  .publish-footer{
+    display: flex;
+    width: 92%;
+    margin: 0 4%;
+    border-top: 1px solid #DCDCDC;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 50px;
+    .view{
+      margin-left: auto;
+    }
+  }
+}

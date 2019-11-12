@@ -1,0 +1,37 @@
+.index {
+  .img {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    margin: 140px 0 27px 50px;
+  }
+  .at-input{
+    margin:70px 50px 0;
+  }
+  .user--know{
+    display: flex;
+    vertical-align: center;
+    margin-top: 30px;
+    margin-left: 50px;
+  }
+  .view{
+    background: #F12737;
+    color: #fff;
+    font-size: 32px;
+    padding: 16px 0;
+    border-radius: 100px;
+    text-align: center;
+  }
+  .vip--label{
+    width: 35px;
+    height: 35px;
+    padding: 3px;
+    background: #E0E0E0;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 25px;
+    &.flag{
+      background: #F12737;
+    }
+  }
+}

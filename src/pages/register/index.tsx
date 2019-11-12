@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View,Text} from '@tarojs/components'
+import {View, Text, Navigator} from '@tarojs/components'
 import './index.scss'
 import {AtButton, AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
@@ -152,7 +152,9 @@ export default class Index extends Component<Props, State> {
         >
           <Text>收不到验证码?</Text>
         </AtInput>
-        <FixedButton text={'下一步'} bottom={'10vh'}/>
+        <Navigator url={'/pages/register/payVip'}>
+          <FixedButton text={'下一步'} bottom={'10vh'}/>
+        </Navigator>
       </View>
     )
   }

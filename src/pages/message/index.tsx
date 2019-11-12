@@ -41,7 +41,7 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='news'>
         <View className={'news-box'}>
-          <Navigator url={'/page/news/comment'}>
+          <Navigator url={'/pages/message/comment'}>
             <View>
               <View className={'news-item'} style={'background:#F9AA12'}>
                 <IconFont name={'xiaoxi'} size={50} color={'#fff'}></IconFont>
@@ -50,6 +50,7 @@ export default class Index extends Component<Props, State> {
               <Text className={'f__size--24 c--33'}>评论</Text>
             </View>
           </Navigator>
+          <Navigator url={'/pages/message/addfans'}>
           <View>
             <View className={'news-item'} style={'background:#689BFF'}>
               <IconFont name={'haoyou1'} size={50} color={'#fff'}></IconFont>
@@ -57,6 +58,7 @@ export default class Index extends Component<Props, State> {
             </View>
             <Text className={'f__size--24 c--33'}>粉丝</Text>
           </View>
+          </Navigator>
           <View>
             <View className={'news-item'} style={'background:#FF6060'}>
               <IconFont name={'xihuan'} size={50} color={'#fff'}></IconFont>
@@ -64,7 +66,7 @@ export default class Index extends Component<Props, State> {
             </View>
             <Text className={'f__size--24 c--33'}>赞</Text>
           </View>
-          <Navigator url={'/pages/news/notice'}>
+          <Navigator url={'/pages/message/notice'}>
             <View>
               <View className={'news-item'} style={'background:#00CCC0'}>
                 <IconFont name={'tongzhi'} size={50} color={'#fff'}></IconFont>
