@@ -51,6 +51,7 @@ class App extends Component {
       'pages/publish/power',
       'pages/estimate/estimate',
       'pages/user/fans',
+      'pages/estimate/goEstimate'
     ],
     window: {
       backgroundTextStyle: 'light',

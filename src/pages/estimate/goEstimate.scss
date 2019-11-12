@@ -1,0 +1,39 @@
+.goestimate{
+  .goestimate-box{
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    .img{
+      width: 122px;
+      height: 100px;
+      margin-right: 22px;
+      border-radius: 10px;
+    }
+  }
+  .at-textarea{
+    border: none;
+    padding:16px 30px;
+  }
+  .at-image-picker{
+    border-bottom: 1px solid #DCDCDC;
+    padding-bottom: 20px;
+  }
+  .esChecked{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #E4E4E4;
+    display: inline-block;
+    margin-right: 15px;
+    &.checked{
+      background: #F12737;
+    }
+  }
+  .is-anonymity{
+    padding: 30px;
+    display: flex;
+    align-items: center;
+  }
+}

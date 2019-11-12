@@ -52,7 +52,22 @@ export default class Estimate extends Component<Props, State> {
         <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
           <AtTabsPane current={this.state.current} index={0}>
             <View>
-              <View style='padding: 30px 0px;'>
+              <View style='padding: 15px 0px 0;'>
+                <Text className={'f__size--24 c--666 margin-left--30'}>订单编号：457888945612371</Text>
+                <View className={'estimate-box'}>
+                  <Image src={'../../statics/imgs/banner1.png'} className={'img'}/>
+                  <View>
+                    <Text className={'f__size--24 c--999 inline--block'} style={'width:70%'}>拉拉美食特供自热火锅套餐一人份
+                      美味专属势不可挡</Text><Text className={'f__size--24 c--eb3 fr'}>￥29.80</Text>
+                    <View>
+                      <Text className={'f__size--24 c--666'}>数量：800g</Text><Text
+                      className={'f__size--24 c--666 fr'}>x1</Text>
+                    </View>
+                    <View className={'view'}>评价</View>
+                  </View>
+                </View>
+              </View>
+              <View style='padding: 15px 0px 0;'>
                 <Text className={'f__size--24 c--666 margin-left--30'}>订单编号：457888945612371</Text>
                 <View className={'estimate-box'}>
                   <Image src={'../../statics/imgs/banner1.png'} className={'img'}/>
@@ -70,8 +85,22 @@ export default class Estimate extends Component<Props, State> {
             </View>
           </AtTabsPane>
           <AtTabsPane current={this.state.current} index={1}>
-            <View style='padding: 30px 26px;'>
-
+            <View>
+              <View style='padding: 15px 0px 0;'>
+                <Text className={'f__size--24 c--666 margin-left--30'}>订单编号：457888945612371</Text>
+                <View className={'estimate-box'}>
+                  <Image src={'../../statics/imgs/banner1.png'} className={'img'}/>
+                  <View>
+                    <Text className={'f__size--24 c--999 inline--block'} style={'width:70%'}>拉拉美食特供自热火锅套餐一人份
+                      美味专属势不可挡</Text><Text className={'f__size--24 c--eb3 fr'}>￥29.80</Text>
+                    <View>
+                      <Text className={'f__size--24 c--666'}>数量：800g</Text><Text
+                      className={'f__size--24 c--666 fr'}>x1</Text>
+                    </View>
+                    <View className={'views'}>查看</View>
+                  </View>
+                </View>
+              </View>
             </View>
           </AtTabsPane>
         </AtTabs>
