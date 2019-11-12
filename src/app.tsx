@@ -49,7 +49,8 @@ class App extends Component {
       'pages/login/index',
       'pages/publish/index',
       'pages/publish/power',
-      'pages/estimate/estimate'
+      'pages/estimate/estimate',
+      'pages/user/fans',
     ],
     window: {
       backgroundTextStyle: 'light',
