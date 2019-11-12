@@ -108,7 +108,7 @@ export default class UserHomePage extends Component<Props, State> {
           <AtAvatar circle size={"large"}/>
           <View className="" style={{width: '100%'}}>
             <View className="data flex a__items--center text--center">
-              <View className="data__item ">
+              <View className="data__item " onClick={() => this.setState({userId: this.state.userId ? "" : "111"})}>
                 <Text className="text">151</Text>
                 <Text className="text c--666 f__size--28">关注</Text>
               </View>
@@ -125,7 +125,7 @@ export default class UserHomePage extends Component<Props, State> {
               <View className="btns">
                 <Button className="btn btn-radius ">
                   <View className="inline--block margin-right--20">
-                    <IconFont name={"tianjiazhaopian"} color={'white'}/>
+                    <IconFont name={"jiahao"} color={'white'}/>
                   </View>
                   <Text>关注</Text>
                 </Button>
@@ -268,7 +268,7 @@ export default class UserHomePage extends Component<Props, State> {
                 </View>
                 <Button className="btn btn-radius" style={{margin: '20px auto'}}>
                     <View className="inline--block margin-right--20">
-                        <IconFont name={"tianjiazhaopian"} color={'white'}/>
+                        <IconFont name={"jiahao"} color={'white'}/>
                     </View>
                     <Text>关注</Text>
                 </Button>
