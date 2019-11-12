@@ -87,3 +87,20 @@ export const checkIdentity = (type: string | null = null) => {
 
   return 'user';
 };
+
+
+// 防抖截流函数
+let debounceData = {};
+export const debounceFn = (callback: Function, fnkey: string = 'default', countdown: number = 0) => {
+  if (debounceData[fnkey]) return;
+  if (countdown) {
+    // 如果倒计时存在，倒计时结束直接设置锁的状态
+    setTimeout(() => {
+      debounceData[fnkey] = false;
+    }, countdown);
+  }
+  return callback();
+};
+export const cancelDebounce = (fnkey: string = 'default') => {
+  debounceData[fnkey] = false;
+};
