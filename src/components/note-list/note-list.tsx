@@ -87,13 +87,13 @@ export default class NoteList extends Component<Props, State> {
         {this.props.data.map((it, index) => {
           return <View className="container note__item" key={'dy' + it}>
             <View className="note__header flex a__items--center j__content--spbe">
-              <View className="user flex a__items--center">
+              <Navigator url={"/pages/user-homepage/index?userId="} className="user flex a__items--center">
                 <AtAvatar circle size={"small"} image={''}/>
                 <Text className="name margin-left--20">上上那</Text>
-              </View>
+              </Navigator>
               {this.props.isShowConcern &&
               <Button className="btn btn-concern" onClick={this.onConcern}>
-                  <View className="inline margin-right--10"><IconFont name={"tianjiazhaopian"} color={'white'}/></View>
+                  <View className="inline margin-right--10"><IconFont name={"jiahao"} color={'white'}/></View>
                   <Text>关注</Text>
               </Button>}
             </View>

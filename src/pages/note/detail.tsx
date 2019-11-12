@@ -81,17 +81,17 @@ export default class NoteDetail extends Component<Props, State> {
       <View className='container detail'>
 
         <View className="header flex a__items--center j__content--spbe">
-          <View className="user flex a__items--center">
+          <Navigator url={"/pages/user-homepage/index?userId="} className="user flex a__items--center">
             <AtAvatar circle size={"small"} image={''}/>
             <View className="margin-left--20">
               <Text className="name block">上上那</Text>
               <Text className="time block c--666 f__size--30">今天12:13</Text>
             </View>
-          </View>
+          </Navigator>
 
           <Button className="btn btn-concern" onClick={this.onConcern}>
             <View className="inline--block margin-right--10">
-              <IconFont name={"tianjiazhaopian"} color={'#EB3939'}/>
+              <IconFont name={"jiahao"} color={'#EB3939'}/>
             </View>
             <Text>关注</Text>
           </Button>
@@ -153,10 +153,10 @@ export default class NoteDetail extends Component<Props, State> {
               <Image className={"recommend__cover"} src={`/statics/imgs/swiper-1.png`}/>
               <Text className="recommend__name">好吃胡煎饼果子，绝对的人间美食，周末打卡哦~</Text>
               <View className="footer flex a__items--center j__content--spbe">
-                <View className="user flex a__items--center">
+                <Navigator url={"/pages/user-homepage/index?userId="} className="user flex a__items--center">
                   <AtAvatar circle customStyle={{width: '22px', height: '22px'}}/>
                   <Text className="margin-left--20 c--666 f__size--28">滋滋滋滋</Text>
-                </View>
+                </Navigator>
                 <Button className="btn" onClick={this.onLike}>
                   <View className="inline--block"><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
                   <Text className="margin-left--10 f__size--28">4551</Text>

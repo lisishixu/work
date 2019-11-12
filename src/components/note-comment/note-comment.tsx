@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Button, Block} from '@tarojs/components'
+import {View, Text, Button, Block, Navigator} from '@tarojs/components'
 import './note-comment.scss'
 import {AtActionSheet, AtActionSheetItem, AtAvatar} from "taro-ui";
 import IconFont from "../iconfont";
@@ -68,11 +68,11 @@ export default class NoteComment extends Component<Props, State> {
       <Block>
         <View className='note-comment'>
           <View className="header">
-            <View className={"header__left"}>
+            <Navigator url={"/pages/user-homepage/index?userId="} className={"header__left"}>
               <AtAvatar circle size={"small"}/>
               <Text className="username">是又优雅</Text>
               <Text className="post-time">12:37</Text>
-            </View>
+            </Navigator>
             <Button className="btn" onClick={this.onLike}>
               <IconFont name={"xihuan"} size={30} color={true ? '#F12737' : '#888'}/>
               <Text className="like-number" style={{color: true ? '#F12737' : '#888'}}>542</Text>

@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Button, Input} from '@tarojs/components'
+import {View, Button, Input, Navigator} from '@tarojs/components'
 import './index.scss'
 import {AtAvatar, AtFloatLayout, AtSearchBar} from "taro-ui";
 import {thisVoid} from "../../utils/helper";
@@ -81,7 +81,9 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='index'>
         <View className="container page-header">
-          <AtAvatar circle size={"small"} image={''}/>
+          <Navigator url={"/pages/user-homepage/index"}>
+            <AtAvatar circle size={"small"} image={''}/>
+          </Navigator>
           <View className="tabs">
             <Button className={`btn ${this.state.currentTab === 0 ? 'current' : ''}`}
                     onClick={() => this.onTab(0)}>推荐</Button>

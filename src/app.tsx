@@ -34,6 +34,7 @@ class App extends Component {
       'pages/friendRegistration/index',
       'pages/myRecommend/index',
       'pages/note/index',
+      'pages/note/detail',
       'pages/invitation/agent',
       'pages/myShare/index',
       'pages/myCollection/index',
