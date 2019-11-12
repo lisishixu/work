@@ -13,7 +13,9 @@ export interface State {
 
 export default class Index extends Component<Props, State> {
 
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: '关于我们'
+  };
 
   static defaultProps = {};
 
@@ -40,7 +42,7 @@ export default class Index extends Component<Props, State> {
   render() {
     return (
       <View className='about'>
-        <AtAvatar circle  text={'LOGO'} className={"logo"}/>
+        <AtAvatar circle text={'LOGO'} className={"logo"}/>
         <View className="text">
           阿里巴巴批发网批发网是全球企业间( B2B)电子商务的
           著名品牌，为天下网商提供海量商机信息和便捷安全的
