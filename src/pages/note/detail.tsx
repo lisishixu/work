@@ -158,8 +158,8 @@ export default class NoteDetail extends Component<Props, State> {
                   <Text className="margin-left--20 c--666 f__size--28">滋滋滋滋</Text>
                 </View>
                 <Button className="btn" onClick={this.onLike}>
-                  <View className="inline "><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
-                  <Text className="margin-left--10 ">4551</Text>
+                  <View className="inline--block"><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
+                  <Text className="margin-left--10 f__size--28">4551</Text>
                 </Button>
               </View>
             </View>

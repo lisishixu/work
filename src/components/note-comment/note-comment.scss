@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: auto;
 
     &__left {
       flex: 1;
@@ -51,9 +52,9 @@
 
   .content {
     text-align: justify;
-    font-size:28px;
-    font-weight:400;
+    font-size: 28px;
+    font-weight: 400;
     margin-top: 10px;
-    color:rgba(102,102,102,1);
+    color: rgba(102, 102, 102, 1);
   }
 }
