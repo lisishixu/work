@@ -81,7 +81,7 @@ export default class NoteDetail extends Component<Props, State> {
       <View className='container detail'>
 
         <View className="header flex a__items--center j__content--spbe">
-          <Navigator url={"/pages/user-homepage/index?userId="} className="user flex a__items--center">
+          <Navigator url={"/pages/user/homepage?userID="} className="user flex a__items--center">
             <AtAvatar circle size={"small"} image={''}/>
             <View className="margin-left--20">
               <Text className="name block">上上那</Text>
@@ -153,7 +153,7 @@ export default class NoteDetail extends Component<Props, State> {
               <Image className={"recommend__cover"} src={`/statics/imgs/swiper-1.png`}/>
               <Text className="recommend__name">好吃胡煎饼果子，绝对的人间美食，周末打卡哦~</Text>
               <View className="footer flex a__items--center j__content--spbe">
-                <Navigator url={"/pages/user-homepage/index?userId="} className="user flex a__items--center">
+                <Navigator url={"/pages/user/homepage?userID="} className="user flex a__items--center">
                   <AtAvatar circle customStyle={{width: '22px', height: '22px'}}/>
                   <Text className="margin-left--20 c--666 f__size--28">滋滋滋滋</Text>
                 </Navigator>

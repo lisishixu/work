@@ -68,7 +68,7 @@ export default class NoteComment extends Component<Props, State> {
       <Block>
         <View className='note-comment'>
           <View className="header">
-            <Navigator url={"/pages/user-homepage/index?userId="} className={"header__left"}>
+            <Navigator url={"/pages/user/homepage?userID="} className={"header__left"}>
               <AtAvatar circle size={"small"}/>
               <Text className="username">是又优雅</Text>
               <Text className="post-time">12:37</Text>

@@ -81,7 +81,7 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='index'>
         <View className="container page-header">
-          <Navigator url={"/pages/user-homepage/index"}>
+          <Navigator url={"/pages/user/homepage"}>
             <AtAvatar circle size={"small"} image={''}/>
           </Navigator>
           <View className="tabs">

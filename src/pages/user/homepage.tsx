@@ -8,13 +8,14 @@ import NoteList from "../../components/note-list/note-list";
 import GoodsList from "../../components/goods-list/goods-list";
 import {GoodsData} from "../../data";
 import NoteComment from "../../components/note-comment/note-comment";
+import {getDATA} from "../../utils/helper";
 
 export interface Props {
 
 }
 
 export interface State {
-  userId: string,//存在就是别人的
+  userID: string,//存在就是别人的
   current: number,
   goodsList: any[],//精选好货
   noteList: any[],//笔记
@@ -35,7 +36,7 @@ export default class UserHomePage extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      userId: '',
+      userID: '',
       current: 0,
       goodsList: GoodsData,
       noteList: [0, 1, 2, 3, 4, 5, 6],
@@ -47,6 +48,8 @@ export default class UserHomePage extends Component<Props, State> {
   }
 
   componentWillMount() {
+    const userID = this.$router.params.userID;//判断是我的还是Ta的
+    this.setState({userID});
   }
 
   componentDidMount() {
@@ -56,6 +59,11 @@ export default class UserHomePage extends Component<Props, State> {
   }
 
   componentDidShow() {
+    console.log(getDATA('fansBackUserID'));
+    if (getDATA('fansBackUserID')) {
+      this.setState({userID: getDATA('fansBackUserID')});
+      //  重走所有流程
+    }
   }
 
   componentDidHide() {
@@ -90,6 +98,9 @@ export default class UserHomePage extends Component<Props, State> {
   onConfrimComment = (event) => {
     console.log(event);
     console.log('输入的内容是：', event.detail.value);
+    if (event.detail.value === '1') {
+      this.setState({userID: this.state.userID ? "" : "111"})
+    }
   };
 
   onLike = () => {
@@ -108,20 +119,22 @@ export default class UserHomePage extends Component<Props, State> {
           <AtAvatar circle size={"large"}/>
           <View className="" style={{width: '100%'}}>
             <View className="data flex a__items--center text--center">
-              <View className="data__item " onClick={() => this.setState({userId: this.state.userId ? "" : "111"})}>
+              <Navigator url={`/pages/user/fans?userID=${this.state.userID}`} hover-class="none"
+                         className="data__item ">
                 <Text className="text">151</Text>
                 <Text className="text c--666 f__size--28">关注</Text>
-              </View>
-              <View className="data__item ">
+              </Navigator>
+              <Navigator url={`/pages/user/fans?isFans=true&userID=${this.state.userID}`} hover-class="none"
+                         className="data__item ">
                 <Text className="text">151</Text>
                 <Text className="text c--666 f__size--28">粉丝</Text>
-              </View>
+              </Navigator>
               <View className="data__item">
                 <Text className="text">151</Text>
                 <Text className="text c--666 f__size--28">获赞与收藏</Text>
               </View>
             </View>
-            {this.state.userId ?
+            {this.state.userID ?
               <View className="btns">
                 <Button className="btn btn-radius ">
                   <View className="inline--block margin-right--20">
@@ -153,7 +166,7 @@ export default class UserHomePage extends Component<Props, State> {
         <AtTabs
           current={this.state.current}
           tabList={[
-            {title: this.state.userId ? 'Ta的精选好货' : '我的精选好货'},
+            {title: this.state.userID ? 'Ta的精选好货' : '我的精选好货'},
             {title: '笔记·861'},
             {title: '视频·4'},
           ]}
@@ -183,7 +196,7 @@ export default class UserHomePage extends Component<Props, State> {
                         customStyle={{marginTop: '10vh'}}
                         title={'这位小主比较懒，什么还没有耶~'}>
               </StateTip>}
-            {!this.state.userId && <View className={"fixed-btn"}>
+            {!this.state.userID && <View className={"fixed-btn"}>
                 <Button onClick={this.onPost} className="btn btn-post">
                     <IconFont name={"bianji"} color={'white'} size={34}/>
                 </Button>
@@ -219,7 +232,7 @@ export default class UserHomePage extends Component<Props, State> {
                         customStyle={{marginTop: '10vh'}}
                         title={'这位小主比较懒，什么还没有耶~'}>
               </StateTip>}
-            {!this.state.userId && <View className={"fixed-btn"}>
+            {!this.state.userID && <View className={"fixed-btn"}>
                 <Button onClick={this.onPost} className="btn btn-post">
                     <IconFont name={"bianji"} color={'white'} size={34}/>
                 </Button>
@@ -245,7 +258,7 @@ export default class UserHomePage extends Component<Props, State> {
           />
         </AtFloatLayout>
 
-        {this.state.userId && this.state.isShowFocus &&
+        {this.state.userID && this.state.isShowFocus &&
         <View className="layer" onClick={() => this.setState({isShowFocus: false})}>
             <View className="focus" onClick={(e) => e.stopPropagation()}>
                 <View className="avatar">
@@ -253,14 +266,18 @@ export default class UserHomePage extends Component<Props, State> {
                 </View>
                 <Text className="username">是悠悠啊</Text>
                 <View className="data flex a__items--center text--center margin-top--20">
-                    <View className="data__item ">
+                    <Navigator url={`/pages/user/fans?userID=${this.state.userID}`}
+                               hover-class="none"
+                               className="data__item ">
                         <Text className="text">151</Text>
                         <Text className="text c--666 f__size--28">关注</Text>
-                    </View>
-                    <View className="data__item ">
+                    </Navigator>
+                    <Navigator url={`/pages/user/fans?isFans=true&userID=${this.state.userID}`}
+                               hover-class="none"
+                               className="data__item ">
                         <Text className="text">151</Text>
                         <Text className="text c--666 f__size--28">粉丝</Text>
-                    </View>
+                    </Navigator>
                     <View className="data__item">
                         <Text className="text">151</Text>
                         <Text className="text c--666 f__size--28">获赞与收藏</Text>
