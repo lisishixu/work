@@ -47,7 +47,9 @@ class App extends Component {
       'pages/register/payVip',
       'pages/user/homepage',
       'pages/login/index',
-      'pages/publish/index'
+      'pages/publish/index',
+      'pages/publish/power',
+      'pages/estimate/estimate'
     ],
     window: {
       backgroundTextStyle: 'light',

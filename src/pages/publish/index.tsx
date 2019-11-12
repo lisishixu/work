@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text} from '@tarojs/components'
+import {View, Text, Navigator} from '@tarojs/components'
 import './index.scss'
 import {AtIcon, AtImagePicker, AtTextarea} from "taro-ui";
 import IconFont from "../../components/iconfont";
@@ -111,6 +111,7 @@ export default class Index extends Component<Props, State> {
             <AtIcon value='chevron-right' size='20' color='#dcdcdc'></AtIcon>
           </View>
         </View>
+        <Navigator url={'/pages/publish/power'}>
         <View className={'publish-footer'}>
           <IconFont name={'suo'} size={40} color={'#666'}/>
           <Text className={'f__size--30 c--666 margin-left--20'}>动态权限</Text>
@@ -118,6 +119,7 @@ export default class Index extends Component<Props, State> {
             <AtIcon value='chevron-right' size='20' color='#dcdcdc'></AtIcon>
           </View>
         </View>
+        </Navigator>
         <FixedButton text={'立即发布'} bottom={'1vh'}/>
       </View>
     )
