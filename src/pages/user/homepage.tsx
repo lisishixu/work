@@ -1,6 +1,6 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Button, Navigator, Input, Image} from '@tarojs/components'
-import './index.scss'
+import './homepage.scss'
 import {AtTabs, AtAvatar, AtTabsPane, AtFloatLayout} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import StateTip from "../../components/state-tip/state-tip";
@@ -102,7 +102,7 @@ export default class UserHomePage extends Component<Props, State> {
 
   render() {
     return (
-      <View className='index'>
+      <View className='homepage'>
 
         <View className="container header flex a__items--center j__content--spbe">
           <AtAvatar circle size={"large"}/>

@@ -45,7 +45,7 @@ class App extends Component {
       'pages/message/addfans',
       'pages/register/index',
       'pages/register/payVip',
-      'pages/user-homepage/index',
+      'pages/user/homepage',
       'pages/login/index',
       'pages/publish/index'
     ],
