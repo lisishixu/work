@@ -92,7 +92,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-gy.png',
             value: '关于我们',
-            url: '/'
+            url: '/pages/about/index'
           },
         ]
       },
@@ -149,7 +149,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-gy.png',
             value: '关于我们',
-            url: '/'
+            url: '/pages/about/index'
           },
         ]
       },
@@ -202,7 +202,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-gy2.png',
             value: '关于我们',
-            url: '/'
+            url: '/pages/about/index'
           },
         ]
       }
