@@ -53,6 +53,7 @@ class App extends Component {
       'pages/user/fans',
       'pages/estimate/goEstimate',
       'pages/about/index',
+      'pages/order/index',
     ],
     window: {
       backgroundTextStyle: 'light',
