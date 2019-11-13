@@ -1,0 +1,8 @@
+.bindTel{
+  .at-input{
+    border-bottom: 1px solid #DCDCDC;
+    &::after{
+      border-bottom-width:0;
+    }
+  }
+}

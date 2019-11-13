@@ -58,6 +58,9 @@ class App extends Component {
       'pages/setting/userSet',
       'pages/order/detail',
       'pages/merchant/scan',
+      'pages/bind/bindTel',
+      'pages/bind/changePassword',
+      'pages/bind/userId',
       'pages/merchant/verification',
     ],
     window: {

@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Button, Image} from '@tarojs/components'
+import {View, Text, Button, Image, Navigator} from '@tarojs/components'
 import './header.scss'
 import {AtAvatar, AtRate} from "taro-ui";
 import IconFont from "../../../components/iconfont";
@@ -76,12 +76,15 @@ export default class CenterHeader extends Component<Props, State> {
     return (
       <View className="header">
         <View className="flex a__items--center">
-          <AtAvatar circle size={"large"}/>
+          <Navigator url={'/pages/setting/userSet'}>
+            <AtAvatar circle size={"large"}/>
+          </Navigator>
           <View className="user">
             <View className="user__name flex a__items--center">
               <Text>包子君</Text>
               {this.props.identity === 'agent' &&
-              <Image className={"user__icon"} src={'/statics/imgs/center/icon-crown.png'}/>}
+              <Image className={"user__icon"} src={'/statics/imgs/center/icon-crown.png'}/>
+              }
               {this.props.identity === 'merchant' &&
               <AtRate className="margin-left--10" max={4} size={14} value={4}/>}
             </View>
