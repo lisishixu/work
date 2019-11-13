@@ -95,7 +95,9 @@ export default class UserSet extends Component<Props, State> {
           <AtList>
             {this.state.notUser && <AtListItem title='微信二维码' extraText='上传微信二维码' arrow='right'/>}
             <AtListItem title='所在地区' extraText='金水区' arrow='right'/>
+            <Navigator url={'/pages/bind/userId'}>
             <AtListItem title='我的实名认证' arrow='right'/>
+            </Navigator>
             <AtListItem title='我的邀请人' extraText='kris吴'/>
           </AtList>
           <AtList>

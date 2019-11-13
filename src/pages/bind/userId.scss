@@ -1,0 +1,44 @@
+.userId{
+  background: #F6F6F6;
+  padding: 30px 20px;
+  height: 100vh;
+  .at-input::after{
+   border: none;
+  }
+  .at-input{
+    input{
+      font-size: 24px;
+      color: #999;
+    }
+  }
+  .title-box{
+    background: white;
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 1px 1px 10px 1px #ccc;
+    .view{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .input{
+        width: 450px;
+        padding-left: 15px;
+        border: 1px solid #DCDCDC;
+        border-radius: 20px;
+      }
+    }
+  }
+  .unload-center{
+    background: #fff;
+    padding: 30px 16px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px #ccc;
+    margin-bottom: 68px;
+    .img{
+      margin-top:30px;
+      width: 300px;
+      height: 220px;
+    }
+  }
+}
