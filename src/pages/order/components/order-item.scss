@@ -1,0 +1,81 @@
+.order {
+  &-item {
+    margin-top: 20px;
+    padding: 0 3%;
+    background-color: white;
+
+    .header {
+      height: 80px;
+      line-height: 80px;
+      border-bottom: 1px solid #f2f2f2;
+
+      .mark {
+        display: inline-block;
+        color: white;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        background: linear-gradient(0deg, rgba(244, 109, 118, 1), rgba(248, 68, 67, 1));
+        border-radius: 6px;
+        font-size: 28px;
+        box-shadow: 0 0 6px #e2e2e2;
+        margin-right: 20px;
+        &--sell{
+          background:linear-gradient(0deg,rgba(244,185,109,1),rgba(248,118,67,1));
+        }
+      }
+    }
+  }
+
+  &__total {
+    height: 80px;
+    line-height: 80px;
+    text-align: right;
+  }
+
+  &__btn-wrap {
+    text-align: right;
+    padding-bottom: 16px;
+
+    .btn {
+      display: inline-block;
+      margin-left: 30px;
+      border-radius: 50px;
+      font-size: 28px;
+      line-height: 1;
+      padding: 10px 30px;
+    }
+
+    .btn-secondary {
+      color: #888;
+      background-color: white;
+      border: 1px solid #ccc;
+    }
+
+    .btn-highlight {
+      color: white;
+      background-color: #EB3939;
+      border: 1px solid #EB3939;
+    }
+  }
+}
+
+.goods {
+  height: 180px;
+  border-bottom: 1px solid #f2f2f2;
+
+  .content {
+    flex: 1;
+    height: calc(100% - 18px);
+    margin-top: 18px;
+    //width: 100%;
+  }
+
+  &__cover {
+    width: 140px;
+    height: 140px;
+    border-radius: 6px;
+    margin-right: 20px;
+  }
+}
