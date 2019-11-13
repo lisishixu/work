@@ -58,6 +58,7 @@ class App extends Component {
       'pages/setting/userSet',
       'pages/order/detail',
       'pages/merchant/scan',
+      'pages/merchant/verification',
     ],
     window: {
       backgroundTextStyle: 'light',

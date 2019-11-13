@@ -62,7 +62,10 @@ export default class Scan extends Component<Props, State> {
 
         <View className="page-bottom">
           <Button className="btn btn-validation">验证</Button>
-          <Navigator className="f__size--30" style={{textDecoration: "underline"}}>手动输码</Navigator>
+          <Navigator url={'/pages/merchant/verification'}
+                     openType={"redirect"}
+                     className="f__size--30"
+                     style={{textDecoration: "underline"}}>手动输码</Navigator>
         </View>
 
       </View>
