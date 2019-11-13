@@ -82,7 +82,7 @@ export default class OrderItem extends Component<Props, State> {
           </View>
           <Text className="c--eb3 f__size--28">待付款</Text>
         </View>
-        <Navigator className="goods flex a__items--center">
+        <Navigator url={`/pages/order/detail?orderID=`} className="goods flex a__items--center">
           <Image src="http://yanxuan.nosdn.127.net/425c5a909f5806d55c151457a5baa0af.png" className="goods__cover"/>
           <View className="content">
             <View className="flex a__items--center j__content--spbe">
