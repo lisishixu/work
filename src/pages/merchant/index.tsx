@@ -45,7 +45,7 @@ export default class Index extends Component<Props, State> {
       <View className='index'>
 
         <View className="top">
-          <Navigator url={'/index/index'} className="btn-switch">
+          <Navigator url={'/pages/index/index'} openType={"switchTab"} className="btn-switch">
             <View className="line margin-right--10">
               <IconFont name={"qiehuan"} size={30} color={'white'}/>
             </View>

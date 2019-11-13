@@ -68,7 +68,9 @@ export default class CenterHeader extends Component<Props, State> {
 
   // 切换至后台
   toMerchantAdmin = () => {
-
+    Taro.navigateTo({
+      url: `/pages/merchant/index`
+    })
   };
 
   render() {
