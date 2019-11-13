@@ -28,6 +28,26 @@ export default class OrderIndex extends Component<Props, State> {
   }
 
   componentWillMount() {
+    const type = this.$router.params.type;//判断是我的还是Ta的
+    let currentTab = 0;
+    switch (type) {
+      case 'payment':
+        currentTab = 1;
+        break;
+      case 'pickup':
+        currentTab = 3;
+        break;
+      case 'completed':
+        currentTab = 0;
+        break;
+      case 'evaluation':
+        currentTab = 5;
+        break;
+      case 'after-sales':
+        currentTab = 0;
+        break;
+    }
+    this.setState({currentTab});
   }
 
   componentDidMount() {
@@ -61,7 +81,7 @@ export default class OrderIndex extends Component<Props, State> {
 
 
         <AtTabs
-          customStyle={{borderTop:'4px solid #f2f2f2'}}
+          customStyle={{borderTop: '4px solid #f2f2f2'}}
           current={this.state.currentTab}
           tabList={[
             {title: '全部',},
