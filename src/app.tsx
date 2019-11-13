@@ -62,6 +62,7 @@ class App extends Component {
       'pages/bind/changePassword',
       'pages/bind/userId',
       'pages/merchant/verification',
+      'pages/merchant/index',
     ],
     window: {
       backgroundTextStyle: 'light',
