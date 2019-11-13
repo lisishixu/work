@@ -57,6 +57,7 @@ class App extends Component {
       'pages/order/index',
       'pages/setting/userSet',
       'pages/order/detail',
+      'pages/merchant/scan',
     ],
     window: {
       backgroundTextStyle: 'light',
