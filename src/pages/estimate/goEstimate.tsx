@@ -3,6 +3,7 @@ import {Image, View, Text, Label} from '@tarojs/components'
 import './goEstimate.scss'
 import {AtImagePicker, AtRate, AtTextarea} from "taro-ui";
 import IconFont from "../../components/iconfont";
+import FixedButton from "../../components/fixed-button/fixed-button";
 
 export interface Props {
 
@@ -27,7 +28,7 @@ export default class GoEstimate extends Component<Props, State> {
       value: '',
       files: [],
       flag:false,
-      num:2
+      num:5
     }
   }
 
@@ -100,6 +101,7 @@ export default class GoEstimate extends Component<Props, State> {
           files={this.state.files}
           onChange={this.onChange.bind(this)}
           showAddBtn={this.state.files.length < 3}
+          length={3}
         />
         <View className={'is-anonymity'}>
           <View onClick={this.onCheckAll}>
@@ -115,7 +117,10 @@ export default class GoEstimate extends Component<Props, State> {
           <View className={'f__size--26 c--010'}>匿名</View>
           <View style={'flex:1;text-align:right'}><Text className={'f__size--24 c--666'}>你写的评价会以匿名的形式展现</Text></View>
           </View>
-        <AtRate max={5} value={this.state.num} onChange={this.onChangeGrade} />
+        <View className={'flex a__items--center'}>
+          <Text className={'margin-left--30 c--333 f__size--28'}>综合评价</Text><AtRate max={5} value={this.state.num} margin={20} onChange={this.onChangeGrade.bind(this)} />
+        </View>
+      <FixedButton text={'发表评价'} bottom={'5vh'}/>
       </View>
     )
   }

@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {Image, Text, View} from '@tarojs/components'
+import {Image, Navigator, Text, View} from '@tarojs/components'
 import './estimate.scss'
 import {AtTabs, AtTabsPane} from "taro-ui";
 
@@ -63,7 +63,9 @@ export default class Estimate extends Component<Props, State> {
                       <Text className={'f__size--24 c--666'}>数量：800g</Text><Text
                       className={'f__size--24 c--666 fr'}>x1</Text>
                     </View>
-                    <View className={'view'}>评价</View>
+                    <Navigator url={'/pages/estimate/goEstimate'}>
+                      <View className={'view'}>评价</View>
+                    </Navigator>
                   </View>
                 </View>
               </View>
@@ -78,7 +80,9 @@ export default class Estimate extends Component<Props, State> {
                       <Text className={'f__size--24 c--666'}>数量：800g</Text><Text
                       className={'f__size--24 c--666 fr'}>x1</Text>
                     </View>
-                    <View className={'view'}>评价</View>
+                    <Navigator url={'/pages/estimate/goEstimate'}>
+                      <View className={'view'}>评价</View>
+                    </Navigator>
                   </View>
                 </View>
               </View>
@@ -97,7 +101,9 @@ export default class Estimate extends Component<Props, State> {
                       <Text className={'f__size--24 c--666'}>数量：800g</Text><Text
                       className={'f__size--24 c--666 fr'}>x1</Text>
                     </View>
-                    <View className={'views'}>查看</View>
+                    <Navigator url={'/pages/estimate/estimateDetail'}>
+                      <View className={'views'}>评价</View>
+                    </Navigator>
                   </View>
                 </View>
               </View>
