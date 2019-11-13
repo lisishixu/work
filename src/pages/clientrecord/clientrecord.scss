@@ -1,0 +1,41 @@
+.clientrecord {
+  .clientrecord-title {
+    background: #E6E6E6;
+    padding: 25px 30px;
+
+    .picker {
+      display: inline;
+      background: white;
+      color: #666666;
+      font-size: 26px;
+      padding: 10px 20px;
+      border-radius: 100px;
+    }
+  }
+
+  .content-box {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #DCDCDC;
+    .td {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 154px;
+      border-right: 1px solid #DCDCDC;
+      flex: 1;
+
+      //padding: 25px 10px;
+      &:last-child {
+        border: none;
+        padding-right: 0;
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}
