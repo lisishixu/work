@@ -1,0 +1,36 @@
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  //padding-left: 3%;
+  //padding-right: 3%;
+
+  &__item {
+    border: none;
+    background: none;
+    margin: 0 14px;
+    padding: 0 20px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    color: #666;
+    justify-content: center;
+
+    &:after {
+      border: none;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+
+    &.active {
+      color: #EB3939;
+      font-size: 30px;
+    }
+  }
+
+  &__text {
+    margin-right: 2px;
+  }
+}

@@ -5,7 +5,7 @@ import IconFont from "../../components/iconfont";
 import {AtButton, AtDivider} from "taro-ui";
 import {GoodsData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import {thisVoid} from "../../utils/helper";
 
@@ -81,7 +81,7 @@ export default class Invitation extends Component<Props, State> {
           </View>
         </View>
         <AtDivider content='更多商品' fontColor='#F12737' lineColor='#F12737'/>
-        <GoodsList data={this.state.recommendList} isShowBrokerage={true} isShowOldPrice={false}/>
+        <GoodsListCard data={this.state.recommendList} isShowBrokerage={true} isShowOldPrice={false}/>
         <FixedButton text={'邀请好友 立赚现金'} onClick={thisVoid}/>
       </View>
     )

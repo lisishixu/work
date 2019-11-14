@@ -7,7 +7,7 @@ import {AtAvatar, AtCountdown, AtDivider} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import {EvaluateModel} from '../../models/EvaluateModel';
 import BuyGuide from "../../components/buy-guide/buy-guide";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 
 export interface Props {
 
@@ -178,12 +178,11 @@ export default class GoodsDetail extends Component<Props, State> {
         <View className="container margin-top--20 recommend">
           <View className="small-title">
             <Text className="c--333 f__weight--bold">商品推荐</Text>
-            <Navigator className="c--eb3 f__size--30">查看更多</Navigator>
+            <Navigator url={`/pages/goods/index`} className="c--eb3 f__size--30">查看更多</Navigator>
           </View>
-          <View className="recommend-wrap">
-
+          <View className="">
+            <GoodsListCard data={this.state.recommendGoods}/>
           </View>
-          <GoodsList data={this.state.recommendGoods}/>
         </View>
 
         <View className="container margin-top--20">

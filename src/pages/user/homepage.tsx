@@ -5,7 +5,7 @@ import {AtTabs, AtAvatar, AtTabsPane, AtFloatLayout} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import StateTip from "../../components/state-tip/state-tip";
 import NoteList from "../../components/note-list/note-list";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import {GoodsData} from "../../data";
 import NoteComment from "../../components/note-comment/note-comment";
 import {getDATA} from "../../utils/helper";
@@ -175,7 +175,7 @@ export default class UserHomePage extends Component<Props, State> {
           {/*精选好货*/}
           <AtTabsPane current={this.state.current} index={0}>
             {this.state.goodsList.length > 0 ?
-              <GoodsList data={this.state.goodsList}
+              <GoodsListCard data={this.state.goodsList}
                          isShowShare/> :
               <StateTip imgUrl={'/statics/imgs/empty2.png'} size={"large"} customStyle={{marginTop: '10vh'}}>
                 <View className="text--center f__size--30 c--666 margin-top--20">

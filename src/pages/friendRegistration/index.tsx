@@ -3,7 +3,7 @@ import {View, Text} from '@tarojs/components'
 import IconFont from "../../components/iconfont";
 import './index.scss'
 import { AtTabs, AtTabsPane} from "taro-ui";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import {GoodsData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import MemberRights from "../../components/member-rights/member-rights";
@@ -58,11 +58,11 @@ export default class friendRegistration extends Component<Props, State> {
       const tabList = [{ title: '全部礼包' }, { title: '邀请攻略' }]
         return (
             <View className='index'>
-              <InvitationHeard myMoney={100} friendMoney={50} heardImg={'../../statics/imgs/friend.png'} myText={'奖励发放到余额'} friendText={'金币奖励+会员权益+198礼包'}/> 
+              <InvitationHeard myMoney={100} friendMoney={50} heardImg={'../../statics/imgs/friend.png'} myText={'奖励发放到余额'} friendText={'金币奖励+会员权益+198礼包'}/>
               <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)} className={'tab--content'}>
                 <AtTabsPane current={this.state.current} index={0} >
                   <View style='padding: 10px 0'>
-                    <GoodsList data={this.state.recommendList} isShowOldPrice={false}/>
+                    <GoodsListCard data={this.state.recommendList} isShowOldPrice={false}/>
                   </View>
                 </AtTabsPane>
                 <AtTabsPane current={this.state.current} index={1} >

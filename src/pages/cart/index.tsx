@@ -5,7 +5,7 @@ import {GoodsData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import IconFont from "../../components/iconfont";
 import {AtDivider, AtInputNumber} from "taro-ui";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import StateTip from "../../components/state-tip/state-tip";
 
 export interface Props {
@@ -185,7 +185,7 @@ export default class Index extends Component<Props, State> {
           <View style={{width: '200px', margin: '0 auto '}}>
             <AtDivider content='猜你喜欢' fontSize={30} fontColor='#EB3939' lineColor='#EB3939'/>
           </View>
-          <GoodsList data={this.state.goodsList}/>
+          <GoodsListCard data={this.state.goodsList}/>
         </View>
       )
     }

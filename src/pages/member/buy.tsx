@@ -6,7 +6,7 @@ import MemberRights from "../../components/member-rights/member-rights";
 import {AtAvatar, AtDivider} from "taro-ui";
 import {EvaluateModel} from "../../models/EvaluateModel";
 import {EvaluateData, GoodsData} from "../../data";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import {GoodsModel} from "../../models/GoodsModel";
 import IconFont from "../../components/iconfont";
 
@@ -141,7 +141,7 @@ export default class MemberBuy extends Component<Props, State> {
             <Text className="c--333 f__weight--bold">商品推荐</Text>
             <Navigator className="c--eb3 f__size--30">查看更多</Navigator>
           </View>
-          <GoodsList data={this.state.recommendGoods}/>
+          <GoodsListCard data={this.state.recommendGoods}/>
         </View>
 
         <View style={{height: '80px', opacity: 0}}>

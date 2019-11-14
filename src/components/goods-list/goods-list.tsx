@@ -1,8 +1,7 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Navigator, Text, Image, Button} from '@tarojs/components'
+import {View, Navigator, Text, Image} from '@tarojs/components'
 import './goods-list.scss'
 import {GoodsModel} from "../../models/GoodsModel";
-import IconFont from "../iconfont";
 
 export interface Props {
   data: GoodsModel[]
@@ -60,28 +59,19 @@ export default class GoodsList extends Component<Props, State> {
 
   render() {
     return (
-      <View className='goods-list'>
+      <View className='container goods-list'>
         {this.props.data && this.props.data.map((it, index) => {
           return <Navigator url={`/pages/goods/detail?id=${it.product_id}`}
                             className='goods-item'
                             key={'g' + index}>
-            <View>
-              <Image src={it.product_img} className={"goods__cover"}/>
-              <View style={'padding:5px'}>
-                <View style={{height: '40px'}}>
-                  <Text className={'goods__name'}>{it.product_name}</Text>
-                </View>
-                <View className="flex a__items--center j__content--spbe">
-                  <View className="flex__1">
-                    <Text className={"goods__price"}>￥{it.product_price}</Text>
-                    {this.props.isShowOldPrice && <Text className={"goods__price--old"}>￥{it.product_original}</Text>}
-                    {this.props.isShowBrokerage && <Text className={'goods__brokerage'}>赚{it.product_original}元</Text>}
-                  </View>
-                  {this.props.isShowShare &&
-                  <Button className="btn" onClick={this.onShare.bind(it)}>
-                      <IconFont name={"fenxiang-1"} color={'#F12737'} size={30}/>
-                  </Button>}
-                </View>
+
+            <Image src={it.product_img} className={"goods__cover"}/>
+            <View className="goods__content">
+              <Text className="goods__name ellipsis-2">{it.product_name}</Text>
+              <Text className="goods__desc ellipsis-2">{it.product_name}描述描述描述描述描述描述描述</Text>
+              <View className="goods__data">
+                <Text className={"goods__price"}>￥{it.product_price}</Text>
+                <Text className={"goods__sale"}>520人已付款</Text>
               </View>
             </View>
           </Navigator>

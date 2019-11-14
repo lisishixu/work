@@ -64,7 +64,7 @@ export const GoodsData = [
     product_name: "测试",
     product_img: "https://myjh-imgs.oss-cn-beijing.aliyuncs.com//upload/head/productImg/2019/10/30/d7a02f65-6cdb-4622-b80d-4e1d4eac2e24.jpg",
     sales_volume: 13,
-    product_detail: "",
+    product_detail: "dhashkksah",
     product_jindu: 10
   },
   {

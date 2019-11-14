@@ -110,7 +110,7 @@ export default class ClassifyIndex extends Component<Props, State> {
   onClassify = (item, index) => {
     console.log(item);
     Taro.navigateTo({
-      url: `/pages/goods/list?classifyID=${index}`
+      url: `/pages/goods/index?classifyID=${index}`
     })
   };
 

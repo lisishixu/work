@@ -9,7 +9,7 @@ import {ClassifyModel} from "../../models/ClassifyModel";
 import {ClassifyData, GoodsData, SwiperData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import {SeckillGoodsModel} from "../../models/SeckillGoodsModel";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 
 export interface Props {
 
@@ -208,7 +208,7 @@ export default class Index extends Component<Props, State> {
         <View className={'container margin-bottom--20'}>
           <AtDivider content='为你推荐' fontColor='#F12737' lineColor='#F12737'/>
         </View>
-        <GoodsList data={this.state.recommendList}/>
+        <GoodsListCard data={this.state.recommendList}/>
       </View>
     )
   }

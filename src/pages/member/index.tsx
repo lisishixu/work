@@ -5,7 +5,7 @@ import {AtAvatar, AtDivider} from "taro-ui";
 import {UserModel} from "../../models/UserModel";
 import {GoodsData, UserData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
-import GoodsList from "../../components/goods-list/goods-list";
+import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import MemberRights from "../../components/member-rights/member-rights";
 import TipTitle from "../../components/tip-title/tip-title";
@@ -88,7 +88,7 @@ export default class Member extends Component<Props, State> {
           <AtDivider content='请选择任一礼包，购买注册' fontSize={30} fontColor='#666' lineColor='#ccc'/>
         </View>
 
-        <GoodsList data={this.state.goods}/>
+        <GoodsListCard data={this.state.goods}/>
 
         <FixedButton text={'立即注册开通五联创客店主'} onClick={this.onOpen}/>
 
