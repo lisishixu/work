@@ -67,6 +67,7 @@ class App extends Component {
       'pages/goods/index',
       'pages/orderHistory/orderHistory',
       'pages/merchant/post',
+      'pages/order/pay-result',
     ],
     window: {
       backgroundTextStyle: 'light',
