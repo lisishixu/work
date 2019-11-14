@@ -62,9 +62,10 @@ class App extends Component {
       'pages/bind/changePassword',
       'pages/bind/userId',
       'pages/merchant/verification',
-      'pages/clientrecord/clientrecord',
+      'pages/userHistroy/userHistroy',
       'pages/merchant/index',
       'pages/goods/index',
+      'pages/orderHistory/orderHistory',
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -1,0 +1,42 @@
+.orderHistrory{
+  .orderHistrory-title{
+    padding: 20px 30px;
+    background: #E6E6E6;
+  }
+  .at-search-bar{
+    background: transparent;
+  }
+  .at-search-bar__input{
+    background: #fff;
+  }
+  .at-search-bar__placeholder-wrap .at-icon{
+    color: #CCCCCC;
+    z-index: 10;
+  }
+  .at-search-bar__placeholder{
+    color: #CCCCCC;
+    z-index: 10;
+  }
+  .content-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #DCDCDC;
+    padding:30px 0;
+    text-align: center;
+    .f__size--24{
+      flex: 1;
+    }
+  }
+  .order-body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 0;
+    text-align: center;
+    border-bottom: 1px solid #DCDCDC;
+    .f__size--24{
+      flex: 1;
+    }
+  }
+}

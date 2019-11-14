@@ -23,18 +23,45 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 154px;
+      height: 170px;
       border-right: 1px solid #DCDCDC;
       flex: 1;
-
-      //padding: 25px 10px;
+      position: relative;
       &:last-child {
         border: none;
         padding-right: 0;
+        border-bottom: 1px solid #F12737;
+        height: 50px;
+        width: 100px;
+        flex: none;
+        margin: 0 45px;
       }
-
       &:first-child {
         padding-left: 0;
+      }
+      .c--010{
+        margin-top: 20px;
+      }
+    }
+  }
+  .toast-footer{
+    background: #fff;
+    padding: 45px 75px;
+    border-radius: 20px;
+    .view{
+      margin-bottom: 20px;
+    }
+    .f__size--30{
+      margin-bottom: 40px;
+      position: relative;
+      &:before{
+        content: '';
+        width: 4px;
+        height: 32px;
+        background: #F12735;
+        position: absolute;
+        left: -15px;
+        top: 15%;
       }
     }
   }
