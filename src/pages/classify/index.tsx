@@ -39,6 +39,8 @@ export default class ClassifyIndex extends Component<Props, State> {
   }
 
   componentWillMount() {
+    const index = Number(this.$router.params.id);//判断是我的还是Ta的
+    this.setState({current: index})
   }
 
   componentDidMount() {
@@ -107,9 +109,8 @@ export default class ClassifyIndex extends Component<Props, State> {
 
   onClassify = (item, index) => {
     console.log(item);
-    Taro.showToast({
-      icon: 'none',
-      title: `点击的分类是第${index+1}个`
+    Taro.navigateTo({
+      url: `/pages/goods/list?classifyID=${index}`
     })
   };
 

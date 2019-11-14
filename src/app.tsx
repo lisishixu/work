@@ -64,7 +64,7 @@ class App extends Component {
       'pages/merchant/verification',
       'pages/clientrecord/clientrecord',
       'pages/merchant/index',
-      'pages/goods/list',
+      'pages/goods/index',
     ],
     window: {
       backgroundTextStyle: 'light',
