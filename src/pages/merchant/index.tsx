@@ -62,11 +62,11 @@ export default class Index extends Component<Props, State> {
           <AtRate className="user__rate margin-top--20" size={14} value={4} max={4}/>
           <Text className="user__id">ID:1857435487453487</Text>
           <View className="action">
-            <Navigator className="action__item">
+            <Navigator url={`/pages/merchant/post?type=goods`} className="action__item">
               <IconFont name={"shangjia"} size={40} color={'#888'}/>
               <Text className="margin-left--20">上传商品</Text>
             </Navigator>
-            <Navigator className="action__item">
+            <Navigator url={`/pages/merchant/post?type=activity`} className="action__item">
               <IconFont name={"huangguan"} size={40} color={'#888'}/>
               <Text className="margin-left--20">发布活动</Text>
             </Navigator>
