@@ -62,7 +62,7 @@ class App extends Component {
       'pages/bind/changePassword',
       'pages/bind/userId',
       'pages/merchant/verification',
-      'pages/clientrecord/clientrecord'
+      'pages/clientrecord/clientrecord',
       'pages/merchant/index',
     ],
     window: {
