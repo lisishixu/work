@@ -62,7 +62,7 @@ export default class PostInfo extends Component<Props, State> {
   componentDidHide() {
   }
 
-
+  // 上传封面图
   onUpload = () => {
     Taro.chooseImage({
       count: 1,
@@ -72,15 +72,27 @@ export default class PostInfo extends Component<Props, State> {
     })
   };
 
+  //上传详情页图
+  onUploadDetail = () => {
+    Taro.chooseImage({
+      count: 1,
+    }).then(res => {
+      const tempFilePaths = res.tempFilePaths;
+      this.setState({detail: tempFilePaths[0]})
+    })
+  };
+
+  // 文本框输入
   handleChange = (name = '', value) => {
     // @ts-ignore
     this.setState({
       [name]: value
     });
-    // taro-ui：在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
+    // 2019-11-14摘自taro-ui官网：在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
     return value
   };
 
+  // 确认按钮
   onConfrim = () => {
     const {title, img, price, oldPrice, detail} = this.state;
     if (!title || !img || !price || !oldPrice || !detail) {
@@ -177,7 +189,7 @@ export default class PostInfo extends Component<Props, State> {
           <View className="small-title f__size--28">
             {this.state.type === 'goods' ? '商品详情' : '活动详情'}
           </View>
-          <Button className="detail" onClick={this.onUpload}>
+          <Button className="detail" onClick={this.onUploadDetail}>
             {this.state.detail ?
               <Image src={this.state.detail} className="img" mode={"widthFix"}/> :
               <Block>
