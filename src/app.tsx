@@ -66,6 +66,7 @@ class App extends Component {
       'pages/merchant/index',
       'pages/goods/index',
       'pages/orderHistory/orderHistory',
+      'pages/merchant/post',
     ],
     window: {
       backgroundTextStyle: 'light',
