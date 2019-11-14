@@ -40,7 +40,7 @@ export default class PayResult extends Component<Props, State> {
   }
 
   onBack = () => {
-    Taro.navigateTo({
+    Taro.redirectTo({
       url: `/pages/merchant/index`
     })
   };
@@ -48,7 +48,7 @@ export default class PayResult extends Component<Props, State> {
   render() {
     return (
       <View className='pay-result'>
-        <StateTip size={"large"} imgUrl={''}>
+        <StateTip imgUrl={'/statics/imgs/success.png'}>
           <Text className="title">付款成功</Text>
           <Text className="desc">恭喜您，您已开店成功！</Text>
           <Button className="btn" onClick={this.onBack}>查看我的店铺</Button>
