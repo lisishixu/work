@@ -100,7 +100,7 @@ export default class Index extends Component<Props, State> {
     Taro.showToast({
       icon: 'none',
       title: `触发关注`
-    })
+    });
   };
 
   render() {
@@ -141,8 +141,10 @@ export default class Index extends Component<Props, State> {
           <ScrollView className="interested-users" scrollX enable-flex>
             {[0, 1, 2, 3, 4, 5].map((it, index) => {
               return <View className="interested-users__item" key={'user' + it + index}>
-                <AtAvatar circle className="avatar"/>
-                <Text className="f__size--26">巴拉巴拉小魔仙0</Text>
+                <Navigator url={`/pages/user/homepage?userID=`}>
+                  <AtAvatar circle className="avatar"/>
+                  <Text className="f__size--26">巴拉巴拉小魔仙0</Text>
+                </Navigator>
                 <Button className="btn btn-focus" onClick={this.onFocus}>关注</Button>
               </View>
             })}
