@@ -1,10 +1,11 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Button, Input, Navigator} from '@tarojs/components'
+import {View, Button, Text, Input, Navigator, ScrollView} from '@tarojs/components'
 import './index.scss'
 import {AtAvatar, AtFloatLayout, AtSearchBar} from "taro-ui";
 import {thisVoid} from "../../utils/helper";
 import NoteList from "../../components/note-list/note-list";
 import NoteComment from '../../components/note-comment/note-comment';
+import IconFont from "../../components/iconfont";
 
 export interface Props {
 
@@ -77,6 +78,31 @@ export default class Index extends Component<Props, State> {
     this.setState({currentTab})
   };
 
+  // 你可能感兴趣的提示信息
+  onShowInterestedTip = () => {
+    Taro.showModal({
+      title: '提示',
+      content: `这里会推荐和你兴趣类似的用户`,
+      showCancel: false,
+    })
+  };
+
+  // 你可能感兴趣的切换数据
+  onToggleInterested = () => {
+    Taro.showToast({
+      icon: 'none',
+      title: `触发换一换`
+    })
+  };
+
+  // 你可能感兴趣的关注用户
+  onFocus = () => {
+    Taro.showToast({
+      icon: 'none',
+      title: `触发关注`
+    })
+  };
+
   render() {
     return (
       <View className='index'>
@@ -94,8 +120,34 @@ export default class Index extends Component<Props, State> {
 
         <AtSearchBar value={''} placeholder={'搜索笔记、商品和用户'} onChange={thisVoid}/>
 
-        <NoteList data={[0, 1, 2, 3, 4, 5, 6]} isShowConcern={true}
+        <NoteList data={[0, 1, 2, 5]} isShowConcern={true}
                   onClick={(type, index, item) => this.onNoteItemButton(type, index, item)}/>
+
+        <View className="container interested">
+          <View className="flex a__items--center j__content--spbe">
+            <View className="c--666 flex a__items--center" onClick={this.onShowInterestedTip}>
+              <Text className="f__size--30">你可能感兴趣</Text>
+              <View className="inline--block margin-left--20">
+                <IconFont name={"guanyu1"} size={28} color={'#666'}/>
+              </View>
+            </View>
+            <Button className="btn btn-toggle" onClick={this.onToggleInterested}>
+              <Text className="c--666">换一换</Text>
+              <View className="inline--block margin-left--10">
+                <IconFont name={"shuaxin"} color={'#666'}/>
+              </View>
+            </Button>
+          </View>
+          <ScrollView className="interested-users" scrollX enable-flex>
+            {[0, 1, 2, 3, 4, 5].map((it, index) => {
+              return <View className="interested-users__item" key={'user' + it + index}>
+                <AtAvatar circle className="avatar"/>
+                <Text className="f__size--26">巴拉巴拉小魔仙0</Text>
+                <Button className="btn btn-focus" onClick={this.onFocus}>关注</Button>
+              </View>
+            })}
+          </ScrollView>
+        </View>
 
         <AtFloatLayout isOpened={this.state.isOpend}
                        className={"comment-list"}
