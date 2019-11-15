@@ -1,7 +1,9 @@
 .index {
+  height: 100%;
   min-height: 100vh;
   background-color: #f2f2f2;
 
+  //  编辑按钮
   .btn-edit {
     border: none;
     background: none;
@@ -14,6 +16,7 @@
     }
   }
 
+  // 购物车中每项
   .cart {
     &__item {
       display: flex;
@@ -57,18 +60,22 @@
       }
 
     }
-  }
 
-  .goods {
-    &__cover {
-      width: 188px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 6px;
-      flex-shrink: 0;
+    // 购物车中的商品
+
+    .goods {
+      &__cover {
+        width: 188px;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
     }
   }
 
+
+  // 购物车底部数据栏\编辑栏
   .footer {
     height: 100px;
     position: fixed;
@@ -89,6 +96,7 @@
   }
 }
 
+// 删除按钮
 .btn-del {
   position: absolute;
   right: 0;
@@ -103,6 +111,7 @@
   }
 }
 
+//  商品数量编辑，重写at-ui效果
 .input-number {
   position: absolute;
   right: 0;
@@ -141,6 +150,7 @@
   }
 }
 
+// 购物车页面中的选择框
 .checkbox {
   display: block;
   border-radius: 50%;
@@ -156,6 +166,7 @@
   }
 }
 
+// 去店铺的按钮
 .btn-go-shop {
   margin: 40px auto 100px auto;
   text-align: center;
@@ -174,6 +185,8 @@
   }
 }
 
+
+// 支付结果的样式
 
 .result {
   padding-top: 2vh;
