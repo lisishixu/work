@@ -1,7 +1,6 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {Image, Text, View,} from '@tarojs/components'
 import './myEarnings.scss'
-import './hxRecord.scss'
 import {AtTabs, AtTabsPane} from "taro-ui";
 
 export interface Props {
