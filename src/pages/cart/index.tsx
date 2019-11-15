@@ -7,12 +7,14 @@ import IconFont from "../../components/iconfont";
 import {AtDivider, AtInputNumber} from "taro-ui";
 import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import StateTip from "../../components/state-tip/state-tip";
+import {getDATA, setDATA} from "../../utils/helper";
 
 export interface Props {
 
 }
 
 export interface State {
+  type: string,//当前类型。支付结果result，其余是购物车有商品、没商品
   isEdit: boolean,//是否在编辑状态
   cartList: GoodsModel[],
   goodsList: GoodsModel[],
@@ -31,15 +33,14 @@ export default class Index extends Component<Props, State> {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
-    navigationBarTitleText: "购物车"
-  };
+  config: Config = {};
 
   static defaultProps = {};
 
   constructor(props) {
     super(props);
     this.state = {
+      type: 'cart',
       isEdit: false,
       // cartList: [],
       cartList: GoodsData,
@@ -52,6 +53,7 @@ export default class Index extends Component<Props, State> {
   }
 
   componentWillMount() {
+
   }
 
   componentDidMount() {
@@ -61,6 +63,13 @@ export default class Index extends Component<Props, State> {
   }
 
   componentDidShow() {
+    // 每次显示的时候判断显示内容，payResult约定的值可能是 success、error
+    const result = getDATA('payResult') || 'cart';
+    this.setState({type: result});
+    setDATA('payResult', null);
+    Taro.setNavigationBarTitle({
+      title: result === 'cart' ? '购物车' : '支付结果'
+    }).then();
   }
 
   componentDidHide() {
@@ -175,7 +184,42 @@ export default class Index extends Component<Props, State> {
   };
 
   render() {
+    const {type} = this.state;
+    // 订单处理结果，根据UI显示是在这个页面，也可以跳转到/pages/order/result
+    if (type === 'success' || type === 'error') {
+      return (
+        <View className="result">
+          {type === 'success' ?
+            <StateTip imgUrl={'/statics/imgs/success2.png'}>
+              <Text className="text f__weight--bold">订单支付成功</Text>
+              <Text className="text">￥{getDATA('payPrice')}</Text>
+              <Text className="text desc">仓库正在为您备货中</Text>
+              <View className=" btns">
+                <Navigator url={"/pages/order/detail?orderID="}
+                           openType={"redirect"}
+                           className={"back-order"}>查看订单</Navigator>
+                <Navigator url={"/pages/index/index"}
+                           openType={"switchTab"}
+                           className={"back-index"}>返回首页</Navigator>
+              </View>
+            </StateTip> :
+            <StateTip imgUrl={'/statics/imgs/error.png'}>
+              <Text className="text f__weight--bold">订单支付失败</Text>
+              <View className="btns">
+                <Navigator style={{borderRadius: '2px'}}
+                           openType={"navigateBack"}
+                           className={"back-index"}>重新支付</Navigator>
+              </View>
+            </StateTip>}
+          <View style={{width: '200px', margin: '0 auto '}}>
+            <AtDivider content='继续剁手' fontSize={30} fontColor='#EB3939' lineColor='#EB3939'/>
+          </View>
+          <GoodsListCard data={this.state.goodsList}/>
+        </View>
+      )
+    }
 
+    // 购物车数量为空0
     if (!this.state.cartList || this.state.cartList.length < 1) {
       return (
         <View>

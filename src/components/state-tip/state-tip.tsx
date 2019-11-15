@@ -22,6 +22,10 @@ export default class StateTip extends Component<Props, State> {
 
   static defaultProps = {};
 
+  static options = {
+    addGlobalClass: true
+  };
+
   constructor(props) {
     super(props);
     this.state = {}

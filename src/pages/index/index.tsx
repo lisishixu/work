@@ -62,7 +62,7 @@ export default class Index extends Component<Props, State> {
     this.setState({
       swipers: SwiperData,
       classify: ClassifyData
-    })
+    });
   }
 
   componentWillUnmount() {
