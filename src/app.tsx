@@ -68,6 +68,8 @@ class App extends Component {
       'pages/orderHistory/orderHistory',
       'pages/merchant/post',
       'pages/order/pay-result',
+      'pages/hxRecord/hxRecord',
+      'pages/myEarnings/myEarnings'
     ],
     window: {
       backgroundTextStyle: 'light',

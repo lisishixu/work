@@ -1,0 +1,79 @@
+.myEarnings{
+  background: #F0F0F0;
+  min-height: 100vh;
+  height: 100%;
+  padding-bottom: 50px;
+  .hx-title {
+    height: 240px;
+    width: 100%;
+    background: #F12737;
+  }
+  .this-month{
+    background: #fff;
+    width: calc(92% - 40px);
+    margin: 0px 4%;
+    padding: 50px 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .at-tabs {
+    margin-top: -200px;
+  }
+
+  .at-tabs__item {
+    background: #F12737;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .at-tabs__item-underline {
+    width: 20%;
+    margin: 0 40%;
+    background-color: #fff;
+    height: 4px;
+  }
+
+  .at-tabs__underline {
+    background-color: #F12737;
+  }
+  .title-box{
+    width: calc(92% - 40px);
+    margin: 0px 4%;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 50px;
+    .body-nothx {
+      border-bottom: 10px solid #F0F0F0;
+      padding:20px 0;
+      &:last-child{
+        border-bottom: 0;
+      }
+      .body-heard {
+        padding-bottom: 33px;
+        border-bottom: 1px solid #F0F0F0;
+      }
+      .body-body{
+        padding-bottom: 28px;
+        border-bottom: 1px solid #F0F0F0;
+        display: flex;
+        margin-top: 23px;
+        .fr{
+          margin-left: auto;
+          flex: 1;
+          margin-right: auto;
+          display: inline-block;
+        }
+        .img{
+          height: 170px;
+          border-radius: 10px;
+          margin-right: 20px;
+        }
+      }
+      .body-footer{
+        padding-top: 23px;
+      }
+    }
+  }
+}
