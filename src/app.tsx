@@ -71,6 +71,8 @@ class App extends Component {
       'pages/hxRecord/hxRecord',
       'pages/myEarnings/myEarnings',
       'pages/order/confrim',
+      'pages/businessEarnings/businessEarnings',
+      'pages/myEarnings/tgEarnings/tgEarnings',
     ],
     window: {
       backgroundTextStyle: 'light',
