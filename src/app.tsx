@@ -75,6 +75,7 @@ class App extends Component {
       'pages/myEarnings/tgEarnings/tgEarnings',
       'pages/myMerchant/index',
       'pages/myAgent/index',
+      'pages/merchant/info',
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -53,6 +53,9 @@ export default class SubordinateItem extends Component<Props, State> {
   // 前往商家详情
   goShopDetail = () => {
     if (!this.props.isShop) return;
+    Taro.navigateTo({
+      url: `/pages/merchant/info?merchantID=`
+    })
   };
 
 
