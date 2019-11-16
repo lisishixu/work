@@ -77,6 +77,7 @@ class App extends Component {
       'pages/myAgent/index',
       'pages/merchant/info',
       'pages/member/upload-qrcode',
+      'pages/merchant/business-card',
     ],
     window: {
       backgroundTextStyle: 'light',
