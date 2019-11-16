@@ -73,6 +73,8 @@ class App extends Component {
       'pages/order/confrim',
       'pages/businessEarnings/businessEarnings',
       'pages/myEarnings/tgEarnings/tgEarnings',
+      'pages/myMerchant/index',
+      'pages/myAgent/index',
     ],
     window: {
       backgroundTextStyle: 'light',

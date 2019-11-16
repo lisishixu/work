@@ -1,0 +1,39 @@
+.subordinate-item {
+  border-top: 1px solid #f2f2f2;
+  background-color: white;
+  margin-bottom: 20px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 1px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    font-size: 28px;
+    color: #666;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .cover {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-color: #f2f2f2;
+  }
+
+  .btn-call {
+    flex-shrink: 0;
+    border: none;
+    background: none;
+    width: 80px;
+
+    &:after {
+      border: none;
+    }
+  }
+}

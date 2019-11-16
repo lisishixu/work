@@ -113,11 +113,11 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sy.png',
             value: '我的代理',
-            url: '/'
+            url: '/pages/myAgent/index'
           }, {
             image: '/statics/imgs/center/icon-fx.png',
             value: '我的商家',
-            url: '/'
+            url: '/pages/myMerchant/index'
           }, {
             image: '/statics/imgs/center/icon-sc.png',
             value: '我的收益',
@@ -133,7 +133,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sz.png',
             value: '我的收藏',
-            url: '/pages/news/index'
+            url: '/'
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
@@ -215,7 +215,7 @@ export default class Index extends Component<Props, State> {
         break;
     }
     // @ts-ignore
-    this.setState(initData.user)
+    this.setState(initData.agent)
   }
 
   componentDidMount() {
