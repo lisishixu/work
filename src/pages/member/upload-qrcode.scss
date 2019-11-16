@@ -1,0 +1,39 @@
+.qrcode {
+  width: 400px;
+  height: 400px;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 10px;
+  margin: 10vh auto;
+  padding: 0;
+  border: none;
+  text-align: center;
+
+  &:after {
+    border: none;
+  }
+
+  .iconfont {
+    width: 80px;
+    margin: 140px auto 30px auto;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.btn-confrim {
+  width: 650px;
+  height: 80px;
+  line-height: 80px;
+  color: white;
+  font-size: 30px;
+  background: rgba(241, 39, 55, 1);
+  border-radius: 40px;
+  border: none;
+
+  &:after {
+    border: none;
+  }
+}
