@@ -96,6 +96,7 @@ export default class OrderConfrim extends Component<Props, State> {
   };
 
   render() {
+    const {selectedUser}=this.state;
     return (
       <View className='confrim'>
 
@@ -138,7 +139,7 @@ export default class OrderConfrim extends Component<Props, State> {
           <View className="select">
             {this.state.userList.map((it, index) => {
               return <Button
-                className={`btn select__btn ${this.state.selectedUser ? (this.state.selectedUser.name === it.name && 'active') : (index === 0 && 'active')}`}
+                className={`btn select__btn ${selectedUser ? (selectedUser.name === it.name && 'active') : (index === 0 && 'active')}`}
                 key={it.name + index}
                 onClick={this.onUserName}>{it.name}</Button>
             })}

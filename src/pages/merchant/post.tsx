@@ -1,9 +1,10 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {Image, View, Button, Text, Block} from '@tarojs/components'
+import {Image, View, Button, Text, Block, Picker} from '@tarojs/components'
 import './post.scss'
 import {AtInput} from "taro-ui";
 import IconFont from "../../components/iconfont";
 import FixedButton from "../../components/fixed-button/fixed-button";
+import {thisVoid} from "../../utils/helper";
 
 export interface Props {
 
@@ -13,6 +14,8 @@ export interface State {
   type: string,//goods上传商品，activity发布活动
   title: string,//标题
   img: string,
+  categoryList: any[],
+  selectedCategory: string,//商品分类
   price: string | number,//促销价、活动价、现价
   oldPrice: string | number,//原价、划线价
   goodsInventory: string | number,//商品库存
@@ -39,6 +42,8 @@ export default class PostInfo extends Component<Props, State> {
       goodsInventory: '',//商品库存
       activityTime: '',//活动时间
       detail: '',//详情
+      categoryList: ['口红', '洗护', '衣服'],
+      selectedCategory: '',//商品分类
     }
   }
 
@@ -107,6 +112,14 @@ export default class PostInfo extends Component<Props, State> {
     })
   };
 
+  // 选择商品分类
+  onCategory = (e) => {
+    console.log(e);
+    this.setState({
+      selectedCategory: this.state.categoryList[e.detail.value]
+    })
+  };
+
   render() {
     return (
       <View className='post'>
@@ -126,6 +139,21 @@ export default class PostInfo extends Component<Props, State> {
         </Button>
 
         <View className="container margin-top--20">
+
+          <Picker mode={'selector'}
+                  value={0}
+                  range={this.state.categoryList}
+                  onChange={this.onCategory}>
+            <AtInput
+              name='category'
+              title={this.state.type === 'goods' ? '商品分类' : '活动分类'}
+              placeholder={this.state.type === 'goods' ? '请选择商品分类' : '请选择活动分类'}
+              disabled
+              value={this.state.selectedCategory}
+              onChange={thisVoid}
+            />
+          </Picker>
+
           <AtInput
             name='title'
             title='标题'
@@ -203,6 +231,7 @@ export default class PostInfo extends Component<Props, State> {
             }
           </Button>
         </View>
+
 
         <FixedButton text={this.state.type === 'goods' ? '上传商品' : '上传活动'} onClick={this.onConfrim}/>
 
