@@ -61,19 +61,20 @@
 
     }
 
-    // 购物车中的商品
 
-    .goods {
-      &__cover {
-        width: 188px;
-        height: 170px;
-        object-fit: cover;
-        border-radius: 6px;
-        flex-shrink: 0;
-      }
-    }
   }
 
+  // 购物车中的商品
+
+  .goods {
+    &__cover {
+      width: 188px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+  }
 
   // 购物车底部数据栏\编辑栏
   .footer {
