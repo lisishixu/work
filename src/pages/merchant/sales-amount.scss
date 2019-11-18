@@ -1,0 +1,22 @@
+.sales-amount {
+  height: 100%;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+
+  .time {
+    display: block;
+    height: 80px;
+    line-height: 80px;
+    padding-left: 3%;
+    font-size: 28px;
+    color: #444;
+  }
+
+  .data {
+    //flex a__items--center container
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 3%;
+  }
+}

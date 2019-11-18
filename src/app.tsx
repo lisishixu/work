@@ -83,6 +83,7 @@ class App extends Component {
       'pages/joinAgency/index',
       'pages/merchant/info-edit',
       'pages/myInviteCode/index',
+      'pages/merchant/sales-amount',
     ],
     window: {
       backgroundTextStyle: 'light',
