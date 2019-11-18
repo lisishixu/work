@@ -1,6 +1,7 @@
 .index{
   background: linear-gradient(top,#E83B3C,#F82B2B);
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   .img{
     width: 100%;
   }
@@ -9,7 +10,8 @@
     background: #fff;
     width: 90%;
     margin: 0 5%;
-    margin-top: 30px;
+    margin-top: 50px;
+    border-radius: 20px;
     .img{
       width: 290px;
       height: 256px;
@@ -38,7 +40,15 @@
       background: #F12735;
       color: #fff;
       border-radius: 100px;
-
+      text-align: center;
+      line-height: 60px;
+      margin-left: calc(50% - 110px);
+      margin-bottom: 30px;
+    }
+    .join-img{
+      width: 23px;
+      height: 70px;
+      position: absolute;
     }
   }
 
