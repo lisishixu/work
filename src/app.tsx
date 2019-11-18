@@ -80,7 +80,8 @@ class App extends Component {
       'pages/merchant/business-card',
       'pages/paymentMoney/index',
       'pages/merchant/qrcode',
-      'pages/joinAgency/index'
+      'pages/joinAgency/index',
+      'pages/merchant/info-edit',
     ],
     window: {
       backgroundTextStyle: 'light',
