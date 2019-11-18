@@ -52,12 +52,12 @@
   }
   .content-box{
     .title{
-      padding:30px;
-      border-bottom: 1px solid #F0F0F0;
+      padding:30px 0 0;
     }
     .center-box{
       display: flex;
       padding:30px 0;
+      width: 100%;
 
       border-bottom: 10px solid #F0F0F0;
       .img{

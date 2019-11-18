@@ -1,0 +1,23 @@
+.index{
+  padding: 50px 35px 0;
+  .payment{
+    margin-top: 50px;
+    .view{
+      display: flex;
+      justify-content: space-between;
+      .text{
+        background:#FEE9EB ;
+        color: #333;
+        text-align: center ;
+        display: inline-block;
+        width:210px;
+        height:82px;
+        line-height: 82px;
+        &.addClsss{
+          color: #fff;
+          background: #F12737;
+        }
+      }
+    }
+  }
+}
