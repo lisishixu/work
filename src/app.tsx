@@ -86,6 +86,7 @@ class App extends Component {
       'pages/merchant/sales-amount',
       'pages/setUpShop/index',
       'pages/myBankCard/index',
+      'pages/myBankCard/addBankCard/addBankCard',
       'pages/user/withdraw-deposit',
     ],
     window: {
