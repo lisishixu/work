@@ -1,0 +1,45 @@
+.index{
+  background: linear-gradient(top,#E83B3C,#F82B2B);
+  height: 100vh;
+  .img{
+    width: 100%;
+  }
+  .center{
+    position: relative;
+    background: #fff;
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 30px;
+    .img{
+      width: 290px;
+      height: 256px;
+      margin-top: 70px;
+      margin-bottom: 47px;
+    }
+    .title-img{
+      background: url("../../statics/imgs/code.png") no-repeat center;
+      background-size: cover;
+      width: 438px;
+      height: 86px;
+      text-align: center;
+      line-height: 70px;
+      font-size: 26px;
+      color: #fff;
+      margin: 0 auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -36px;
+    }
+    .view{
+      display: inline-block;
+      width:220px;
+      height: 60px;
+      background: #F12735;
+      color: #fff;
+      border-radius: 100px;
+
+    }
+  }
+
+}

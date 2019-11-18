@@ -82,6 +82,7 @@ class App extends Component {
       'pages/merchant/qrcode',
       'pages/joinAgency/index',
       'pages/merchant/info-edit',
+      'pages/myInviteCode/index',
     ],
     window: {
       backgroundTextStyle: 'light',

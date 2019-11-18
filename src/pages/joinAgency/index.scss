@@ -2,6 +2,7 @@
   background: #EBEBEB;
   min-height: 100vh;
   height: 100%;
+  padding-bottom: 30px;
   .userItem{
      background: #fff;
      padding: 30px;
@@ -11,6 +12,10 @@
     }
     .top{
       margin-bottom: 30px;
+    }
+    .place-text{
+     font-size: 26px;
+      color: #666;
     }
     .acquire{
       background: #F12737;
