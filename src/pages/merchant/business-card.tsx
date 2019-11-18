@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text} from '@tarojs/components'
+import {View, Text, Button} from '@tarojs/components'
 import './business-card.scss'
 import {AtAvatar} from "taro-ui";
 import IconFont from "../../components/iconfont";
@@ -40,6 +40,12 @@ export default class BusinessCard extends Component<Props, State> {
   componentDidHide() {
   }
 
+  onShareQrcode = () => {
+    Taro.navigateTo({
+      url: `/pages/merchant/qrcode`
+    })
+  };
+
   render() {
     return (
       <View className='business-card'>
@@ -66,6 +72,11 @@ export default class BusinessCard extends Component<Props, State> {
               <Text className="text">河南省郑州市金水区金水东路雅宝东方国际</Text>
             </View>
           </View>
+        </View>
+
+        <View className="btns">
+          <Button className="btn btn-generate" onClick={this.onShareQrcode}>生成名片二维码</Button>
+          <Button className="btn btn-share" onClick={this.onShareQrcode}>分享我的名片</Button>
         </View>
 
       </View>
