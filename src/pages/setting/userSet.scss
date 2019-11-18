@@ -36,6 +36,15 @@
       background: linear-gradient(top,#FFAF00,#FFCF00);
       border-radius: 50%;
       padding: 5px;
+      position: relative;
+    }
+    .item-extra__icon{
+      right: 13px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: absolute;
     }
   }
 }

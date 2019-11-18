@@ -1,0 +1,39 @@
+.index{
+  .view{
+    width: calc(90% - 100px);
+    margin: 0 5%;
+    padding: 40px 50px;
+    border-radius: 20px;
+    margin-top: 30px;
+    .bankCardName{
+      font-size: 34px;
+      color: #fff;
+    }
+    .cardNum{
+      font-size: 34px;
+      color: #fff;
+      margin-top: 37px;
+    }
+  }
+  .view:nth-child(1){
+    background: linear-gradient(left,#C7A9FE,#8395FB);
+    box-shadow: 3px 0 10px #8395FB;
+  }
+  .view:nth-child(2){
+    background: linear-gradient(left,#6DC8FF,#8395FB);
+    box-shadow: 3px 0 10px #8395FB;
+  }
+  .view:nth-child(3){
+    background: linear-gradient(left,#FF6D4E,#FE5850);
+    box-shadow: 3px 0 10px #FE5850;
+  }
+  .flex{
+    align-items: center;
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 65px;
+    .f__size--30{
+      margin-left: 20px;
+    }
+  }
+}

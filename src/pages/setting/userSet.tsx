@@ -1,7 +1,7 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Navigator} from '@tarojs/components'
+import {View, Text, Navigator, Picker} from '@tarojs/components'
 import './userSet.scss'
-import {AtAvatar, AtList, AtListItem, AtRate} from "taro-ui";
+import {AtAvatar, AtIcon, AtList, AtListItem, AtRate} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import IconFont from "../../components/iconfont";
 
@@ -15,6 +15,9 @@ export interface State {
   value: number
   notUser: boolean
   avatar: string
+  selector:any[]
+  selectorChecked:string
+  dateSel:string
 }
 
 export default class UserSet extends Component<Props, State> {
@@ -26,11 +29,14 @@ export default class UserSet extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      isVip: false,
+      isVip: true,
       vipLevel: 4,
       value: 4,
       notUser: false,
-      avatar: '../../statics/imgs/banner1.png'
+      avatar: '../../statics/imgs/banner1.png',
+      selector: ['男', '女'],
+      selectorChecked: '男',
+      dateSel: '2018-04-22'
     }
   }
 
@@ -62,7 +68,16 @@ export default class UserSet extends Component<Props, State> {
       this.setState({avatar});
     })
   };
-
+  onChange = e => {
+    this.setState({
+      selectorChecked: this.state.selector[e.detail.value]
+    })
+  }
+  onDateChange = e => {
+    this.setState({
+      dateSel: e.detail.value
+    })
+  }
   render() {
     return (
       <View className='userSet'>
@@ -86,8 +101,28 @@ export default class UserSet extends Component<Props, State> {
                 : <View style={'margin-left:auto'}><AtRate max={4} value={this.state.value}/> </View>
               }
             </View>}
-            <AtListItem title='性别' extraText='女' arrow='right'/>
-            <AtListItem title='生日' extraText='未填写' arrow='right'/>
+             <View className={'vipLevel setImg'} style={'position:relative'}>
+                <Text className={'text f__size--28 c--333'}>性别</Text>
+              <View  style={'margin-left:83%'} className={'f__size--28 c--666'}>
+                <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
+                  {this.state.selectorChecked}
+                </Picker>
+              </View>
+               <View className={'item-extra__icon'}>
+                 <AtIcon value='chevron-right' size='17.5' color='#666'></AtIcon>
+               </View>
+             </View>
+            <View className={'vipLevel setImg'} style={'position:relative'}>
+              <Text className={'text f__size--28 c--333'}>生日</Text>
+              <View  style={'margin-left:65%'} className={'f__size--28 c--666 picker'}>
+                <Picker value={'0'} mode='date' onChange={this.onDateChange} >
+                   {this.state.dateSel}
+                </Picker>
+              </View>
+              <View className={'item-extra__icon'}>
+                <AtIcon value='chevron-right' size='17.5' color='#666'></AtIcon>
+              </View>
+            </View>
             <Navigator url={'/pages/bind/bindTel'}>
               <AtListItem title='电话号码' extraText='去绑定' arrow='right'/>
             </Navigator>
