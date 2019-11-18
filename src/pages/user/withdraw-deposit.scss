@@ -2,4 +2,95 @@
   height: 100%;
   min-height: 100vh;
   background-color: #f2f2f2;
+  padding-top: 20px;
+
+  .money {
+    display: block;
+    padding-top: 30px;
+    color: #666;
+    font-size: 30px;
+  }
+
+  .money-input {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    font-size: 34px;
+  }
+
+  .small-title {
+    padding-left: 3%;
+    color: #888;
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    width: auto;
+    background-color: white;
+    border-bottom: 1px solid #f2f2f2;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &__name {
+      flex: 1;
+      margin-left: 30px;
+      color: #333;
+      text-align: left;
+    }
+
+    &__check {
+      width: 40px;
+      height: 40px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.checked {
+        background-color: #EB3939;
+      }
+    }
+
+    &-input {
+      display: block;
+      margin-left: calc(3% + 30px);
+      padding: 30px 3%;
+    }
+  }
+
+  .mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 9;
+
+    &-box {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      border-radius: 20px 20px 0 0;
+      padding-bottom: 60px;
+    }
+
+    &__title {
+      padding: 20px 3%;
+
+      .h1 {
+        display: block;
+        font-size: 34px;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
