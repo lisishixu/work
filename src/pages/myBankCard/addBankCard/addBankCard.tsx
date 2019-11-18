@@ -53,7 +53,7 @@ export default class AddBankCard extends Component<Props, State> {
     this.setState({
       userId
     })
-    // 在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
+    // 在小程序中，如果想改变 value 的值，需要 `ret1urn value` 从而改变输入框的当前值
     return userId
   }
   changebankCard (bankCard) {
