@@ -1,0 +1,25 @@
+.index{
+  background: #EBEBEB;
+  min-height: 100vh;
+  height: 100%;
+  .userItem{
+     background: #fff;
+     padding: 30px;
+    border-bottom: 1px solid #EBEBEB;
+    &:first-child{
+     border-top: 10px solid #F5F5F5;
+    }
+    .top{
+      margin-bottom: 30px;
+    }
+    .acquire{
+      background: #F12737;
+      border-radius: 100px;
+      color: #fff;
+      padding: 10px 40px;
+      display: inline-block;
+      margin-top: -60px;
+      float: right;
+    }
+  }
+}

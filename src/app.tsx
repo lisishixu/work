@@ -79,7 +79,8 @@ class App extends Component {
       'pages/member/upload-qrcode',
       'pages/merchant/business-card',
       'pages/paymentMoney/index',
-      'pages/merchant/qrcode'
+      'pages/merchant/qrcode',
+      'pages/joinAgency/index'
     ],
     window: {
       backgroundTextStyle: 'light',
