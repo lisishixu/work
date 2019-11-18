@@ -84,6 +84,7 @@ class App extends Component {
       'pages/merchant/info-edit',
       'pages/myInviteCode/index',
       'pages/merchant/sales-amount',
+      'pages/setUpShop/index',
     ],
     window: {
       backgroundTextStyle: 'light',

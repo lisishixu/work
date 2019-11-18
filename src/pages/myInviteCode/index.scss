@@ -2,6 +2,7 @@
   background: linear-gradient(top,#E83B3C,#F82B2B);
   min-height: 100vh;
   height: 100%;
+  padding-bottom: 30px;
   .img{
     width: 100%;
   }
@@ -10,7 +11,6 @@
     background: #fff;
     width: 90%;
     margin: 0 5%;
-    margin-top: 50px;
     border-radius: 20px;
     .img{
       width: 290px;
@@ -51,5 +51,34 @@
       position: absolute;
     }
   }
-
+  .footer{
+    background:#fff;
+    width: calc(90% - 80px);
+    margin: 0 5%;
+    border-radius: 20px;
+    margin-top:70px;
+    padding: 30px 40px;
+    .flex{
+      justify-content: center;
+      align-items: center;
+      .text{
+        margin: 0 20px;
+        font-weight: 600;
+        color:#F12735 ;
+        font-size: 26px;
+      }
+      .rotate{
+        transform: rotate(180deg);
+      }
+    }
+    .last-footer{
+        .view{
+          margin-bottom: 35px;
+          .f__size--24{
+            margin-bottom: 10px;
+            font-weight: 600;
+          }
+        }
+    }
+  }
 }
