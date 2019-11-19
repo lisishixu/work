@@ -45,6 +45,14 @@ export default class OrderItem extends Component<Props, State> {
   componentDidHide() {
   }
 
+  // 前往发布动态页面
+  goPost = (event) => {
+    Taro.navigateTo({
+      url: `/pages/publish/index?goodsID=${'this.props.goodsID'}`
+    });
+    event.stopPropagation();
+  };
+
   render() {
     // let btns = ``;
     // let state = ``;
@@ -97,7 +105,13 @@ export default class OrderItem extends Component<Props, State> {
           </View>}
 
         <Navigator url={`/pages/order/detail?orderID=`} className="goods flex a__items--center">
-          <Image src="http://yanxuan.nosdn.127.net/425c5a909f5806d55c151457a5baa0af.png" className="goods__cover"/>
+          <View className="cover-warp" onClick={this.goPost}>
+            <Image src="http://yanxuan.nosdn.127.net/425c5a909f5806d55c151457a5baa0af.png" className="goods__cover"/>
+            <View className="btn-post">
+              <IconFont name={'tianjiazhaopian'} color={'white'} size={22}/>
+              <Text className="margin-left--10">发布素材</Text>
+            </View>
+          </View>
           <View className="content">
             <View className="flex a__items--center j__content--spbe">
               <Text className="c--333 f__size--30 ellipsis-2">SunRype 莓水果条 14克</Text>
