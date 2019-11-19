@@ -40,7 +40,7 @@ export default class UserSet extends Component<Props, State> {
       avatar: '../../statics/imgs/banner1.png',
       selector: ['男', '女'],
       selectorChecked: '男',
-      dateSel: '2018-04-22'
+      dateSel: '1990-01-01'
     }
   }
 
@@ -109,7 +109,7 @@ export default class UserSet extends Component<Props, State> {
                 <Text className={'text f__size--28 c--333'}>性别</Text>
               <View  style={'margin-left:83%'} className={'f__size--28 c--666'}>
                 <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
-                  {this.state.selectorChecked}
+                 <View> {this.state.selectorChecked}</View>
                 </Picker>
               </View>
                <View className={'item-extra__icon'}>
@@ -119,8 +119,8 @@ export default class UserSet extends Component<Props, State> {
             <View className={'vipLevel setImg'} style={'position:relative'}>
               <Text className={'text f__size--28 c--333'}>生日</Text>
               <View  style={'margin-left:65%'} className={'f__size--28 c--666 picker'}>
-                <Picker value={'0'} mode='date' onChange={this.onDateChange} >
-                   {this.state.dateSel}
+                <Picker value={'0'} mode='date' onChange={this.onDateChange} start={'1970-01-01'} end={'2020-01-01'}>
+                  <View>{this.state.dateSel}</View>
                 </Picker>
               </View>
               <View className={'item-extra__icon'}>
