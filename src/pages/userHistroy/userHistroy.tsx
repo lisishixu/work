@@ -19,7 +19,11 @@ export interface State {
 
 export default class UserHistroy extends Component<Props, State> {
 
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: "消费记录",
+    navigationBarTextStyle: "white",
+    navigationBarBackgroundColor: '#F12737'
+  };
 
   static defaultProps = {};
 

@@ -13,14 +13,18 @@ export interface State {
 
 export default class myEarnings extends Component<Props, State> {
 
-    config: Config = {};
+    config: Config = {
+      navigationBarTitleText: "我的收益",
+      navigationBarTextStyle: "white",
+      navigationBarBackgroundColor: '#F12737'
+    };
 
     static defaultProps = {};
 
     constructor(props) {
         super(props);
         this.state = {
-          current: 1,
+          current: 0,
         }
     }
 

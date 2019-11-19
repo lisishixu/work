@@ -13,7 +13,11 @@ export interface State {
 
 export default class Index extends Component<Props, State> {
 
-    config: Config = {};
+    config: Config = {
+      navigationBarTitleText: "我要开店",
+      navigationBarTextStyle: "white",
+      navigationBarBackgroundColor: '#F12737'
+    };
 
     static defaultProps = {};
 

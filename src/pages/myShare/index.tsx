@@ -12,7 +12,11 @@ export interface State {
   isAllChecked: boolean,//是否全选
 }
 export default class Index extends Component<Props, State> {
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: "我的分享",
+    navigationBarTextStyle: "white",
+    navigationBarBackgroundColor: '#F12737'
+  };
   static defaultProps = {};
   constructor(props) {
     super(props);

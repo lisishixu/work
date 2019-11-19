@@ -16,7 +16,11 @@ export interface State {
 
 export default class OrderHistory extends Component<Props, State> {
 
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: "订单记录",
+    navigationBarTextStyle: "white",
+    navigationBarBackgroundColor: '#F12737'
+  };
 
   static defaultProps = {};
 

@@ -52,6 +52,7 @@ export default class ShaAndCollection extends Component<Props, State> {
     this.setState({isEdit: !this.state.isEdit})
   }
   onCheck = (index) => {
+    console.log(index)
     const {sharelist,} = this.state;
     sharelist[index]['checked'] = !sharelist[index]['checked'];
     this.setState({sharelist})
@@ -98,12 +99,12 @@ export default class ShaAndCollection extends Component<Props, State> {
           return <View className={'share-box'} key={'share' + index}>
             {this.state.isEdit &&
             <Block>
-                <Label className={`share--label ${it['checked']?'checked':""}`}
+                <View className={`share--label ${it['checked']?'checked':""}`}
                        onClick={() => {
                          this.onCheck(index)
                        }}>
                     <IconFont name={'duihao'} size={30}/>
-                </Label>
+                </View>
             </Block>}
             <Image src={it.product_img} className={'share--img'}/>
             <View className={'sha-box--right'}>

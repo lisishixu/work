@@ -68,7 +68,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sy.png',
             value: '我的收益',
-            url: '/'
+            url: '/pages/myEarnings/myEarnings'
           }, {
             image: '/statics/imgs/center/icon-fx.png',
             value: '我的分享',
@@ -76,7 +76,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sc.png',
             value: '我的收藏',
-            url: '/pages/news/index'
+            url: '/pages/myCollection/index'
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
@@ -117,7 +117,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-fx.png',
             value: '我的商家',
-            url: '/pages/myMerchant/index'
+            url: '/pages/myMerchant/tgEarnings/tgEarnings'
           }, {
             image: '/statics/imgs/center/icon-sc.png',
             value: '我的收益',
@@ -133,7 +133,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sz.png',
             value: '我的收藏',
-            url: '/'
+            url: '/pages/myCollection/index'
           }, {
             image: '/statics/imgs/center/icon-xx.png',
             value: '消息中心',
@@ -178,7 +178,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-qb.png',
             value: '我的业绩',
-            url: '/'
+            url: '/pages/myMerchant/index'
           }, {
             image: '/statics/imgs/center/icon-tx2.png',
             value: '我的账户',
@@ -186,7 +186,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-sc2.png',
             value: '我的收藏',
-            url: '/pages/news/index'
+            url: '/pages/myCollection/index'
           }, {
             image: '/statics/imgs/center/icon-tj.png',
             value: '我的推荐',
@@ -215,7 +215,7 @@ export default class Index extends Component<Props, State> {
         break;
     }
     // @ts-ignore
-    this.setState(initData.agent)
+    this.setState(initData.user)
   }
 
   componentDidMount() {

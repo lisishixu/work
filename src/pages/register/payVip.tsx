@@ -14,7 +14,11 @@ export interface State {
 
 export default class PayVip extends Component<Props, State> {
 
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: "成为会员",
+    navigationBarTextStyle: "white",
+    navigationBarBackgroundColor: '#F12737'
+  };
 
   static defaultProps = {};
 

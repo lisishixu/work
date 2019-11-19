@@ -13,7 +13,11 @@ export interface State {
 
 export default class TgEarnings extends Component<Props, State> {
 
-    config: Config = {};
+    config: Config = {
+      navigationBarTitleText: "我的收益",
+      navigationBarTextStyle: "white",
+      navigationBarBackgroundColor: '#F12737'
+    };
 
     static defaultProps = {};
 

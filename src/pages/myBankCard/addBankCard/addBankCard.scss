@@ -1,7 +1,7 @@
 .addBankCard{
   .card-title{
     background: #F0F0F0;
-    font-size: 24px;
+    font-size: 26px;
     color: #666666;
     padding: 30px 35px;
   }
@@ -9,5 +9,10 @@
     font-size: 28px;
     color: #101010;
     font-weight: 600;
+  }
+  .at-input {
+    input{
+      font-size: 26px;
+    }
   }
 }

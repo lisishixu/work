@@ -22,7 +22,11 @@ export interface State {
 
 export default class UserSet extends Component<Props, State> {
 
-  config: Config = {};
+  config: Config = {
+    navigationBarTitleText: "设置",
+    navigationBarTextStyle: "white",
+    navigationBarBackgroundColor: '#F12737'
+  };
 
   static defaultProps = {};
 
