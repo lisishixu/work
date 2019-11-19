@@ -1,5 +1,6 @@
 import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
+
 // import {apiUpload} from "../constants/api";
 
 /**
@@ -17,17 +18,14 @@ function request(params, callbak, header = false) {
   method = params.method || 'GET';
   let contentType = 'application/x-www-from-urlencoded';
   contentType = params.contentType || contentType;
-  const userInfo = Taro.getStorageSync('userInfo');
-  if (userInfo) {
-    data['uid'] = userInfo.id;
-  }
   const option = {
     url: url,
     data,
     method,
     header: {
       'content-type': contentType,
-      'Cookie': 'token=' + Taro.getStorageSync('token') || '',
+      // 'Cookie': 'token=' + Taro.getStorageSync('token') || '',
+      'token': Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQxNTg1MjMsInVzZXJJZCI6MX0.uksM8C4j91KPDyODfUm2p6cqTnXiCeOu3Mxp3Y1E2Vc', //测试阶段临时token
     },
     success(res) {
       return callbak(header ? res : res.data);

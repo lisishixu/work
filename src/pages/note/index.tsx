@@ -6,15 +6,20 @@ import {thisVoid} from "../../utils/helper";
 import NoteList from "../../components/note-list/note-list";
 import NoteComment from '../../components/note-comment/note-comment';
 import IconFont from "../../components/iconfont";
+import {post} from "../../utils/request";
+import {apiUserEndorse} from "../../constants/api";
 
 export interface Props {
 
 }
 
 export interface State {
+  pageNum: number,
+  pageSize: number
   currentTab: number,//0 推荐，1关注
   isOpend: boolean,
-  comments: any[]
+  comments: any[],
+  noteList: any[] | null
 }
 
 export default class Index extends Component<Props, State> {
@@ -29,9 +34,12 @@ export default class Index extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+      pageNum: 1,
+      pageSize: 20,
       currentTab: 0,
       isOpend: false,
-      comments: [0, 1, 2, 3, 4, 5, 6]
+      comments: [0, 1, 2, 3, 4, 5, 6],
+      noteList: null
     }
   }
 
@@ -39,6 +47,7 @@ export default class Index extends Component<Props, State> {
   }
 
   componentDidMount() {
+    this.getList()
   }
 
   componentWillUnmount() {
@@ -103,6 +112,28 @@ export default class Index extends Component<Props, State> {
     });
   };
 
+  // 获取数据
+  getList = () => {
+    const {pageNum, pageSize} = this.state;
+    post(apiUserEndorse, {
+      pageNum, pageSize
+    }, res => {
+      if (res.code == 200) {
+        this.setState({
+          noteList: res.data.list || []
+        })
+      } else {
+        this.setState({
+          noteList: []
+        });
+        Taro.showToast({
+          icon: 'none',
+          title: res.msg || '网络繁忙，请稍后再试'
+        })
+      }
+    })
+  };
+
   render() {
     return (
       <View className='index'>
@@ -120,8 +151,10 @@ export default class Index extends Component<Props, State> {
 
         <AtSearchBar value={''} placeholder={'搜索笔记、商品和用户'} onChange={thisVoid}/>
 
-        <NoteList data={[0, 1, 2, 5]} isShowConcern={true}
+        {this.state.noteList &&
+        <NoteList data={this.state.noteList} isShowConcern={true}
                   onClick={(type, index, item) => this.onNoteItemButton(type, index, item)}/>
+        }
 
         <View className="container interested">
           <View className="flex a__items--center j__content--spbe">
