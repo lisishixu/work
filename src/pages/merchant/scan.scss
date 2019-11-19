@@ -1,9 +1,16 @@
 .scan {
+  height: 100%;
   min-height: 100vh;
   background-color: #1d1b19;
   padding-top: 14vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 
-  .camera {
+  .camera, .camera-component {
     width: 400px;
     height: 400px;
     margin: 0 auto;
@@ -21,7 +28,7 @@
   .page-bottom {
     position: absolute;
     right: 0;
-    bottom: 4vh;
+    bottom: 20vh;
     left: 0;
     color: white;
     text-align: center;

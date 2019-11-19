@@ -43,7 +43,7 @@ export default class Scan extends Component<Props, State> {
   onError = () => {
     Taro.showModal({
       title: '无法使用',
-      content: '需要在微信6.7.3以上版本中授权才能使用扫码功能，如果无法使用可切换至手动输入核销码。'
+      content: '需要在app最新版本中授权才能使用扫码功能，如果无法使用可切换至手动输入核销码。'
     })
   };
 
