@@ -88,6 +88,7 @@ class App extends Component {
       'pages/myBankCard/index',
       'pages/myBankCard/addBankCard/addBankCard',
       'pages/user/withdraw-deposit',
+      'pages/order/after-sales',
     ],
     window: {
       backgroundTextStyle: 'light',
