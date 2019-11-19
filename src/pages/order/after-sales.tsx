@@ -1,6 +1,7 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text} from '@tarojs/components'
+import {View} from '@tarojs/components'
 import './after-sales.scss'
+import OrderItem from "./components/order-item";
 
 export interface Props {
 
@@ -39,7 +40,8 @@ export default class AfterSales extends Component<Props, State> {
   render() {
     return (
       <View className='after-sales'>
-
+        <OrderItem header={'shop'} showTotal={false}/>
+        <OrderItem header={'shop'} showTotal={false}/>
       </View>
     )
   }

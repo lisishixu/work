@@ -70,7 +70,7 @@ export default class OrderNav extends Component<Props, State> {
             <Text className="status">评价</Text>
             <Text className="number">{this.props.data.evaluation || 0}</Text>
           </Navigator>
-          <Navigator className="link" url={`/pages/order/index?type=after-sales`}>
+          <Navigator className="link" url={`/pages/order/after-sales`}>
             <Text className="status">退款/售后</Text>
             <Text className="number">{this.props.data.reimburse || 0}</Text>
           </Navigator>
