@@ -6,4 +6,5 @@ export interface GoodsModel {
   product_img: string,
   sales_volume?: number,//销量
   product_detail?: string,//详情
+  product_jindou?: number
 }

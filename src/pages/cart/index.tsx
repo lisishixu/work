@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Image, Button, Label, Navigator, Block} from '@tarojs/components'
+import {View, Text, Image, Button, Navigator, Block} from '@tarojs/components'
 import './index.scss'
 import {GoodsData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
@@ -78,7 +78,10 @@ export default class Index extends Component<Props, State> {
   // 选择、不选某一项
   onCheck = (index) => {
     console.log('目前选中的项目:', index);
-    const {cartList,} = this.state;
+    // note：2019/11/19
+    // 支付宝小程序直接获取this.state的数据修改checked时页面数据没有更新，
+    // 暂时通过 JSON.parse(JSON.stringify())这种形式创建一个和state无关的新数组可以触发更新
+    const cartList = JSON.parse(JSON.stringify(this.state.cartList));
     let {isAllChecked, checkedNumber} = this.state;
     cartList[index]['checked'] = !cartList[index]['checked'];
     if (cartList[index]['checked']) {
@@ -163,19 +166,19 @@ export default class Index extends Component<Props, State> {
         let {checkedNumber} = this.state;
 
         if (index >= 0) {
-          // 删除单个
+          // 删除单个，直接修改原数组
           const it = cartList[index];
           if (it['checked']) {
             checkedNumber--;
           }
           cartList.splice(index, 1);
         } else {
-          // 批量删除
+          // 批量删除，赋值到newArr
           newArr = cartList.filter(item => !item['checked']);
           checkedNumber = 0;
         }
 
-        this.setState({cartList: newArr, checkedNumber}, () => {
+        this.setState({cartList: newArr || cartList, checkedNumber}, () => {
           this.computeTotalPrice()
         })
       }
@@ -249,12 +252,12 @@ export default class Index extends Component<Props, State> {
         <View className="cart-list">
           {this.state.cartList.map((it, index) => {
             return <View className={"cart__item goods"} key={'cart' + index}>
-              <Label className={`checkbox ${it['checked'] ? 'checked' : ''}`}
-                     onClick={() => {
-                       this.onCheck(index)
-                     }}>
+              <View className={`checkbox ${it['checked'] ? 'checked' : ''}`}
+                    onClick={() => {
+                      this.onCheck(index)
+                    }}>
                 {it['checked'] && <IconFont name={"duihao"} size={28}/>}
-              </Label>
+              </View>
               <Image src={it.product_img} className={"goods__cover"}/>
               <View className="cart__content">
                 <Text className="block name ellipsis-2">{it.product_name}</Text>
@@ -274,9 +277,10 @@ export default class Index extends Component<Props, State> {
                         this.onChangeNum(index, event)
                       }}
                     />
-                    <Button className={"btn-del"} onClick={() => {
-                      this.onDelChecked(index)
-                    }}>
+                    <Button className={"btn-del"}
+                            onClick={() => {
+                              this.onDelChecked(index)
+                            }}>
                       <IconFont name={"shanchu"} size={30}/>
                     </Button>
                   </Block> : <Text className="input-number">x {it['num'] || 1}</Text>}
@@ -286,7 +290,7 @@ export default class Index extends Component<Props, State> {
         </View>
 
         <View className="container footer">
-          <Label className="flex__1 flex a__items--center" onClick={this.onCheckAll}>
+          <View className="flex__1 flex a__items--center" onClick={this.onCheckAll}>
             {this.state.isAllChecked ?
               <View className={`checkbox inline checked`}>
                 <IconFont name={"duihao"} size={28}/>
@@ -295,7 +299,7 @@ export default class Index extends Component<Props, State> {
               </View>
             }
             <Text className="c--666">全选</Text>
-          </Label>
+          </View>
           <View>
 
             {!this.state.isEdit &&
