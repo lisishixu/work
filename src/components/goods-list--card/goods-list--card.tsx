@@ -60,7 +60,7 @@ export default class GoodsListCard extends Component<Props, State> {
 
   render() {
     return (
-      <View className='goods-list'>
+      <View className='goods-list--card'>
         {this.props.data && this.props.data.map((it, index) => {
           return <Navigator url={`/pages/goods/detail?id=${it.product_id}`}
                             className='goods-item'

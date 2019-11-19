@@ -100,8 +100,12 @@ export default class GoodsIndex extends Component<Props, State> {
           <Button className={`sort__item  ${currentKey === 'jiage' ? 'active' : ''}`}
                   onClick={() => this.onSort('jiage')}>
             <Text className="sort__text">价格</Text>
-            <IconFont name={"shangpinpaixu"} size={36}
-                      color={currentKey === 'jiage' ? (currentSort === 'asc' ? ['#EB3939', '#888'] : ['#888', '#EB3939']) : '#888'}/>
+            {process.env.TARO_ENV === 'alipay' ?
+              <IconFont name={"shangpinpaixu"} size={36}
+                        color={currentKey === 'jiage' ? '#EB3939' : '#888'}/> :
+              <IconFont name={"shangpinpaixu"} size={36}
+                        color={currentKey === 'jiage' ? (currentSort === 'asc' ? ['#EB3939', '#888'] : ['#888', '#EB3939']) : '#888'}/>}
+
           </Button>
           {/*<Button className={`sort__item  ${currentKey === 'shaixuan' ? 'active' : ''}`}*/}
           {/*        onClick={() => this.onSort('shaixuan')}>*/}
