@@ -1,10 +1,18 @@
 export const URL_BASE = 'http://192.168.1.174:8081';
 export const API_BASE = 'http://192.168.1.174:8081';
 
-//  代言列表 post
-const USER_ENDORSE = `${API_BASE}/miniProgram/user/userEndorse`;
+/**
+ * 2019/11/20 约定：
+ * 接口名称统一使用小驼峰命名，前缀get/post
+ * get表示获取数据（列表、详情等），post表示更新数据（编辑、新增等）
+ * 如果后端接收方式和get、post命名约定不符，可以写在名称后面备注。
+ */
+
+
+//  代言列表，post接收
+const getUserEndorse = `${API_BASE}/miniProgram/user/userEndorse`;
 
 
 export default {
-  USER_ENDORSE
+  getUserEndorse
 }

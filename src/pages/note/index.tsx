@@ -115,7 +115,7 @@ export default class Index extends Component<Props, State> {
   // 获取数据
   getList = () => {
     const {pageNum, pageSize} = this.state;
-    post(api.USER_ENDORSE, {
+    post(api.getUserEndorse, {
       pageNum, pageSize
     }, res => {
       if (res.code == 200) {

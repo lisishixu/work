@@ -78,10 +78,7 @@ export default class Index extends Component<Props, State> {
   // 选择、不选某一项
   onCheck = (index) => {
     console.log('目前选中的项目:', index);
-    // note：2019/11/19
-    // 支付宝小程序直接获取this.state的数据修改checked时页面数据没有更新，
-    // 暂时通过 JSON.parse(JSON.stringify())这种形式创建一个和state无关的新数组可以触发更新
-    const cartList = JSON.parse(JSON.stringify(this.state.cartList));
+    const {cartList} = this.state;
     let {isAllChecked, checkedNumber} = this.state;
     cartList[index]['checked'] = !cartList[index]['checked'];
     if (cartList[index]['checked']) {
@@ -92,7 +89,8 @@ export default class Index extends Component<Props, State> {
     isAllChecked = checkedNumber === cartList.length;
 
     this.setState({cartList, isAllChecked, checkedNumber}, () => {
-      this.computeTotalPrice()
+      this.computeTotalPrice();
+      this.forceUpdate();//强制触发数据更新
     });
   };
 
