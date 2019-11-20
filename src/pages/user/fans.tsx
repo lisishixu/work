@@ -31,8 +31,8 @@ export default class UserFans extends Component<Props, State> {
     super(props);
     this.state = {
       userID: '',
-      isFans: true,
-      dataList: [0, 1, 2, 3, 4, 5],
+      isFans: false,
+      dataList: [],
       pageNum: 1,
       pageSize: 20,
     }
@@ -91,13 +91,24 @@ export default class UserFans extends Component<Props, State> {
 
     getFansList = () =>{
       const{pageNum,pageSize} = this.state;
-      post(api.getuserFollow,{
+      let url =  api.getuserFollow ;
+      //判断是否自己查看 还是别人查看自己的粉丝和关注
+      // if (userID){
+      //   url =
+      // }
+      post(url,{
         pageNum,pageSize
       },res=>{
         if(res.code==200){
-          console.log(res)
+         this.setState({dataList:res.data.list})
         }else{
-          console.log(1)
+          this.setState({
+            dataList: []
+          });
+          Taro.showToast({
+            icon: 'none',
+            title: res.msg || '网络繁忙，请稍后再试'
+          })
         }
       })
     }
@@ -108,12 +119,12 @@ export default class UserFans extends Component<Props, State> {
         {this.state.dataList.map((it, index) => {
           return <View className="fans__item" key={'fans' + it + index}>
             <View onClick={this.onToHomePage}>
-              <AtAvatar circle/>
+              <AtAvatar circle image={it.user_headImg}/>
             </View>
             <View className="fans__info">
-              <Text className="fans__name">球球思密达</Text>
+              <Text className="fans__name">{it.user_name}</Text>
               <Text className="block text f__size--28 margin-top--10 c--666">
-                {userID && isFans ? <Block>只有好吃的美食才能治愈我，hahaha....</Block> : <Block>精品好货·58 | 粉丝·3.6w</Block>}
+                {userID && isFans ? <Block>只有好吃的美食才能治愈我，hahaha....</Block> : <Block>精品好货·{it.hh_num||0} | 粉丝·{it.fs_num||0}</Block>}
               </Text>
             </View>
             {/* todo 当前逻辑不严谨，对接api时可改成根据是否关注来显示 已关注 按钮 */}
