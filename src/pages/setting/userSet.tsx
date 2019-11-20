@@ -4,8 +4,8 @@ import './userSet.scss'
 import {AtAvatar, AtIcon, AtList, AtListItem, AtRate} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import IconFont from "../../components/iconfont";
-import {post, uploadFile} from "../../utils/request";
-import api from "../../constants/api";
+import {uploadFile} from "../../utils/request";
+// import api from "../../constants/api";
 
 export interface Props {
 
