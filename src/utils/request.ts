@@ -25,7 +25,7 @@ function request(params, callbak, header = false) {
     header: {
       'content-type': contentType,
       // 'Cookie': 'token=' + Taro.getStorageSync('token') || '',
-      'token': Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQxNTg1MjMsInVzZXJJZCI6MX0.uksM8C4j91KPDyODfUm2p6cqTnXiCeOu3Mxp3Y1E2Vc', //测试阶段临时token
+      'token': Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQzMTY5MTIsInVzZXJJZCI6MX0.6ymBVwSehhMVNNEKtu13nKY-6tGn1ZKBDzdDMmVQ8j8', //测试阶段临时token
     },
     success(res) {
       return callbak(header ? res : res.data);

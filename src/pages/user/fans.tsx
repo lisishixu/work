@@ -4,6 +4,8 @@ import './fans.scss'
 import {AtAvatar} from "taro-ui";
 import IconFont from '../../components/iconfont';
 import {setDATA} from "../../utils/helper";
+import {post} from "../../utils/request";
+import api from "../../constants/api";
 
 export interface Props {
 
@@ -13,6 +15,8 @@ export interface State {
   userID: string
   isFans: boolean
   dataList: any[]
+  pageNum:number
+  pageSize:number
 }
 
 export default class UserFans extends Component<Props, State> {
@@ -28,7 +32,9 @@ export default class UserFans extends Component<Props, State> {
     this.state = {
       userID: '',
       isFans: true,
-      dataList: [0, 1, 2, 3, 4, 5]
+      dataList: [0, 1, 2, 3, 4, 5],
+      pageNum: 1,
+      pageSize: 20,
     }
   }
 
@@ -51,12 +57,15 @@ export default class UserFans extends Component<Props, State> {
       }
     }
     this.setState({userID, isFans});
+    this.getFansList()
   }
 
   componentDidMount() {
+
   }
 
   componentWillUnmount() {
+
   }
 
   componentDidShow() {
@@ -80,6 +89,18 @@ export default class UserFans extends Component<Props, State> {
     })
   };
 
+    getFansList = () =>{
+      const{pageNum,pageSize} = this.state;
+      post(api.getuserFollow,{
+        pageNum,pageSize
+      },res=>{
+        if(res.code==200){
+          console.log(res)
+        }else{
+          console.log(1)
+        }
+      })
+    }
   render() {
     const {userID, isFans} = this.state;
     return (
