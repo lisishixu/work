@@ -90,7 +90,7 @@ export default class Index extends Component<Props, State> {
 
     this.setState({cartList, isAllChecked, checkedNumber}, () => {
       this.computeTotalPrice();
-      this.forceUpdate();//强制触发数据更新
+      this.forceUpdate();//强制触发数据更新，2019/11/19在支付宝端测试时选中后视图没有及时更新，使用强制更新
     });
   };
 
