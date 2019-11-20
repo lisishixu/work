@@ -25,6 +25,7 @@ export default class Power extends Component<Props, State> {
     }
 
     componentWillMount() {
+
     }
 
     componentDidMount() {

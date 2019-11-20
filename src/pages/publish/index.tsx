@@ -13,6 +13,7 @@ export interface Props {
 export interface State {
   value: string
   files: any[]
+  goodsID:string
 }
 
 export default class Index extends Component<Props, State> {
@@ -25,7 +26,8 @@ export default class Index extends Component<Props, State> {
     super(props);
     this.state = {
       value: '',
-      files: []
+      files: [],
+      goodsID:''
     }
   }
 
@@ -58,6 +60,8 @@ export default class Index extends Component<Props, State> {
   }
 
   componentDidShow() {
+    const goodsID = this.$router.params.goodsID
+    this.setState({goodsID})
   }
 
   componentDidHide() {
@@ -84,6 +88,9 @@ export default class Index extends Component<Props, State> {
     console.log(index, file)
   }
 
+  addCorrelation(){
+
+  }
   render() {
     return (
       <View className='index'>
@@ -106,7 +113,7 @@ export default class Index extends Component<Props, State> {
         />
         <View className={'publish-footer'}>
           <IconFont name={'shangpinguanli'} size={40} color={'#666'}/>
-          <Text className={'f__size--30 c--666 margin-left--20'}>添加关联商品</Text>
+          <Text className={'f__size--30 c--666 margin-left--20'} onClick={this.addCorrelation}>{this.state.goodsID?"已有关联商品":"添加关联商品"}</Text>
           <View className={'inline--block view'}>
             <AtIcon value='chevron-right' size='20' color='#dcdcdc'></AtIcon>
           </View>

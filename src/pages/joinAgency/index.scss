@@ -19,12 +19,16 @@
     }
     .acquire{
       background: #F12737;
-      border-radius: 100px;
       color: #fff;
-      padding: 10px 40px;
       display: inline-block;
-      margin-top: -60px;
-      float: right;
+      margin-left: auto;
+    }
+  }
+  .at-input{
+    padding: 0;
+    margin-left: 0;
+    input{
+      font-size: 28px;
     }
   }
 }

@@ -56,11 +56,11 @@ export default class Index extends Component<Props, State> {
           {
             image: '/statics/imgs/center/icon-kskd.png',
             value: '一键开店',
-            url: '/'
+            url: '/pages/setUpShop/index'
           }, {
             image: '/statics/imgs/center/icon-dlzz.png',
             value: '申请代理',
-            url: '/'
+            url: '/pages/joinAgency/index'
           }, {
             image: '/statics/imgs/center/icon-hy.png',
             value: '邀请好友',
