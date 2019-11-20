@@ -12,9 +12,10 @@ export const API_BASE = 'http://192.168.1.174:8081';
 //  代言列表，post接收
 const getUserEndorse = `${API_BASE}/miniProgram/user/userEndorse`;
 const getuserFollow = `${API_BASE}/miniProgram/user/userFollow`;
-
+const uploadImg = `${API_BASE}/miniProgram/sellers/uploadImg`;
 
 export default {
   getUserEndorse,
-  getuserFollow
+  getuserFollow,
+  uploadImg
 }

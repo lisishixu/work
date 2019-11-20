@@ -4,6 +4,8 @@ import './userSet.scss'
 import {AtAvatar, AtIcon, AtList, AtListItem, AtRate} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import IconFont from "../../components/iconfont";
+import {post, uploadFile} from "../../utils/request";
+import api from "../../constants/api";
 
 export interface Props {
 
@@ -59,6 +61,8 @@ export default class UserSet extends Component<Props, State> {
   componentDidHide() {
   }
 
+
+
   // 更改头像
   onChangeAvatar = () => {
     Taro.chooseImage({
@@ -68,8 +72,17 @@ export default class UserSet extends Component<Props, State> {
     }).then(res => {
       //   返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const avatar = res.tempFilePaths[0];
+      uploadFile(avatar,(res)=>{
+        console.log(res)
+
+      })
+      // post(api.uploadImg,{
+      //   imgUrl:Taro.arrayBufferToBase64(avatar)
+      // },res=>{
+      //   console.log(res);
+      // })
       //   此处可以发起ajax请求上传文件后再赋值
-      this.setState({avatar});
+      // this.setState({avatar});
     })
   };
   onChange = e => {

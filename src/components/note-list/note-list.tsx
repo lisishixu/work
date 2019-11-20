@@ -75,7 +75,7 @@ export default class NoteList extends Component<Props, State> {
 
     if (!this.props.data || this.props.data.length < 1) {
       return (
-        <View>
+        <View style={'margin:15% 0'}>
           <StateTip imgUrl={'/statics/imgs/empty.png'} title={'暂无数据'}>
           </StateTip>
         </View>
