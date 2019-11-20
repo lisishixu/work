@@ -7,7 +7,7 @@ import NoteList from "../../components/note-list/note-list";
 import NoteComment from '../../components/note-comment/note-comment';
 import IconFont from "../../components/iconfont";
 import {post} from "../../utils/request";
-import {apiUserEndorse} from "../../constants/api";
+import api from "../../constants/api";
 
 export interface Props {
 
@@ -115,7 +115,7 @@ export default class Index extends Component<Props, State> {
   // 获取数据
   getList = () => {
     const {pageNum, pageSize} = this.state;
-    post(apiUserEndorse, {
+    post(api.USER_ENDORSE, {
       pageNum, pageSize
     }, res => {
       if (res.code == 200) {

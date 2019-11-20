@@ -124,7 +124,9 @@ export default class Index extends Component<Props, State> {
 
   // 进入、退出编辑
   onEdit = () => {
-    this.setState({isEdit: !this.state.isEdit})
+    this.setState(prevState => ({
+      isEdit: !prevState.isEdit
+    }))
   };
 
   // 修改购物车数量
