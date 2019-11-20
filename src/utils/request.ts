@@ -2,8 +2,6 @@ import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
 import api from "../constants/api";
 
-// import {apiUpload} from "../constants/api";
-
 const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQzMTY5MTIsInVzZXJJZCI6MX0.6ymBVwSehhMVNNEKtu13nKY-6tGn1ZKBDzdDMmVQ8j8';
 
 /**
