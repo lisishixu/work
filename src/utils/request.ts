@@ -116,7 +116,7 @@ export const uploadFile = (filePath, callback) => {
   }).then(
     (res) => {
       Taro.hideLoading();
-      return callback(res.data)
+      return callback(typeof res.data === 'string' ? JSON.parse(res.data) : res.data)
     }
   ).catch(() => {
     Taro.hideLoading();
