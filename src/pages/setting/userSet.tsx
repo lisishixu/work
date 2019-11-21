@@ -4,7 +4,9 @@ import './userSet.scss'
 import {AtAvatar, AtIcon, AtList, AtListItem, AtRate} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import IconFont from "../../components/iconfont";
-import {uploadFile} from "../../utils/request";
+import {post, uploadFile} from "../../utils/request";
+import api from "../../constants/api";
+
 // import api from "../../constants/api";
 
 export interface Props {
@@ -17,9 +19,9 @@ export interface State {
   value: number
   notUser: boolean
   avatar: string
-  selector:any[]
-  selectorChecked:string
-  dateSel:string
+  selector: any[]
+  selectorChecked: string
+  dateSel: string
 }
 
 export default class UserSet extends Component<Props, State> {
@@ -62,7 +64,6 @@ export default class UserSet extends Component<Props, State> {
   }
 
 
-
   // 更改头像
   onChangeAvatar = () => {
     Taro.chooseImage({
@@ -72,29 +73,30 @@ export default class UserSet extends Component<Props, State> {
     }).then(res => {
       //   返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const avatar = res.tempFilePaths[0];
-      uploadFile(avatar,(res)=>{
-        console.log(res)
+      uploadFile(avatar, (res) => {
 
+        const imgUrl = typeof res === 'string' ? JSON.parse(res).data.imgs : res.data.imgs;
+        post(api.sellersSaveImg, {imgUrl}, res => {
+          if (res.code == 200) {
+            this.setState({avatar})
+          }
+        })
       })
-      // post(api.uploadImg,{
-      //   imgUrl:Taro.arrayBufferToBase64(avatar)
-      // },res=>{
-      //   console.log(res);
-      // })
-      //   此处可以发起ajax请求上传文件后再赋值
-      // this.setState({avatar});
     })
   };
+
   onChange = e => {
     this.setState({
       selectorChecked: this.state.selector[e.detail.value]
     })
-  }
+  };
+
   onDateChange = e => {
     this.setState({
       dateSel: e.detail.value
     })
-  }
+  };
+
   render() {
     return (
       <View className='userSet'>
@@ -118,20 +120,20 @@ export default class UserSet extends Component<Props, State> {
                 : <View style={'margin-left:auto'}><AtRate max={4} value={this.state.value}/> </View>
               }
             </View>}
-             <View className={'vipLevel setImg'} style={'position:relative'}>
-                <Text className={'text f__size--28 c--333'}>性别</Text>
-              <View  style={'margin-left:83%'} className={'f__size--28 c--666'}>
+            <View className={'vipLevel setImg'} style={'position:relative'}>
+              <Text className={'text f__size--28 c--333'}>性别</Text>
+              <View style={'margin-left:83%'} className={'f__size--28 c--666'}>
                 <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
-                 <View> {this.state.selectorChecked}</View>
+                  <View> {this.state.selectorChecked}</View>
                 </Picker>
               </View>
-               <View className={'item-extra__icon'}>
-                 <AtIcon value='chevron-right' size='17.5' color='#666'></AtIcon>
-               </View>
-             </View>
+              <View className={'item-extra__icon'}>
+                <AtIcon value='chevron-right' size='17.5' color='#666'></AtIcon>
+              </View>
+            </View>
             <View className={'vipLevel setImg'} style={'position:relative'}>
               <Text className={'text f__size--28 c--333'}>生日</Text>
-              <View  style={'margin-left:65%'} className={'f__size--28 c--666 picker'}>
+              <View style={'margin-left:65%'} className={'f__size--28 c--666 picker'}>
                 <Picker value={'0'} mode='date' onChange={this.onDateChange} start={'1970-01-01'} end={'2020-01-01'}>
                   <View>{this.state.dateSel}</View>
                 </Picker>
@@ -148,7 +150,7 @@ export default class UserSet extends Component<Props, State> {
             {this.state.notUser && <AtListItem title='微信二维码' extraText='上传微信二维码' arrow='right'/>}
             <AtListItem title='所在地区' extraText='金水区' arrow='right'/>
             <Navigator url={'/pages/bind/userId'}>
-            <AtListItem title='我的实名认证' arrow='right'/>
+              <AtListItem title='我的实名认证' arrow='right'/>
             </Navigator>
             <AtListItem title='我的邀请人' extraText='kris吴'/>
           </AtList>

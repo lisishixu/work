@@ -67,34 +67,31 @@ export default class OrderItem extends Component<Props, State> {
 
   render() {
     // let btns = ``;
-    // let state = ``;
-    // switch (0) {
-    //   case '0':
-    //   case 0:
-    //     state = `待付款`;
-    //     btns = ``;
-    //     break;
-    //   case '1' :
-    //   case  1:
-    //     state = `待发货`;
-    //     btns = ` `;
-    //     break;
-    //   case '2' :
-    //   case  2:
-    //     state = `待收货`;
-    //     btns = ``;
-    //     break;
-    //   case '3' :
-    //   case 3:
-    //     state = `待评价`;
-    //     btns = ``;
-    //     break;
-    //   case '4':
-    //   case 4:
-    //     state = `已完成`;
-    //     btns = ``;
-    //     break;
-    // }
+    let orderState = ``;
+    switch (this.props.orderState) {
+      // '订单状态(0:待付款1：待核销2：待评价 3：已完成 4退款中 5退款成功 6退款失败)'
+      case 0:
+        orderState = '待付款';
+        break;
+      case 1:
+        orderState = '待核销';
+        break;
+      case 2:
+        orderState = '待评价';
+        break;
+      case 3:
+        orderState = '已完成';
+        break;
+      case 4:
+        orderState = '退款中';
+        break;
+      case 5:
+        orderState = '退款成功';
+        break;
+      case 6:
+        orderState = '退款失败';
+        break;
+    }
 
     return (
       <View className='order-item'>
@@ -106,14 +103,14 @@ export default class OrderItem extends Component<Props, State> {
               </View>
               <Text className="c--666 f__size--28 order__id">巴啦啦小魔仙零食屋</Text>
             </View>
-            <Text className="c--eb3 f__size--28">待付款</Text>
+            <Text className="c--eb3 f__size--28">{orderState}</Text>
           </View> :
           <View className="header flex a__items--center j__content--spbe">
             <View>
               <Text className="mark ">买</Text>
               <Text className="c--666 f__size--28 order__id">订单号：{this.props.orderNum}</Text>
             </View>
-            <Text className="c--eb3 f__size--28">待付款</Text>
+            <Text className="c--eb3 f__size--28">{orderState}</Text>
           </View>}
 
 

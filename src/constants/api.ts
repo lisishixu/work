@@ -1,5 +1,6 @@
 export const URL_BASE = 'http://192.168.1.174:8081';
-export const API_BASE = 'http://192.168.1.174:8081';
+// export const API_BASE = 'http://192.168.1.174:8081';
+export const API_BASE = 'http://192.168.1.197:8080';
 
 /**
  * 2019/11/20 约定：
@@ -17,7 +18,7 @@ export default {
   // 笔记\代言内容的评论列表
   directComments: `${API_BASE}/miniProgram/user/directComments`,
   // 上传图片，可直接通过uploadFile方法使用
-  uploadImg: `${API_BASE}/miniProgram/sellers/uploadImg`,
+  uploadImg: `${API_BASE}/genericClass/uploadImg`,
   // 图形验证码，直接在img中使用即可
   checkCode: `${API_BASE}/genericClass/checkCode`,
   // 发送短信验证码，
@@ -33,9 +34,12 @@ export default {
   // 获取省市区
   searchArea: `${API_BASE}/genericClass/searchArea`,
   // 商家订单列表，参数：orderState 订单状态
+  // '订单状态(0:待付款1：待核销2：待评价 3：已完成 4退款中 5退款成功 6退款失败)'
   sellersSearchOrder: `${API_BASE}/miniProgram/sellers/searchOrder`,
   // 商家订单详情，参数：orderId 订单id
   sellersOrderDetail: `${API_BASE}/miniProgram/sellers/orderDetail`,
 
   applySeller: `${API_BASE}/miniProgram/sellers/applySeller`,
+  // 个人中心
+  sellersZone: `${API_BASE}/miniProgram/sellers/zone`,
 }

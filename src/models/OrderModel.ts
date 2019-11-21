@@ -9,7 +9,7 @@ export interface OrderModel {
   orderId?: string | number
   orderNum?: string | number
   orderPayAmount?: number
-  orderPaystyle?: string
+  orderPaystyle?: string | number
   orderState?: number
   orderTotalMoney?: number
   orderType?: string

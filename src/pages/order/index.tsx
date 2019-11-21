@@ -107,17 +107,33 @@ export default class OrderIndex extends Component<Props, State> {
           ]}
           onClick={this.handleClick.bind(this)}>
 
-          {[0, 1, 2, 3, 4, 5].map((num) => {
-            return <AtTabsPane key={'goodslist' + num}
-                               current={this.state.currentTab}
-                               index={num}>
+          {/* todo 渲染不同的数据，默认不加载，只有点击时加载对应数据 */}
+          <AtTabsPane current={this.state.currentTab} index={0}>
+            {this.state.orderList.map((it) => {
+              return <OrderItem {...it}/>
+            })}
+          </AtTabsPane>
+          <AtTabsPane current={this.state.currentTab} index={1}>
+            {this.state.orderList.map((it) => {
+              return <OrderItem {...it}/>
+            })}
+          </AtTabsPane>
+          <AtTabsPane current={this.state.currentTab} index={2}>
+            {this.state.orderList.map((it) => {
+              return <OrderItem {...it}/>
+            })}
+          </AtTabsPane>
+          <AtTabsPane current={this.state.currentTab} index={3}>
+            {this.state.orderList.map((it) => {
+              return <OrderItem {...it}/>
+            })}
+          </AtTabsPane>
+          <AtTabsPane current={this.state.currentTab} index={4}>
+            {this.state.orderList.map((it) => {
+              return <OrderItem {...it}/>
+            })}
+          </AtTabsPane>
 
-              {this.state.orderList.map((it) => {
-                return <OrderItem {...it}/>
-              })}
-
-            </AtTabsPane>
-          })}
 
         </AtTabs>
       </View>
