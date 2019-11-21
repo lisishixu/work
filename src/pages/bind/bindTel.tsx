@@ -1,8 +1,10 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View} from '@tarojs/components'
+import {View,Image} from '@tarojs/components'
 import './bindTel.scss'
 import {AtButton, AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
+import api from "../../constants/api";
+import {post} from "../../utils/request";
 
 export interface Props {
 
@@ -17,6 +19,8 @@ export interface State {
   toast:boolean
   count:number
   auth_code:string
+  changeCode:string
+  codeImg:string
 }
 
 export default class BindTel extends Component<Props, State> {
@@ -35,7 +39,9 @@ export default class BindTel extends Component<Props, State> {
           show_btn: true,
           toast: false,
           count: 60,
-          auth_code:''
+          auth_code:'',
+          changeCode:'',
+          codeImg:'../../statics/imgs/banner1.png'
         }
     }
 
@@ -66,6 +72,13 @@ export default class BindTel extends Component<Props, State> {
     })
     return value
   }
+  changeCode(changeCode){
+    this.setState({
+      changeCode
+    })
+    return changeCode
+  }
+
   getCode () {
     if(this.state.phone_no === '' || !(/^1[3456789]\d{9}$/.test(this.state.phone_no))){
       // 这里验证一下号码格式是否正确，为空或者不正常都提示一下，然后激活提示控件true，其他的框架提示控件同理
@@ -85,27 +98,53 @@ export default class BindTel extends Component<Props, State> {
     } else{
       let count = this.state.count
       // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
-      const timer = setInterval(() => {
-        this.setState({
-          count: (count--),
-          show_btn: false,
-          code_ts: count +'S重发'
-        }, () => {
-          if (count === 0) {
-            clearInterval(timer)
+      post(api.toTel,{
+        type:'bindTel',
+        userPhone:this.state.phone_no
+      },res=>{
+        console.log(res)
+        if (res.code==200){
+          const timer = setInterval(() => {
             this.setState({
-              show_btn: true ,
-              count: 60,
-              code_ts: '获取验证码'
+              count: (count--),
+              show_btn: false,
+              code_ts: count +'S重发'
+            }, () => {
+              if (count === 0) {
+                clearInterval(timer)
+                this.setState({
+                  show_btn: true ,
+                  count: 60,
+                  code_ts: '获取验证码'
+                })
+              }
             })
-          }
-        })
-      }, 1000)
+          }, 1000)
+        }
+      })
+
     }
+  }
+  alignCode = () =>{
+      post(api.checkCode,{},msg=>{
+        console.log(msg)
+      })
   }
     render() {
         return (
             <View className='bindTel'>
+              <AtInput
+                clear
+                name='value4=2'
+                title='验证码'
+                type='text'
+                maxLength='4'
+                placeholder='验证码'
+                value={this.state.changeCode}
+                onChange={this.changeCode.bind(this)}
+              >
+                <Image src={this.state.codeImg} onClick={this.alignCode}/>
+              </AtInput>
               <AtInput
                 clear
                 name='value'

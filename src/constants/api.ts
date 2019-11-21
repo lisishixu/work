@@ -13,9 +13,13 @@ export const API_BASE = 'http://192.168.1.174:8081';
 const getUserEndorse = `${API_BASE}/miniProgram/user/userEndorse`;
 const getuserFollow = `${API_BASE}/miniProgram/user/userFollow`;
 const uploadImg = `${API_BASE}/miniProgram/sellers/uploadImg`;
+const toTel = `${API_BASE}/genericClass/toTel`;
+const checkCode = `${API_BASE}/genericClass/checkCode`;
 
 export default {
   getUserEndorse,
   getuserFollow,
-  uploadImg
+  uploadImg,
+  toTel,
+  checkCode,
 }
