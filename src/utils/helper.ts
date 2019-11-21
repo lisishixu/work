@@ -1,6 +1,6 @@
-import {getJSON} from "./request";
+import {getJSON, post} from "./request";
 import Taro from "@tarojs/taro";
-import {URL_BASE} from "../constants/api";
+import api, {URL_BASE} from "../constants/api";
 
 /**
  * 检测资源的url是不是带http/https协议的，如果不匹配则补全配置的根域名
@@ -106,21 +106,49 @@ export const cancelDebounce = (fnkey: string = 'default') => {
   debounceData[fnkey] = false;
 };
 
-//
-// export const urlTobase64 = (url) => {
-//   wx.request({
-//     url: url,
-//     responseType: 'arraybuffer', //最关键的参数，设置返回的数据格式为arraybuffer
-//     success: res => {
-//       //把arraybuffer转成base64
-//       let base64 = wx.arrayBufferToBase64(res.data);
-//
-//       //不加上这串字符，在页面无法显示的哦
-//       base64 = 'data:image/jpeg;base64,' + base64
-//
-//       //打印出base64字符串，可复制到网页校验一下是否是你选择的原图片呢
-//       console.log(base64)
-//       return base64;
-//     }
-//   })
-// }
+
+// 发送验证码倒计时
+export const sendCodeTimer = (number,_this) => {
+  if (number <= 0) {
+    _this.setState({
+      count: 60,
+      code_ts: '获取验证码'
+    });
+    return;
+  }
+  const count = number - 1;
+  setTimeout(() => {
+    _this.setState({
+      count,
+      code_ts: count + 'S重发'
+    }, () => {
+    sendCodeTimer(count,_this)
+    })
+  }, 1000)
+};
+
+// 获取短信验证码
+export const getSMSCode = (data: Object = {},_this) => {
+  if (!data) return;
+  if (!checkPhone(data['userPhone'])) {
+    Taro.showToast({
+      icon: 'none',
+      title: '请输入正确的手机号',
+      duration: 2000
+    });
+    return;
+  }
+ sendCodeTimer(_this.state.count,_this)
+  post(api.toTel, data, res => {
+    if (res.code == 200) {
+
+    } else {
+      Taro.showToast({
+        title: res.msg || '网络繁忙',
+        icon: 'none'
+      })
+    }
+  })
+}
+
+

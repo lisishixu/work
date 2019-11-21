@@ -3,9 +3,8 @@ import {View, Image} from '@tarojs/components'
 import './bindTel.scss'
 import {AtButton, AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
-import api, {API_BASE} from "../../constants/api";
-import {post} from "../../utils/request";
-import {checkPhone} from "../../utils/helper";
+import {API_BASE} from "../../constants/api";
+import { getSMSCode} from "../../utils/helper";
 
 export interface Props {
 
@@ -13,13 +12,13 @@ export interface Props {
 
 export interface State {
   value: string
-  phone_no: any
+  userPhone: any
   icode: string
   code_ts: string
-  toast: boolean
+  type: string
   count: number
   auth_code: string
-  changeCode: string
+  imgCode: string
   codeImg: string
 }
 
@@ -33,14 +32,14 @@ export default class BindTel extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+      type:'bindTel',
       value: '',
-      phone_no: '',
+      userPhone: '',
       icode: '',
       code_ts: '获取验证码',
-      toast: false,
       count: 60,
       auth_code: '',
-      changeCode: '',
+      imgCode: '',
       codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`
     }
   }
@@ -62,7 +61,7 @@ export default class BindTel extends Component<Props, State> {
 
   handleChange(phone_no) {
     this.setState({
-      phone_no
+      userPhone: phone_no
     });
     // 在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
     return phone_no
@@ -77,59 +76,12 @@ export default class BindTel extends Component<Props, State> {
 
   changeCode(changeCode) {
     this.setState({
-      changeCode
+      imgCode: changeCode
     });
     return changeCode
   }
 
-  // 获取短信验证码
-  getSMSCode() {
-    if (!checkPhone(this.state.phone_no)) {
-      Taro.showToast({
-        icon: 'none',
-        title: '请输入正确的手机号'
-      });
-      setTimeout(() => {
-        Taro.hideToast();
-      }, 2000);
-      return;
-    }
-    this.sendCodeTimer(this.state.count)
 
-    post(api.toTel, {
-      type: 'bindTel',
-      userPhone: this.state.phone_no,
-      imgCode: this.state.changeCode
-    }, res => {
-      if (res.code == 200) {
-      } else {
-        Taro.showToast({
-          title: res.msg || '网络繁忙',
-          icon: 'none'
-        })
-      }
-    })
-  }
-
-  // 发送验证码倒计时
-  sendCodeTimer = (number) => {
-    if (number <= 0) {
-      this.setState({
-        count: 60,
-        code_ts: '获取验证码'
-      });
-      return;
-    }
-    const count = number - 1;
-    setTimeout(() => {
-      this.setState({
-        count,
-        code_ts: count + 'S重发'
-      }, () => {
-        this.sendCodeTimer(count)
-      })
-    }, 1000)
-  };
 
   // 再次获取验证码
   onAgainCode = () => {
@@ -146,7 +98,7 @@ export default class BindTel extends Component<Props, State> {
           type='text'
           maxLength='4'
           placeholder='验证码'
-          value={this.state.changeCode}
+          value={this.state.imgCode}
           onChange={this.changeCode.bind(this)}
         >
           <Image src={this.state.codeImg} onClick={this.onAgainCode}/>
@@ -157,7 +109,7 @@ export default class BindTel extends Component<Props, State> {
           title='手机号'
           type='number'
           placeholder='请输入手机号'
-          value={this.state.phone_no}
+          value={this.state.userPhone}
           onChange={this.handleChange.bind(this)}
         />
         <AtInput
@@ -172,7 +124,7 @@ export default class BindTel extends Component<Props, State> {
           <View className='phone_box_right'>
             {this.state.code_ts === '获取验证码' ?
               <AtButton size='small' type='secondary' circle={true}
-                        onClick={this.getSMSCode.bind(this)}>获取验证码</AtButton> :
+                        onClick={()=>getSMSCode(this.state,this)}>获取验证码</AtButton> :
               <AtButton size='small' type='secondary' className='disbtn' disabled={true}
                         circle={true}> {this.state.code_ts}</AtButton>}
           </View>
