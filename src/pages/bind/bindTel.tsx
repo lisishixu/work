@@ -100,14 +100,15 @@ export default class BindTel extends Component<Props, State> {
         })
       }, 1000)
     } else {
-      let count = this.state.count
       // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
       post(api.toTel, {
         type: 'bindTel',
-        userPhone: this.state.phone_no
+        userPhone: this.state.phone_no,
+        imgCode:this.state.changeCode
       }, res => {
         console.log(res)
         if (res.code == 200) {
+          let count = this.state.count
           const timer = setInterval(() => {
             this.setState({
               count: (count--),
@@ -124,6 +125,11 @@ export default class BindTel extends Component<Props, State> {
               }
             })
           }, 1000)
+        }else{
+          Taro.showToast({
+            title:res.msg,
+            icon:'none'
+          })
         }
       })
 

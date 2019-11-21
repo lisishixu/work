@@ -1,8 +1,10 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Navigator} from '@tarojs/components'
+import {View, Text, Navigator, Image} from '@tarojs/components'
 import './index.scss'
 import {AtButton, AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
+import api, {API_BASE} from "../../constants/api";
+import {post} from "../../utils/request";
 
 export interface Props {
 
@@ -17,6 +19,8 @@ export interface State {
   toast:boolean
   count:number
   auth_code:string
+  changeCode: string
+  codeImg: string
 }
 
 export default class Index extends Component<Props, State> {
@@ -39,7 +43,9 @@ export default class Index extends Component<Props, State> {
       show_btn: true,
       toast: false,
       count: 60,
-      auth_code:''
+      auth_code:'',
+      changeCode: '',
+      codeImg:  `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`
     }
   }
 
@@ -57,7 +63,15 @@ export default class Index extends Component<Props, State> {
 
   componentDidHide() {
   }
-
+  onAgainCode = () => {
+    this.setState({codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`})
+  };
+  changeCode(changeCode) {
+    this.setState({
+      changeCode
+    });
+    return changeCode
+  }
   handleChange(value) {
     this.setState({
       value
@@ -94,30 +108,56 @@ export default class Index extends Component<Props, State> {
         })
       },1000)
     } else{
-      let count = this.state.count
-      // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
-      const timer = setInterval(() => {
-        this.setState({
-          count: (count--),
-          show_btn: false,
-          code_ts: count +'S重发'
-        }, () => {
-          if (count === 0) {
-            clearInterval(timer)
+      post(api.toTel, {
+        type: 'register',
+        userPhone: this.state.phone_no,
+        imgCode:this.state.changeCode
+      }, res => {
+        console.log(res)
+        if (res.code == 200) {
+          let count = this.state.count
+          // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
+          const timer = setInterval(() => {
             this.setState({
-              show_btn: true ,
-              count: 60,
-              code_ts: '获取验证码'
+              count: (count--),
+              show_btn: false,
+              code_ts: count +'S重发'
+            }, () => {
+              if (count === 0) {
+                clearInterval(timer)
+                this.setState({
+                  show_btn: true ,
+                  count: 60,
+                  code_ts: '获取验证码'
+                })
+              }
             })
-          }
-        })
-      }, 1000)
+          }, 1000)
+        }else{
+          Taro.showToast({
+            title:res.msg,
+            icon:'none'
+          })
+        }
+      })
     }
   }
   render() {
     return (
       <View className='index container'>
         <View className='text'>填写注册信息</View>
+        <AtInput
+          clear
+          name='value4'
+          type='text'
+          maxLength='4'
+          border={false}
+          placeholder='请输入验证码'
+          value={this.state.changeCode}
+          onChange={this.changeCode.bind(this)}
+        >
+          <Image src={this.state.codeImg} onClick={this.onAgainCode}/>
+        </AtInput>
         <AtInput
           clear
           name='value'
