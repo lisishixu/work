@@ -52,13 +52,9 @@ export default class NoteList extends Component<Props, State> {
   componentDidHide() {
   }
 
-  onShowImgs = (index,event) => {
+  onShowImgs = (imgs, index, event) => {
     Taro.previewImage({
-      urls: [
-        '/statics/imgs/swiper-1.png',
-        '/statics/imgs/swiper-1.png',
-        '/statics/imgs/swiper-1.png',
-      ],
+      urls: imgs.split(','),
       current: index
     });
     event.stopPropagation();
@@ -89,7 +85,7 @@ export default class NoteList extends Component<Props, State> {
             <View className="note__header flex a__items--center j__content--spbe">
               <Navigator url={`/pages/user/homepage?userID=${it.user_id}`} className="user flex a__items--center">
                 <AtAvatar circle size={"small"} image={it.user_headImg}/>
-                <Text className="name margin-left--20">{it.user_name}</Text>
+                <Text className="name margin-left--20">{it.user_name || '---'}</Text>
               </Navigator>
               {this.props.isShowConcern &&
               <Button className="btn btn-concern" onClick={this.onConcern}>
@@ -98,14 +94,15 @@ export default class NoteList extends Component<Props, State> {
               </Button>}
             </View>
 
-            <Navigator url={'/pages/note/detail?id='} className="note__content" >
+            <Navigator url={'/pages/note/detail?id='} className="note__content">
               <Text className="content__text">
-                法国巴黎——塞纳河畔左岸的咖啡，埃菲尔铁塔下的誓词，卢浮宫博物馆奇妙游熏陶你的文艺气息。
+                {it.endorse_allocation}
               </Text>
               <View className="note__imgs note__imgs--3">
-                <Image src={'/statics/imgs/swiper-1.png'} className={"img"} onClick={this.onShowImgs.bind(1)}/>
-                <Image src={'/statics/imgs/swiper-1.png'} className={"img"}/>
-                <Image src={'/statics/imgs/swiper-1.png'} className={"img"}/>
+                {it.endorse_layout.split(',').map((img, index) => {
+                  return img && <Image src={img} key={img} className={"img"}
+                                       onClick={this.onShowImgs.bind(this, it.endorse_layout, index)}/>
+                })}
               </View>
             </Navigator>
 
@@ -118,19 +115,19 @@ export default class NoteList extends Component<Props, State> {
             </Navigator>
 
             <View className="note__footer">
-              <Text className="time">今天 10:54</Text>
+              <Text className="time">{it.insert_time}</Text>
               <View className="action">
                 <Button className="btn" onClick={() => this.props.onClick('like', index, it)}>
                   <View className="inline margin-right--10"><IconFont name={"xihuan"} size={30} color={'#666'}/></View>
-                  <Text>4551</Text>
+                  <Text>{it.zan_num || 0}</Text>
                 </Button>
                 <Button className="btn" onClick={() => this.props.onClick('comment', index, it)}>
                   <View className="inline margin-right--10"><IconFont name={"xiaoxi"} size={30} color={'#666'}/></View>
-                  <Text>4551</Text>
+                  <Text>{it.comment_num || 0}</Text>
                 </Button>
                 <Button className="btn" onClick={() => this.props.onClick('share', index, it)}>
                   <View className="inline margin-right--10"><IconFont name={"13"} size={30} color={'#666'}/></View>
-                  <Text>4551</Text>
+                  <Text>{it.fx_num || 0}</Text>
                 </Button>
               </View>
             </View>

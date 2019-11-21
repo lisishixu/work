@@ -2,7 +2,7 @@ import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
 import api from "../constants/api";
 
-export const token = Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQzMTY5MTIsInVzZXJJZCI6MX0.6ymBVwSehhMVNNEKtu13nKY-6tGn1ZKBDzdDMmVQ8j8';
+export const token = Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQ0MTE5NzYsInVzZXJJZCI6MX0.z4l_akdJaPj4dJpHo6CVMVE8DKPN1NUQ3AZ9q7jPHp8';
 
 /**
  * 封装的统一请求方法
