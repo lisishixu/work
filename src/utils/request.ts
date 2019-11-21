@@ -25,17 +25,16 @@ function request(params, callbak, header = false) {
     method,
     header: {
       'content-type': contentType,
-      // 'Cookie': 'token=' + Taro.getStorageSync('token') || '',
       'token': Taro.getStorageSync('token') || token,
     },
     success(res) {
       return callbak(header ? res : res.data);
     },
     error(e) {
-      logError('api', '请求接口出现问题', e)
+      logError('api', '请求接口出现问题', e);
+      return callbak(header ? e : e.data);
     }
   };
-  // return;
   Taro.request(option);
 }
 
@@ -115,7 +114,6 @@ export const uploadFile = (filePath, callback) => {
     }
   }).then(
     (res) => {
-      // console.log(res);
       Taro.hideLoading();
       return callback(res.data)
     }

@@ -9,17 +9,27 @@ export const API_BASE = 'http://192.168.1.174:8081';
  */
 
 
-//  代言列表，post接收
-const getUserEndorse = `${API_BASE}/miniProgram/user/userEndorse`;
-const getuserFollow = `${API_BASE}/miniProgram/user/userFollow`;
-const uploadImg = `${API_BASE}/miniProgram/sellers/uploadImg`;
-const toTel = `${API_BASE}/genericClass/toTel`;
-const checkCode = `${API_BASE}/genericClass/checkCode`;
+
 
 export default {
-  getUserEndorse,
-  getuserFollow,
-  uploadImg,
-  toTel,
-  checkCode,
+  // 代言列表，list常规参数
+  getUserEndorse: `${API_BASE}/miniProgram/user/userEndorse`,
+  // 某个用户关注的用户列表，list常规参数
+  getuserFollow: `${API_BASE}/miniProgram/user/userFollow`,
+  // 对笔记\代言内容发表评论
+  postDirectComments: `${API_BASE}/miniProgram/user/directComments`,
+  // 上传图片，可直接通过uploadFile方法使用
+  uploadImg: `${API_BASE}/miniProgram/sellers/uploadImg`,
+  // 图形验证码，直接在img中使用即可
+  checkCode: `${API_BASE}/genericClass/checkCode`,
+  // 发送短信验证码，
+  // 参数：userPhone手机号、type类型（telLogin登录，register注册，findPassword忘记密码，bindTel绑定手机号，apply商家入驻）、imgCode图像验证码、sessionId域id
+  toTel: `${API_BASE}/genericClass/toTel`,
+  // 商家入驻
+  // 参数：sellerInviter邀请人id，详见https://tower.im/teams/836065/documents/263/
+  sellersApplySeller: `${API_BASE}/miniProgram/sellers/applySeller`,
+  // 保存头像，参数：imgUrl 头像地址
+  sellersSaveImg: `${API_BASE}/miniProgram/sellers/saveImg`,
+  // 商家详情
+  sellersDetail: `${API_BASE}/miniProgram/sellers/sellersDetail`,
 }
