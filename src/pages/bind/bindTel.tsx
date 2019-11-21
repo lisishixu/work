@@ -1,10 +1,10 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Image} from '@tarojs/components'
 import './bindTel.scss'
-import {AtButton, AtInput} from "taro-ui";
+import {AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import {API_BASE} from "../../constants/api";
-import { getSMSCode} from "../../utils/helper";
+import SendSMSBtn from "../../components/send-sms/send-sms";
 
 export interface Props {
 
@@ -14,9 +14,7 @@ export interface State {
   value: string
   userPhone: any
   icode: string
-  code_ts: string
   type: string
-  count: number
   auth_code: string
   imgCode: string
   codeImg: string
@@ -32,12 +30,10 @@ export default class BindTel extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      type:'bindTel',
+      type: 'bindTel',
       value: '',
       userPhone: '',
       icode: '',
-      code_ts: '获取验证码',
-      count: 60,
       auth_code: '',
       imgCode: '',
       codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`
@@ -82,7 +78,6 @@ export default class BindTel extends Component<Props, State> {
   }
 
 
-
   // 再次获取验证码
   onAgainCode = () => {
     this.setState({codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`})
@@ -122,11 +117,11 @@ export default class BindTel extends Component<Props, State> {
           onChange={this.handleChange1.bind(this)}
         >
           <View className='phone_box_right'>
-            {this.state.code_ts === '获取验证码' ?
-              <AtButton size='small' type='secondary' circle={true}
-                        onClick={()=>getSMSCode(this.state,this)}>获取验证码</AtButton> :
-              <AtButton size='small' type='secondary' className='disbtn' disabled={true}
-                        circle={true}> {this.state.code_ts}</AtButton>}
+            <SendSMSBtn
+              type={'bindTel'}
+              userPhone={this.state.userPhone}
+              imgCode={this.state.imgCode}
+            />
           </View>
         </AtInput>
         <FixedButton text={'确定'} bottom={'30vh'}/>

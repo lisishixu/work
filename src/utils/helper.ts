@@ -1,6 +1,6 @@
-import {getJSON, post} from "./request";
+import {getJSON} from "./request";
 import Taro from "@tarojs/taro";
-import api, {URL_BASE} from "../constants/api";
+import {URL_BASE} from "../constants/api";
 
 /**
  * 检测资源的url是不是带http/https协议的，如果不匹配则补全配置的根域名
@@ -105,50 +105,5 @@ export const debounceFn = (callback: Function, fnkey: string = 'default', countd
 export const cancelDebounce = (fnkey: string = 'default') => {
   debounceData[fnkey] = false;
 };
-
-
-// 发送验证码倒计时
-export const sendCodeTimer = (number,_this) => {
-  if (number <= 0) {
-    _this.setState({
-      count: 60,
-      code_ts: '获取验证码'
-    });
-    return;
-  }
-  const count = number - 1;
-  setTimeout(() => {
-    _this.setState({
-      count,
-      code_ts: count + 'S重发'
-    }, () => {
-    sendCodeTimer(count,_this)
-    })
-  }, 1000)
-};
-
-// 获取短信验证码
-export const getSMSCode = (data: Object = {},_this) => {
-  if (!data) return;
-  if (!checkPhone(data['userPhone'])) {
-    Taro.showToast({
-      icon: 'none',
-      title: '请输入正确的手机号',
-      duration: 2000
-    });
-    return;
-  }
- sendCodeTimer(_this.state.count,_this)
-  post(api.toTel, data, res => {
-    if (res.code == 200) {
-
-    } else {
-      Taro.showToast({
-        title: res.msg || '网络繁忙',
-        icon: 'none'
-      })
-    }
-  })
-}
 
 

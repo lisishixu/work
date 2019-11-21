@@ -1,3 +1,4 @@
+
 export const URL_BASE = 'http://192.168.1.174:8081';
 export const API_BASE = 'http://192.168.1.174:8081';
 
@@ -14,8 +15,8 @@ export default {
   getUserEndorse: `${API_BASE}/miniProgram/user/userEndorse`,
   // 某个用户关注的用户列表，list常规参数
   getuserFollow: `${API_BASE}/miniProgram/user/userFollow`,
-  // 对笔记\代言内容发表评论
-  postDirectComments: `${API_BASE}/miniProgram/user/directComments`,
+  // 笔记\代言内容的评论列表
+  directComments: `${API_BASE}/miniProgram/user/directComments`,
   // 上传图片，可直接通过uploadFile方法使用
   uploadImg: `${API_BASE}/miniProgram/sellers/uploadImg`,
   // 图形验证码，直接在img中使用即可

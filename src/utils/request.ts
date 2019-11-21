@@ -2,7 +2,7 @@ import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
 import api from "../constants/api";
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQzMTY5MTIsInVzZXJJZCI6MX0.6ymBVwSehhMVNNEKtu13nKY-6tGn1ZKBDzdDMmVQ8j8';
+export const token = Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQzMTY5MTIsInVzZXJJZCI6MX0.6ymBVwSehhMVNNEKtu13nKY-6tGn1ZKBDzdDMmVQ8j8';
 
 /**
  * 封装的统一请求方法
@@ -25,7 +25,7 @@ function request(params, callbak, header = false) {
     method,
     header: {
       'content-type': contentType,
-      'token': Taro.getStorageSync('token') || token,
+      'token': token,
     },
     success(res) {
       return callbak(header ? res : res.data);
@@ -109,8 +109,8 @@ export const uploadFile = (filePath, callback) => {
     name: 'headimgFile',
     header: {
       'Content-Type': 'multipart/from-data',
-      'Cookie': Taro.getStorageSync('cookie') || token,
-      'token': Taro.getStorageSync('token') || token,
+      'Cookie': token,
+      'token': token,
     }
   }).then(
     (res) => {
