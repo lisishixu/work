@@ -90,7 +90,7 @@ export default class CenterHeader extends Component<Props, State> {
               {this.props.identity === 'merchant' &&
               <AtRate className="margin-left--10" max={4} size={14} value={4}/>}
             </View>
-            <Text className="user__id">ID:12345674878674</Text>
+            {/*<Text className="user__id">ID:12345674878674</Text>*/}
 
           </View>
           {this.props.identity !== 'agent' &&

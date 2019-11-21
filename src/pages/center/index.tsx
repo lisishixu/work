@@ -5,6 +5,8 @@ import {AtGrid} from "taro-ui";
 import {checkIdentity} from "../../utils/helper";
 import CenterHeader from "./components/header";
 import OrderNav from "../../components/order-nav/order-nav";
+import {post} from "../../utils/request";
+import api from "../../constants/api";
 
 export interface Props {
 
@@ -215,7 +217,8 @@ export default class Index extends Component<Props, State> {
         break;
     }
     // @ts-ignore
-    this.setState(initData.user)
+    this.setState(initData.user);
+    this.getUserInfo()
   }
 
   componentDidMount() {
@@ -232,16 +235,23 @@ export default class Index extends Component<Props, State> {
 
   // 根据点击状态切换身份
   onSwitch = (identity) => {
-    this.setState({identity},()=>{
-       // todo 身份切换完成，重新获取数据
+    this.setState({identity}, () => {
+      // todo 身份切换完成，重新获取数据
     });
   };
 
   onGrid = (item) => {
     if (!item) return;
-    console.info('请在代码中补充需要访问的路径');
     Taro.navigateTo({
       url: item.url
+    })
+  };
+
+  getUserInfo = () => {
+    post(api.sellersZone, {}, res => {
+      if (res.code == 200) {
+
+      }
     })
   };
 
