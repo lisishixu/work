@@ -30,6 +30,7 @@ export const UserInfo = (callback) => {
  * @param phoneStr
  */
 export const checkPhone = (phoneStr) => {
+  if (!phoneStr) return;
   return (/^1[345789]\d{9}$/.test(phoneStr));
 };
 

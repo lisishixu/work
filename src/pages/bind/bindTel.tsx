@@ -5,6 +5,7 @@ import {AtButton, AtInput} from "taro-ui";
 import FixedButton from "../../components/fixed-button/fixed-button";
 import api, {API_BASE} from "../../constants/api";
 import {post} from "../../utils/request";
+import {checkPhone} from "../../utils/helper";
 
 export interface Props {
 
@@ -15,13 +16,13 @@ export interface State {
   phone_no: any
   icode: string
   code_ts: string
-  show_btn: boolean
   toast: boolean
   count: number
   auth_code: string
   changeCode: string
   codeImg: string
 }
+
 
 export default class BindTel extends Component<Props, State> {
 
@@ -36,12 +37,11 @@ export default class BindTel extends Component<Props, State> {
       phone_no: '',
       icode: '',
       code_ts: '获取验证码',
-      show_btn: true,
       toast: false,
       count: 60,
       auth_code: '',
       changeCode: '',
-      codeImg:  `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`
+      codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`
     }
   }
 
@@ -84,57 +84,52 @@ export default class BindTel extends Component<Props, State> {
 
   // 获取短信验证码
   getSMSCode() {
-    if (this.state.phone_no === '' || !(/^1[3456789]\d{9}$/.test(this.state.phone_no))) {
-      // 这里验证一下号码格式是否正确，为空或者不正常都提示一下，然后激活提示控件true，其他的框架提示控件同理
+    if (!checkPhone(this.state.phone_no)) {
       Taro.showToast({
         icon: 'none',
         title: '请输入正确的手机号'
       });
-      this.setState({
-        toast: true
-      })
-      // 因为提示后一直为true的话输入内容好像也会激活setstate，所以提示后我会改成false
       setTimeout(() => {
-        this.setState({
-          toast: false
-        })
-      }, 1000)
-    } else {
-      // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
-      post(api.toTel, {
-        type: 'bindTel',
-        userPhone: this.state.phone_no,
-        imgCode:this.state.changeCode
-      }, res => {
-        console.log(res)
-        if (res.code == 200) {
-          let count = this.state.count
-          const timer = setInterval(() => {
-            this.setState({
-              count: (count--),
-              show_btn: false,
-              code_ts: count + 'S重发'
-            }, () => {
-              if (count === 0) {
-                clearInterval(timer)
-                this.setState({
-                  show_btn: true,
-                  count: 60,
-                  code_ts: '获取验证码'
-                })
-              }
-            })
-          }, 1000)
-        }else{
-          Taro.showToast({
-            title:res.msg,
-            icon:'none'
-          })
-        }
-      })
-
+        Taro.hideToast();
+      }, 2000);
+      return;
     }
+    this.sendCodeTimer(this.state.count)
+
+    post(api.toTel, {
+      type: 'bindTel',
+      userPhone: this.state.phone_no,
+      imgCode: this.state.changeCode
+    }, res => {
+      if (res.code == 200) {
+      } else {
+        Taro.showToast({
+          title: res.msg || '网络繁忙',
+          icon: 'none'
+        })
+      }
+    })
   }
+
+  // 发送验证码倒计时
+  sendCodeTimer = (number) => {
+    if (number <= 0) {
+      this.setState({
+        count: 60,
+        code_ts: '获取验证码'
+      });
+      return;
+    }
+    const count = number - 1;
+    setTimeout(() => {
+      this.setState({
+        count,
+        code_ts: count + 'S重发'
+      }, () => {
+        this.sendCodeTimer(count)
+      })
+    }, 1000)
+  };
 
   // 再次获取验证码
   onAgainCode = () => {
@@ -175,12 +170,11 @@ export default class BindTel extends Component<Props, State> {
           onChange={this.handleChange1.bind(this)}
         >
           <View className='phone_box_right'>
-            {
-              this.state.show_btn ?
-                <AtButton size='small' type='secondary' circle={true} onClick={this.getSMSCode.bind(this)}>获取验证码</AtButton>
-                : <AtButton className='disbtn' disabled={true} size='small' type='secondary'
-                            circle={true}> {this.state.code_ts}</AtButton>
-            }
+            {this.state.code_ts === '获取验证码' ?
+              <AtButton size='small' type='secondary' circle={true}
+                        onClick={this.getSMSCode.bind(this)}>获取验证码</AtButton> :
+              <AtButton size='small' type='secondary' className='disbtn' disabled={true}
+                        circle={true}> {this.state.code_ts}</AtButton>}
           </View>
         </AtInput>
         <FixedButton text={'确定'} bottom={'30vh'}/>
