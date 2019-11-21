@@ -1,16 +1,16 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Button, Image} from '@tarojs/components'
+import {View, Text, Button, Image, Navigator, Picker} from '@tarojs/components'
 import './info-edit.scss'
 import {AtInput, AtList, AtListItem} from "taro-ui";
 import {MerchantModel} from "../../models/MerchantModel";
 import IconFont from "../../components/iconfont";
-
+import api from "../../constants/api";
+import {post} from "../../utils/request";
 export interface Props {
 
 }
 
 export interface State extends MerchantModel {
-
 }
 
 export default class MerchantInfoEdit extends Component<Props, State> {
@@ -31,11 +31,16 @@ export default class MerchantInfoEdit extends Component<Props, State> {
       idcard: '',//身份证
       businessLicense: '',//营业执照
       time: '2019/10/12 10:10:58',//入驻时间
+      selector: [''],
+      selectorChecked: '',
+      addressId:[''],
+      addressIdChecked:''
     }
   }
 
 
   componentWillMount() {
+    this.searchArea()
   }
 
   componentDidMount() {
@@ -69,7 +74,28 @@ export default class MerchantInfoEdit extends Component<Props, State> {
     // 2019-11-14摘自taro-ui官网：在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
     return value
   };
+  onChange = e => {
+    this.searchArea()
+    this.setState({
+      selectorChecked: this.state.selector[e.detail.value],
+      addressIdChecked:this.state.addressId[e.detail.value]
+    })
+  }
+  searchArea (){
+    post(api.searchArea,{},res=>{
+      let arr = [];
+      let addressId = [];
+      for (let i = 0 ; i < res.data.length ; i++){
+        // @ts-ignore
+        arr.push(res.data[i].addressName)
+        // @ts-ignore
+        addressId.push(res.data[i].addressId)
+      }
+      this.setState({addressId:addressId})
+      this.setState({selector:arr})
 
+    })
+  }
   // 确定上传
   onConfrim = () => {
 
@@ -118,16 +144,6 @@ export default class MerchantInfoEdit extends Component<Props, State> {
           />
           <AtInput
             name=''
-            title='商家姓名'
-            type='text'
-            placeholder='请输入您的姓名'
-            value={this.state.address}
-            onChange={value => {
-              this.handleChange('title', value)
-            }}
-          />
-          <AtInput
-            name=''
             title='手机号'
             type='tel'
             placeholder='请输入手机号'
@@ -148,12 +164,22 @@ export default class MerchantInfoEdit extends Component<Props, State> {
               this.handleChange('title', value)
             }}
           />
+          <Navigator url={`/pages/bind/userId?isShoping=1`}>
           <AtListItem title='身份证信息' extraText='' arrow='right'/>
+          </Navigator>
           <AtListItem title='营业执照' extraText='' arrow='right'/>
         </AtList>
-
+        <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
+          <View className='picker'>
+            当前选择：{this.state.selectorChecked}addressId{this.state.addressIdChecked}
+          </View>
+        </Picker>
+        <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
+          <View className='picker'>
+            当前选择：{this.state.selectorChecked}addressId{this.state.addressIdChecked}
+          </View>
+        </Picker>
         <Button className="btn btn-confrim" onClick={this.onConfrim}>上传</Button>
-
       </View>
     )
   }

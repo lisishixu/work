@@ -9,8 +9,6 @@ export const API_BASE = 'http://192.168.1.174:8081';
  */
 
 
-
-
 export default {
   // 代言列表，list常规参数
   getUserEndorse: `${API_BASE}/miniProgram/user/userEndorse`,
@@ -32,4 +30,6 @@ export default {
   sellersSaveImg: `${API_BASE}/miniProgram/sellers/saveImg`,
   // 商家详情
   sellersDetail: `${API_BASE}/miniProgram/sellers/sellersDetail`,
+  //获取省市区
+  searchArea:`${API_BASE}/genericClass/searchArea`
 }
