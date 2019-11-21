@@ -36,4 +36,6 @@ export default {
   sellersSearchOrder: `${API_BASE}/miniProgram/sellers/searchOrder`,
   // 商家订单详情，参数：orderId 订单id
   sellersOrderDetail: `${API_BASE}/miniProgram/sellers/orderDetail`,
+
+  applySeller: `${API_BASE}/miniProgram/sellers/applySeller`,
 }

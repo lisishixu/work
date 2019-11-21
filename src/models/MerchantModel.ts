@@ -10,5 +10,14 @@ export interface MerchantModel {
   selector:any[],
   selectorChecked:string,
   addressId:any[],
-  addressIdChecked:string
+  addressIdChecked:string,
+  checkedCity:string,
+  AddressIdCity:string,
+  countycheckedAddress:string,
+  countychecked:string,
+  Cityselector:any[],
+  CityaddressId:any[],
+  countySelector:any[],
+  countyAddressId:any[],
+  userTel:string
 }

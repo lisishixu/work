@@ -52,6 +52,7 @@ const SendSMSBtn = (props) => {
   const getSMSCode = () => {
     setIsDisabled(true);
     post(api.toTel, props, res => {
+      setIsDisabled(false);
       if (res.code == 200) {
         startCountdown();//开始倒计时
       } else {

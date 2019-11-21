@@ -2,9 +2,9 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {Image, Text, View} from '@tarojs/components'
 import '../joinAgency/index.scss'
 import FixedButton from "../../components/fixed-button/fixed-button";
-import {AtButton, AtInput} from "taro-ui";
-import {post} from "../../utils/request";
-import api, {API_BASE} from "../../constants/api";
+import {AtInput} from "taro-ui";
+import {API_BASE} from "../../constants/api";
+import SendSMSBtn from "../../components/send-sms/send-sms";
 
 export interface Props {
 
@@ -115,57 +115,6 @@ export default class Index extends Component<Props, State> {
     return changeAgainPassword
   }
 
-  getCode () {
-    if(this.state.phone_no === '' || !(/^1[3456789]\d{9}$/.test(this.state.phone_no))){
-      // 这里验证一下号码格式是否正确，为空或者不正常都提示一下，然后激活提示控件true，其他的框架提示控件同理
-      Taro.showToast({
-        icon: 'none',
-        title: '请输入正确的手机号'
-      });
-      this.setState({
-        toast: true
-      })
-      // 因为提示后一直为true的话输入内容好像也会激活setstate，所以提示后我会改成false
-      setTimeout(() => {
-        this.setState({
-          toast: false
-        })
-      },1000)
-    }else{
-      post(api.toTel, {
-        type: 'apply',
-        userPhone: this.state.phone_no,
-        imgCode:this.state.changeCode
-      }, res => {
-        console.log(res)
-        if (res.code == 200) {
-          let count = this.state.count
-          // 这里写一个定时器就可以去更新灰色按钮的内容而且show_btn是false时会出现灰色按钮，当倒计时结束又变成可以触发的按钮
-          const timer = setInterval(() => {
-            this.setState({
-              count: (count--),
-              show_btn: false,
-              code_ts: count +'S重发'
-            }, () => {
-              if (count === 0) {
-                clearInterval(timer)
-                this.setState({
-                  show_btn: true ,
-                  count: 60,
-                  code_ts: '获取验证码'
-                })
-              }
-            })
-          }, 1000)
-        }else{
-          Taro.showToast({
-            title:res.msg,
-            icon:'none'
-          })
-        }
-      })
-    }
-  }
   onAgainCode = () => {
     this.setState({codeImg: `${API_BASE}/genericClass/checkCode?t=${new Date().getTime()}`})
   };
@@ -204,7 +153,7 @@ export default class Index extends Component<Props, State> {
               </View>
               <View className={'userItem'}>
                 <View className={'top'}>
-                  <Text className={'f__size--30 c--333'} style={'font-weight:600'}>手机号</Text><Text className={'c--eb3 f__size--30'}>*</Text>
+                  <Text className={'f__size--30 c--333'} style={'font-weight:600'}>数字验证码</Text><Text className={'c--eb3 f__size--30'}>*</Text>
                 </View>
                 <AtInput
                   clear
@@ -249,11 +198,9 @@ export default class Index extends Component<Props, State> {
                     onChange={this.changeCode.bind(this)}
                   >
                   </AtInput>
-                  {
-                    this.state.show_btn ?
-                      <View style={'margin-left:auto'}><AtButton size='small' type='secondary' circle = { true } onClick = { this.getCode.bind(this) } className={'acquire'}>获取验证码</AtButton></View>
-                      :<View style={'margin-left:auto'}> <AtButton className='disbtn' disabled = { true } size='small' type='secondary' circle = { true }> { this.state.code_ts }</AtButton></View>
-                  }
+                  <View className='phone_box_right'>
+                    <SendSMSBtn type={'apply'} userPhone={this.state.phone_no} imgCode={this.state.changeCode}/>
+                  </View>
                 </View>
               </View>
               <View className={'userItem'}>

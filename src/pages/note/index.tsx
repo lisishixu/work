@@ -201,7 +201,6 @@ export default class Index extends Component<Props, State> {
                  onConfirm={this.onConfrimComment}
           />
         </AtFloatLayout>
-
       </View>
     )
   }
