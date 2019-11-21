@@ -16,6 +16,7 @@ function request(params, callbak, header = false) {
     data,
     method
   } = params;
+  data['token'] = token;
   method = params.method || 'GET';
   let contentType = 'application/x-www-from-urlencoded';
   contentType = params.contentType || contentType;

@@ -2,8 +2,9 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Navigator, Image, Button} from '@tarojs/components'
 import './order-item.scss'
 import IconFont from "../../../components/iconfont";
+import {OrderModel} from "../../../models/OrderModel";
 
-export interface Props {
+export interface Props extends OrderModel {
   header?: string,//header效果，shop显示店铺、id显示订单号
   showTotal?: boolean,//是否显示订单总金额、总数量
 }
@@ -19,6 +20,7 @@ export default class OrderItem extends Component<Props, State> {
   static defaultProps = {
     header: 'id',
     showTotal: true,
+    orderdetails: []
   };
 
   static options = {
@@ -46,11 +48,21 @@ export default class OrderItem extends Component<Props, State> {
   }
 
   // 前往发布动态页面
-  goPost = (event) => {
+  goPost = (productID, event) => {
     Taro.navigateTo({
-      url: `/pages/publish/index?goodsID=${'this.props.goodsID'}`
+      url: `/pages/publish/index?goodsID=${productID}`
     });
     event.stopPropagation();
+  };
+
+  // 取消订单
+  onCancel = () => {
+
+  };
+
+  // 发起支付
+  onPay = () => {
+
   };
 
   render() {
@@ -99,40 +111,45 @@ export default class OrderItem extends Component<Props, State> {
           <View className="header flex a__items--center j__content--spbe">
             <View>
               <Text className="mark ">买</Text>
-              <Text className="c--666 f__size--28 order__id">订单号：201545748782745875457</Text>
+              <Text className="c--666 f__size--28 order__id">订单号：{this.props.orderNum}</Text>
             </View>
             <Text className="c--eb3 f__size--28">待付款</Text>
           </View>}
 
-        <Navigator url={`/pages/order/detail?orderID=`} className="goods flex a__items--center">
-          <View className="cover-warp" onClick={this.goPost}>
-            <Image src="http://yanxuan.nosdn.127.net/425c5a909f5806d55c151457a5baa0af.png" className="goods__cover"/>
-            <View className="btn-post">
-              <IconFont name={'tianjiazhaopian'} color={'white'} size={22}/>
-              <Text className="margin-left--10">发布素材</Text>
+
+        {this.props.orderdetails && this.props.orderdetails.map(goods => {
+          return <Navigator url={`/pages/order/detail?orderID=${this.props.orderId}`}
+                            className="goods flex a__items--center"
+                            key={goods.detailId}>
+            <View className="cover-warp" onClick={this.goPost.bind(this, goods.productId)}>
+              <Image src={goods.productListimg} className="goods__cover"/>
+              <View className="btn-post">
+                <IconFont name={'tianjiazhaopian'} color={'white'} size={22}/>
+                <Text className="margin-left--10">发布素材</Text>
+              </View>
             </View>
-          </View>
-          <View className="content">
-            <View className="flex a__items--center j__content--spbe">
-              <Text className="c--333 f__size--30 ellipsis-2">SunRype 莓水果条 14克</Text>
-              <Text className="c--333">￥26.8</Text>
+            <View className="content">
+              <View className="flex a__items--center j__content--spbe">
+                <Text className="c--333 f__size--30 ellipsis-2">{goods.productName}</Text>
+                <Text className="c--333">￥{goods.money}</Text>
+              </View>
+              <View className="flex a__items--center j__content--spbe margin-top--20">
+                <Text className="c--666 f__size--26">规格：{goods.sku}</Text>
+                <Text className="c--666 f__size--26">x 1</Text>
+              </View>
             </View>
-            <View className="flex a__items--center j__content--spbe margin-top--20">
-              <Text className="c--666 f__size--26">规格：14g</Text>
-              <Text className="c--666 f__size--26">x 1</Text>
-            </View>
-          </View>
-        </Navigator>
+          </Navigator>
+        })}
         {this.props.showTotal &&
         <View className="order__total c--666 f__size--28 margin-left--auto">
-            <Text className="margin-right--20">共2件商品</Text>
+            <Text className="margin-right--20">共{this.props.orderdetails.length || 1}件商品</Text>
             <Text className="">
-                实付：<Text className="c--010 f__size--30">￥39.4</Text>
+                实付：<Text className="c--010 f__size--30">￥{this.props.orderTotalMoney}</Text>
             </Text>
         </View>}
         <View className="order__btn-wrap ">
-          <Button className="btn btn-secondary">取消</Button>
-          <Button className="btn btn-highlight">去付款</Button>
+          <Button className="btn btn-secondary" onClick={this.onCancel}>取消</Button>
+          <Button className="btn btn-highlight" onClick={this.onPay}>去付款</Button>
         </View>
       </View>
     )

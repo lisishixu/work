@@ -3,13 +3,17 @@ import {View} from '@tarojs/components'
 import './index.scss'
 import {AtTabs, AtTabsPane} from "taro-ui";
 import OrderItem from "./components/order-item";
+import {post} from "../../utils/request";
+import api from "../../constants/api";
+import {OrderModel} from "../../models/OrderModel";
 
 export interface Props {
 
 }
 
 export interface State {
-  currentTab: number
+  currentTab: number,
+  orderList: OrderModel[]
 }
 
 export default class OrderIndex extends Component<Props, State> {
@@ -23,7 +27,8 @@ export default class OrderIndex extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 0
+      currentTab: 0,
+      orderList: []
     }
   }
 
@@ -48,6 +53,7 @@ export default class OrderIndex extends Component<Props, State> {
         break;
     }
     this.setState({currentTab});
+    this.getOrderList();
   }
 
   componentDidMount() {
@@ -73,6 +79,15 @@ export default class OrderIndex extends Component<Props, State> {
   };
 
 
+  // 获取订单列表数据
+  getOrderList = () => {
+    post(api.sellersSearchOrder, {orderState: 0}, res => {
+      if (res.code == 200) {
+        this.setState({orderList: res.data.list || []})
+      }
+    })
+  };
+
   render() {
 
 
@@ -97,8 +112,8 @@ export default class OrderIndex extends Component<Props, State> {
                                current={this.state.currentTab}
                                index={num}>
 
-              {[0, 1, 2, 3].map(() => {
-                return <OrderItem/>
+              {this.state.orderList.map((it) => {
+                return <OrderItem {...it}/>
               })}
 
             </AtTabsPane>

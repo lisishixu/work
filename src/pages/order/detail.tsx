@@ -1,13 +1,15 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Image, Button} from '@tarojs/components'
 import './detail.scss'
+import { post} from "../../utils/request";
+import api from "../../constants/api";
 
 export interface Props {
 
 }
 
 export interface State {
-
+  orderID: string
 }
 
 export default class OrderDetail extends Component<Props, State> {
@@ -20,13 +22,15 @@ export default class OrderDetail extends Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      orderID: ''
+    }
   }
 
   componentWillMount() {
-  }
-
-  componentDidMount() {
+    const orderID = this.$router.params.orderID;
+    this.setState({orderID});
+    this.getDetail(orderID);
   }
 
   componentWillUnmount() {
@@ -37,6 +41,15 @@ export default class OrderDetail extends Component<Props, State> {
 
   componentDidHide() {
   }
+
+  // 获取订单详情
+  getDetail = (orderID = this.state.orderID) => {
+    post(api.sellersOrderDetail, {orderID}, res => {
+      if (res.code == 200) {
+        this.setState(res.data || {})
+      }
+    })
+  };
 
   render() {
     let statusText = '';
