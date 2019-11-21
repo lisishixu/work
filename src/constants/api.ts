@@ -1,4 +1,3 @@
-
 export const URL_BASE = 'http://192.168.1.174:8081';
 export const API_BASE = 'http://192.168.1.174:8081';
 
@@ -31,6 +30,10 @@ export default {
   sellersSaveImg: `${API_BASE}/miniProgram/sellers/saveImg`,
   // 商家详情
   sellersDetail: `${API_BASE}/miniProgram/sellers/sellersDetail`,
-  //获取省市区
-  searchArea:`${API_BASE}/genericClass/searchArea`
+  // 获取省市区
+  searchArea: `${API_BASE}/genericClass/searchArea`,
+  // 商家订单列表，参数：orderState 订单状态
+  sellersSearchOrder: `${API_BASE}/miniProgram/sellers/searchOrder`,
+  // 商家订单详情，参数：orderId 订单id
+  sellersOrderDetail: `${API_BASE}/miniProgram/sellers/orderDetail`,
 }
