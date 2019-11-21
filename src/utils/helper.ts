@@ -1,6 +1,6 @@
-import {apiUserInfo, urlBase} from "../constants/api";
 import {getJSON} from "./request";
 import Taro from "@tarojs/taro";
+import {URL_BASE} from "../constants/api";
 
 /**
  * 检测资源的url是不是带http/https协议的，如果不匹配则补全配置的根域名
@@ -9,7 +9,7 @@ import Taro from "@tarojs/taro";
 export const checkResUrl = (resUrl) => {
   if (!resUrl) return;
   if (resUrl.search('http') === -1) {
-    return urlBase + resUrl;
+    return URL_BASE + resUrl;
   } else {
     return resUrl;
   }
@@ -17,7 +17,7 @@ export const checkResUrl = (resUrl) => {
 
 //用户信息
 export const UserInfo = (callback) => {
-  getJSON(apiUserInfo, {}, res => {
+  getJSON(URL_BASE, {}, res => {
     if (res.code === 200) {
       Taro.setStorageSync('userInfo', res.data);
       return callback(res.data);
@@ -104,3 +104,22 @@ export const debounceFn = (callback: Function, fnkey: string = 'default', countd
 export const cancelDebounce = (fnkey: string = 'default') => {
   debounceData[fnkey] = false;
 };
+
+//
+// export const urlTobase64 = (url) => {
+//   wx.request({
+//     url: url,
+//     responseType: 'arraybuffer', //最关键的参数，设置返回的数据格式为arraybuffer
+//     success: res => {
+//       //把arraybuffer转成base64
+//       let base64 = wx.arrayBufferToBase64(res.data);
+//
+//       //不加上这串字符，在页面无法显示的哦
+//       base64 = 'data:image/jpeg;base64,' + base64
+//
+//       //打印出base64字符串，可复制到网页校验一下是否是你选择的原图片呢
+//       console.log(base64)
+//       return base64;
+//     }
+//   })
+// }
