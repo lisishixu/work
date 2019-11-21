@@ -9,6 +9,9 @@ export interface Props {
   // user: UserModel
   identity: string
   onSwitch: Function
+  userHeadImg: string,
+  userName: string,
+  level: number
 }
 
 export interface State {
@@ -79,16 +82,16 @@ export default class CenterHeader extends Component<Props, State> {
       <View className="header">
         <View className="flex a__items--center">
           <Navigator url={'/pages/setting/userSet'}>
-            <AtAvatar circle size={"large"}/>
+            <AtAvatar circle size={"large"} image={this.props.userHeadImg}/>
           </Navigator>
           <View className="user">
             <View className="user__name flex a__items--center">
-              <Text>包子君</Text>
+              <Text>{this.props.userName}</Text>
               {this.props.identity === 'agent' &&
               <Image className={"user__icon"} src={'/statics/imgs/center/icon-crown.png'}/>
               }
               {this.props.identity === 'merchant' &&
-              <AtRate className="margin-left--10" max={4} size={14} value={4}/>}
+              <AtRate className="margin-left--10" max={this.props.level} size={14} value={this.props.level}/>}
             </View>
             {/*<Text className="user__id">ID:12345674878674</Text>*/}
 

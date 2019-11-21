@@ -56,23 +56,23 @@ export default class OrderNav extends Component<Props, State> {
         <View className="flex order-nav__main">
           <Navigator className="link" url={`/pages/order/index?type=payment`}>
             <Text className="status">待付款</Text>
-            <Text className="number">{this.props.data.waiting || 0}</Text>
+            <Text className="number">{this.props.data.orderState0 || 0}</Text>
           </Navigator>
           <Navigator className="link" url={`/pages/order/index?type=pickup`}>
-            <Text className="status">待取货</Text>
-            <Text className="number">{this.props.data.pickup || 0}</Text>
+            <Text className="status">待核销</Text>
+            <Text className="number">{this.props.data.orderState1 || 0}</Text>
           </Navigator>
           <Navigator className="link" url={`/pages/order/index?type=completed`}>
             <Text className="status">已完成</Text>
-            <Text className="number">{this.props.data.success || 0}</Text>
+            <Text className="number">{this.props.data.orderState3 || 0}</Text>
           </Navigator>
           <Navigator className="link" url={`/pages/estimate/estimate`}>
-            <Text className="status">评价</Text>
-            <Text className="number">{this.props.data.evaluation || 0}</Text>
+            <Text className="status">待评价</Text>
+            <Text className="number">{this.props.data.orderState2 || 0}</Text>
           </Navigator>
           <Navigator className="link" url={`/pages/order/after-sales`}>
             <Text className="status">退款/售后</Text>
-            <Text className="number">{this.props.data.reimburse || 0}</Text>
+            <Text className="number">{this.props.data.orderState4 || 0}</Text>
           </Navigator>
         </View>
       </View>

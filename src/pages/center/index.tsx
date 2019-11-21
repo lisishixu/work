@@ -17,7 +17,18 @@ export interface State {
   bannerLink: string
   grid: [],
   identity: string,
-  orderLen: any
+  userHeadImg: string,
+  userName: string,
+  level: number,
+  orderState: {
+    orderState0: number
+    orderState1: number
+    orderState2: number
+    orderState3: number
+    orderState4: number
+    orderState5: number
+    orderState6: number
+  }
 }
 
 export default class Index extends Component<Props, State> {
@@ -36,13 +47,18 @@ export default class Index extends Component<Props, State> {
       bannerImg: '',
       bannerLink: '',
       grid: [],
+      level: 0,
       identity: 'user',
-      orderLen: {
-        'waiting': 1,
-        'pickup': 6,
-        'success': 6,
-        'evaluation': 6,
-        'reimburse': 2,
+      userHeadImg: '',
+      userName: '',
+      orderState: {
+        orderState0: 1,
+        orderState1: 0,
+        orderState2: 0,
+        orderState3: 0,
+        orderState4: 0,
+        orderState5: 0,
+        orderState6: 0
       }
     }
   }
@@ -250,7 +266,12 @@ export default class Index extends Component<Props, State> {
   getUserInfo = () => {
     post(api.sellersZone, {}, res => {
       if (res.code == 200) {
-
+        this.setState({
+          orderState: res.data.orderState,
+          userHeadImg: res.data.userHeadImg,
+          userName: res.data.userName,
+          level: res.data.level,
+        })
       }
     })
   };
@@ -259,12 +280,14 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='index'>
 
-        <CenterHeader identity={this.state.identity}
-                      onSwitch={value => {
-                        this.onSwitch(value)
-                      }}/>
+        <CenterHeader
+          {...this.state}
+          identity={this.state.identity}
+          onSwitch={value => {
+            this.onSwitch(value)
+          }}/>
 
-        <OrderNav data={this.state.orderLen}/>
+        <OrderNav data={this.state.orderState}/>
 
         <Navigator url={this.state.bannerLink}>
           <Image className={"banner"} src={this.state.bannerImg} mode={"widthFix"}/>
