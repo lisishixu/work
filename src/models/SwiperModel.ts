@@ -2,5 +2,5 @@
 export interface SwiperModel {
   id?: string
   link?: string
-  imgurl: string
+  bannerImg: string
 }

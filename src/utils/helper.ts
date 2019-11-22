@@ -50,8 +50,10 @@ export const wxLogin = () => {
       withCredentials: true
     }).then(userRes => {
       Taro.removeStorageSync('token');
+      const invitationId = Taro.getStorageSync('invitationId');
       console.log('getUserInfo获取到的参数：', userRes);
       userRes['jsCode'] = loginRes['code'];
+      userRes['invitationId'] = invitationId;//邀请人id
       Taro.setStorageSync('wxUserInfo', userRes.userInfo);
       post(api.wechatLogin, userRes, res => {
         if (res.code == 200) {
@@ -63,7 +65,7 @@ export const wxLogin = () => {
       // 回调失败，通常是未授权
       setDATA('previousPage', {
         route: Taro.getCurrentPages()[0].route,
-        options: Taro.getCurrentPages()[0].__displayReporter.showOptions.query,
+        options: Taro.getCurrentPages()[0].__displayReporter && Taro.getCurrentPages()[0].__displayReporter.showOptions.query,
       });
       Taro.redirectTo({
         url: '/pages/auth/login'

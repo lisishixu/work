@@ -138,6 +138,12 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // 获取邀请者id
+    const invitationId = Taro.getStorageSync('invitationId');
+    if (!invitationId) {
+      const value = this.$router.params.query && (this.$router.params.query['invitationId'] || this.$router.params.query['?invitationId']);
+      Taro.setStorageSync('invitationId', value);
+    }
     if (process.env.TARO_ENV === 'weapp') {
       const token = Taro.getStorageSync('token');
       const lastLoginTime = Taro.getStorageSync('lastLoginTime');

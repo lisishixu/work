@@ -6,12 +6,12 @@ import {AtGrid, AtSearchBar, AtCountdown, AtButton, AtDivider} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
-import {ClassifyData, GoodsData, SwiperData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import {SeckillGoodsModel} from "../../models/SeckillGoodsModel";
 import GoodsListCard from "../../components/goods-list--card/goods-list--card";
 import {post} from "../../utils/request";
 import api from "../../constants/api";
+import {toAtGrid} from "../../utils/toAtFormat";
 
 export interface Props {
 
@@ -79,16 +79,12 @@ export default class Index extends Component<Props, State> {
           status: '即将开始'
         }
       ],
-      recommendList: GoodsData,
-      goodsList: GoodsData
+      recommendList: [],
+      goodsList: []
     }
   }
 
   componentWillMount() {
-    this.setState({
-      swipers: SwiperData,
-      classify: ClassifyData
-    });
     this.getHome();
   }
 
@@ -113,7 +109,7 @@ export default class Index extends Component<Props, State> {
   onClassify = (item, index) => {
     console.log(item);
     Taro.navigateTo({
-      url: `/pages/classify/index?id=${index || item}`
+      url: `/pages/classify/index?id=${index || item.id}`
     })
   };
 
@@ -127,7 +123,11 @@ export default class Index extends Component<Props, State> {
   getHome = () => {
     post(api.homeMain, {}, res => {
       if (res.code == 200) {
-
+        this.setState({
+          swipers: res.data.bannerList,
+          // classify: res.data.productClassifyList
+          classify: toAtGrid(res.data.productClassifyList, true)
+        })
       } else {
         Taro.showToast({
           icon: 'none',
@@ -165,7 +165,7 @@ export default class Index extends Component<Props, State> {
           <Swiper className='swiper' autoplay>
             {this.state.swipers.map((it, index) => {
               return <SwiperItem key={'swiper' + index}>
-                <Image className={"swiper__img"} src={it.imgurl}/>
+                <Image className={"swiper__img"} src={it.bannerImg}/>
               </SwiperItem>
             })}
           </Swiper>
