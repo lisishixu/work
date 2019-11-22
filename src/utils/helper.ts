@@ -44,12 +44,12 @@ export const getDATA = (key) => {
 };
 
 export const wxLogin = () => {
-  Taro.removeStorageSync('token');
   Taro.login().then(loginRes => {
     console.log('wxlogin获取到的参数：', loginRes);
     Taro.getUserInfo({
       withCredentials: true
     }).then(userRes => {
+      Taro.removeStorageSync('token');
       console.log('getUserInfo获取到的参数：', userRes);
       userRes['jsCode'] = loginRes['code'];
       Taro.setStorageSync('wxUserInfo', userRes.userInfo);
