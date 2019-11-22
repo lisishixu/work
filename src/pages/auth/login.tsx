@@ -42,11 +42,21 @@ export default class WechatLogin extends Component<Props, State> {
 
   onGetUserInfo = () => {
     wxLogin();
-    const previousPage = getDATA('previousPage');
-    const options = previousPage.options ? decodeURIComponent(previousPage.options) : '';
-    Taro.reLaunch({
-      url: `/${previousPage.route}${options}`
-    })
+    Taro.showLoading({
+      title: '登陆中',
+      mask: true
+    });
+    const Timer = setInterval(() => {
+      if (Taro.getStorageSync('token')) {
+        clearInterval(Timer);
+        Taro.hideLoading();
+        const previousPage = getDATA('previousPage');
+        const options = previousPage.options ? decodeURIComponent(previousPage.options) : '';
+        Taro.reLaunch({
+          url: `/${previousPage.route}${options}`
+        })
+      }
+    }, 1000)
   };
 
   render() {

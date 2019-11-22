@@ -44,6 +44,7 @@ export const getDATA = (key) => {
 };
 
 export const wxLogin = () => {
+  Taro.removeStorageSync('token');
   Taro.login().then(loginRes => {
     console.log('wxlogin获取到的参数：', loginRes);
     Taro.getUserInfo({
@@ -55,11 +56,11 @@ export const wxLogin = () => {
       post(api.wechatLogin, userRes, res => {
         if (res.code == 200) {
           Taro.setStorageSync('token', res.msg || '');
+          Taro.setStorageSync('lastLoginTime', new Date().getTime());
         }
       })
     }).catch(() => {
       // 回调失败，通常是未授权
-      console.log(Taro.getCurrentPages()[0]);
       setDATA('previousPage', {
         route: Taro.getCurrentPages()[0].route,
         options: Taro.getCurrentPages()[0].__displayReporter.showOptions.query,

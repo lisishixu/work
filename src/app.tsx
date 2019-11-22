@@ -139,7 +139,12 @@ class App extends Component {
 
   componentDidMount() {
     if (process.env.TARO_ENV === 'weapp') {
-      wxLogin();//触发微信登陆
+      const token = Taro.getStorageSync('token');
+      const lastLoginTime = Taro.getStorageSync('lastLoginTime');
+      const currentTime = new Date().getTime();
+      if (!token || !lastLoginTime || lastLoginTime - currentTime > 1000 * 60 * 30) {
+        wxLogin();//触发微信登陆
+      }
     } else if (process.env.TARO_ENV === 'alipay') {
 
     }
