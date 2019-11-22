@@ -6,6 +6,7 @@ import {MerchantModel} from "../../models/MerchantModel";
 import IconFont from "../../components/iconfont";
 import api from "../../constants/api";
 import {post} from "../../utils/request";
+import {getDATA} from "../../utils/helper";
 export interface Props {
 
 }
@@ -34,7 +35,21 @@ export default class MerchantInfoEdit extends Component<Props, State> {
       selector: [''],
       selectorChecked: '',
       addressId:[''],
-      addressIdChecked:''
+      addressIdChecked:'',
+      checkedCity:'',
+      AddressIdCity:'',
+      Cityselector:[''],
+      CityaddressId:[''],
+      countySelector:[''],
+      countyAddressId:[''],
+      countychecked:'',
+      countycheckedAddress:'',
+      userTel:'',
+      userCode:'',
+      userId:'',
+      userName:'',
+      zheng:'',
+      fan:'',
     }
   }
 
@@ -50,6 +65,16 @@ export default class MerchantInfoEdit extends Component<Props, State> {
   }
 
   componentDidShow() {
+    if(getDATA('userInfo')){
+      const userInfo = getDATA('userInfo')
+      this.setState({
+        userId:userInfo.userId,
+        userName:userInfo.userName,
+        zheng:userInfo.zheng,
+        fan:userInfo.fan
+      })
+      console.log(this.state.userId)
+    }
   }
 
   componentDidHide() {
@@ -75,10 +100,26 @@ export default class MerchantInfoEdit extends Component<Props, State> {
     return value
   };
   onChange = e => {
-    this.searchArea()
     this.setState({
       selectorChecked: this.state.selector[e.detail.value],
       addressIdChecked:this.state.addressId[e.detail.value]
+    },()=>{
+      this.searchAreaCity()
+      this.countysearcgArea()
+    })
+  }
+  onChangeCity = e => {
+    this.setState({
+      checkedCity: this.state.Cityselector[e.detail.value],
+      AddressIdCity:this.state.CityaddressId[e.detail.value]
+    },()=>{
+      this.countysearcgArea()
+    })
+  }
+  onChangecounty = e => {
+    this.setState({
+      countychecked: this.state.countySelector[e.detail.value],
+      countycheckedAddress:this.state.countyAddressId[e.detail.value]
     })
   }
   searchArea (){
@@ -91,20 +132,61 @@ export default class MerchantInfoEdit extends Component<Props, State> {
         // @ts-ignore
         addressId.push(res.data[i].addressId)
       }
+
       this.setState({addressId:addressId})
       this.setState({selector:arr})
+    })
+  }
+  searchAreaCity (){
+    post(api.searchArea,{addressId:this.state.addressIdChecked},res=>{
+      let arrCity = [];
+      let addressIdCity = [];
+      for (let i = 0 ; i < res.data.length ; i++){
+        // @ts-ignore
+        arrCity.push(res.data[i].addressName)
+        // @ts-ignore
+        addressIdCity.push(res.data[i].addressId)
+      }
+      this.setState({CityaddressId:addressIdCity})
+      this.setState({Cityselector:arrCity})
+    })
+  }
+  countysearcgArea (){
+    post(api.searchArea,{addressId:this.state.AddressIdCity},res=>{
+      let arrCounty = [];
+      let addressIdarrCount = [];
+      for (let i = 0 ; i < res.data.length ; i++){
+        // @ts-ignore
+        arrCounty.push(res.data[i].addressName)
+        // @ts-ignore
+        addressIdarrCount.push(res.data[i].addressId)
+      }
+      this.setState({countyAddressId:addressIdarrCount})
+      this.setState({countySelector:arrCounty})
 
     })
   }
   // 确定上传
   onConfrim = () => {
+    post(api.applySeller,{
+      sellerInviter:'1',
+      sellerInviterType:'1',
+      userId:'1',
+      sellerImg:this.state.cover,
+      sellerShopName:this.state.address,
+      //此处商家姓名是从别的页面穿过来，暂时为空
+      sellerName:'',
+      sellerTel:this.state.userTel,
+      telCode:this.state.userCode,
 
+    },res=>{
+      console.log(res)
+    })
   };
 
   render() {
     return (
       <View className='info-edit'>
-
         {this.state.cover ?
           <Image src={this.state.cover} className="cover"/> :
           <View className="cover">
@@ -147,7 +229,7 @@ export default class MerchantInfoEdit extends Component<Props, State> {
             title='手机号'
             type='tel'
             placeholder='请输入手机号'
-            value={this.state.address}
+            value={this.state.userTel}
             onChange={value => {
               this.handleChange('title', value)
             }}
@@ -159,7 +241,7 @@ export default class MerchantInfoEdit extends Component<Props, State> {
             title='验证码'
             type='number'
             placeholder='请输入验证码'
-            value={this.state.address}
+            value={this.state.userCode}
             onChange={value => {
               this.handleChange('title', value)
             }}
@@ -168,17 +250,25 @@ export default class MerchantInfoEdit extends Component<Props, State> {
           <AtListItem title='身份证信息' extraText='' arrow='right'/>
           </Navigator>
           <AtListItem title='营业执照' extraText='' arrow='right'/>
+          <AtListItem title='选择地址' extraText='' hasBorder={false}/>
+          <View className={'flex'}>
+            <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
+              <View className='picker'>
+                选择省：{this.state.selectorChecked}
+              </View>
+            </Picker>
+            <Picker mode='selector' range={this.state.Cityselector} onChange={this.onChangeCity} value={0}>
+              <View className='picker'>
+                选择市：{this.state.checkedCity}
+              </View>
+            </Picker>
+            <Picker mode='selector' range={this.state.countySelector} onChange={this.onChangecounty} value={0}>
+              <View className='picker'>
+                县(区)：{this.state.countychecked}
+              </View>
+            </Picker>
+          </View>
         </AtList>
-        <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
-          <View className='picker'>
-            当前选择：{this.state.selectorChecked}addressId{this.state.addressIdChecked}
-          </View>
-        </Picker>
-        <Picker mode='selector' range={this.state.selector} onChange={this.onChange} value={0}>
-          <View className='picker'>
-            当前选择：{this.state.selectorChecked}addressId{this.state.addressIdChecked}
-          </View>
-        </Picker>
         <Button className="btn btn-confrim" onClick={this.onConfrim}>上传</Button>
       </View>
     )

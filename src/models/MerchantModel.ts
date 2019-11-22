@@ -19,5 +19,10 @@ export interface MerchantModel {
   CityaddressId:any[],
   countySelector:any[],
   countyAddressId:any[],
-  userTel:string
+  userTel:string,
+  userCode:string,
+  userId:string,
+  userName:string,
+  zheng:string,
+  fan:string,
 }

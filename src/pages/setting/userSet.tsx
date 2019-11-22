@@ -74,7 +74,6 @@ export default class UserSet extends Component<Props, State> {
       //   返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const avatar = res.tempFilePaths[0];
       uploadFile(avatar, (res) => {
-
         const imgUrl = typeof res === 'string' ? JSON.parse(res).data.imgs : res.data.imgs;
         post(api.sellersSaveImg, {imgUrl}, res => {
           if (res.code == 200) {
