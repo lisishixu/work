@@ -1,8 +1,8 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View, Text, Swiper, SwiperItem, Image, Navigator, Progress} from '@tarojs/components'
+import {View, Text, Swiper, SwiperItem, Image, Navigator, Progress, ScrollView, Button} from '@tarojs/components'
 import './index.scss'
 import IconFont from "../../components/iconfont";
-import {AtGrid, AtSearchBar, AtCountdown, AtTabs, AtTabsPane, AtButton, AtDivider} from 'taro-ui'
+import {AtGrid, AtSearchBar, AtCountdown, AtButton, AtDivider} from 'taro-ui'
 import {LocationModel} from "../../models/LocationModel";
 import {SwiperModel} from "../../models/SwiperModel";
 import {ClassifyModel} from "../../models/ClassifyModel";
@@ -23,6 +23,11 @@ export interface State {
   adBanner: string,//首页宣传广告
   goodsList: SeckillGoodsModel[],//首页秒杀商品
   current: number,//秒杀选项卡
+  // 秒杀选项卡
+  seckillTabs: {
+    time: string
+    status: string
+  }[]
   recommendList: GoodsModel[],//首页推荐商品
 }
 
@@ -49,7 +54,29 @@ export default class Index extends Component<Props, State> {
       swipers: [],
       classify: [],
       adBanner: '../../statics/imgs/banner.png',
-      current: 0,
+      current: 2,
+      seckillTabs: [
+        {
+          time: '8:00',
+          status: '已开抢'
+        },
+        {
+          time: '10:00',
+          status: '已开抢'
+        },
+        {
+          time: '12:00',
+          status: '抢购中'
+        },
+        {
+          time: '14:00',
+          status: '即将开始'
+        },
+        {
+          time: '16:00',
+          status: '即将开始'
+        }
+      ],
       recommendList: GoodsData,
       goodsList: GoodsData
     }
@@ -96,6 +123,7 @@ export default class Index extends Component<Props, State> {
     return (
       <View className='index'>
 
+        {/* 位置，搜索 */}
         <View className="at-row  at-row__align--center container">
           <View className="at-col at-col-1 at-col--auto location">
             <IconFont name='weizhi' size={32} color='#888'/>
@@ -111,7 +139,7 @@ export default class Index extends Component<Props, State> {
           </Navigator>
         </View>
 
-
+        {/* 轮播*/}
         <View className="container">
           <Swiper className='swiper' autoplay>
             {this.state.swipers.map((it, index) => {
@@ -142,7 +170,8 @@ export default class Index extends Component<Props, State> {
           </Navigator>
         </View>
 
-        <View className={'bg-color--white'} style={{padding: '32px 0 0', marginBottom: '11px'}}>
+        {/* 秒杀抢购 */}
+        <View className="bg-color--white margin-bottom--20" style={{paddingTop: '10px'}}>
           <View className={'count-down bg-color--F12737 kill-time'}>
             <View className={'inline--block margin-right--10'}>
               <IconFont name='huo' size={32} color='#fff'/>
@@ -160,55 +189,58 @@ export default class Index extends Component<Props, State> {
             </View>
           </View>
 
-          <AtTabs
-            current={this.state.current}
-            scroll
-            tabList={[
-              {title: '标签页1'},
-              {title: '标签页2'},
-              {title: '标签页3'},
-              {title: '标签页4'},
-              {title: '标签页5'},
-              {title: '标签页6'}
-            ]}
-            onClick={this.handleClick.bind(this)}>
-            {[0, 1, 2, 3, 4, 5].map(num => {
-              return <AtTabsPane current={this.state.current} index={num} key={'tab' + num}>
-                <View style={{fontSize: '18px', textAlign: 'center'}}>
-                  <View className={"text--left"}>
-                    {goodsList.map((it, index) => {
-                      return <View key={'img' + index} style={{border: '1px solid #F5F5F5', marginTop: '20px'}}>
-                        <Image src={it.product_img} className={"recommend_img"}/>
-                        <View style={{padding: '0px 10px'}}>
-                          <View className={'f__size--28 c--010 margin-top--20'}>{it.product_name}
-                            <View className={'margin-top--20'}>
-                              <Text className={'c--eb3 f__size--30 margin-right--20'}>￥{it.product_original}</Text><Text
-                              className={'c--808 f__size--24'}>￥{it.product_price}</Text>
-                            </View>
-                          </View>
-                          <View className={'flex'} style={{padding: '10px 0'}}>
-                            <Progress percent={it.product_jindu} style={{width: '30%'}} borderRadius={20}
-                                      activeColor={'#F12737'}/>
-                            <Text className={'f__size--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
-                            <Navigator url={`/pages/goods/detail?id=${it.product_id}`} style={'margin-left:auto'}>
-                              <AtButton type='primary' size={'small'} circle={true}
-                                        className={'rush--buy'}>马上抢购</AtButton>
-                            </Navigator>
-                          </View>
-                        </View>
+          {/* 秒杀抢购选项卡 */}
+          <ScrollView scrollX className="tabs tabs-scroll" enable-flex>
+            {this.state.seckillTabs.map((it, index) => {
+              return <Button key={it.time}
+                             className={`tabs__item ${this.state.current === index ? 'current' : ''}`}
+                             onClick={() => this.setState({current: index})}>
+                <Text className="time">{it.time}</Text>
+                <Text className="status">{it.status}</Text>
+              </Button>
+            })}
+          </ScrollView>
+
+          <View className="container" style={{fontSize: '18px', textAlign: 'center'}}>
+            <View className={"text--left"}>
+              {goodsList.map((it, index) => {
+                return <View key={'img' + index}
+                             style={{border: '1px solid #F5F5F5', marginTop: '20px', borderRadius: '2px'}}>
+                  <Image src={it.product_img} className={"recommend_img"}/>
+                  <View style={{padding: '0px 10px'}}>
+                    <View className={'f__size--28 c--010 margin-top--20'}>
+                      <Text>{it.product_name}</Text>
+                      <View className={'margin-top--20'}>
+                        <Text className={'c--eb3 f__size--30 margin-right--20'}>￥{it.product_original}</Text>
+                        <Text className={'c--808 f__size--24'}>￥{it.product_price}</Text>
                       </View>
-                    })}
+                    </View>
+                    <View className={'flex'} style={{padding: '10px 0'}}>
+                      <Progress percent={it.product_jindu}
+                                style={{width: '30%'}}
+                                borderRadius={20}
+                                activeColor={'#F12737'}/>
+                      <Text className={'f__size--22 c--808 margin-left--20'}>已抢{it.product_jindu}%</Text>
+                      <Navigator url={`/pages/goods/detail?id=${it.product_id}`} style={'margin-left:auto'}>
+                        <AtButton type='primary'
+                                  size={'small'}
+                                  circle={true}
+                                  className={'rush--buy'}>马上抢购</AtButton>
+                      </Navigator>
+                    </View>
                   </View>
                 </View>
-              </AtTabsPane>
-            })}
+              })}
+            </View>
+          </View>
 
-          </AtTabs>
         </View>
-        <View className={'container margin-bottom--20'}>
+
+        <View className={'container margin-bottom--10'}>
           <AtDivider content='为你推荐' fontColor='#F12737' lineColor='#F12737'/>
         </View>
         <GoodsListCard data={this.state.recommendList}/>
+
       </View>
     )
   }
