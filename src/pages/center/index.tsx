@@ -135,7 +135,7 @@ export default class Index extends Component<Props, State> {
           }, {
             image: '/statics/imgs/center/icon-fx.png',
             value: '我的商家',
-            url: '/pages/myMerchant/tgEarnings/tgEarnings'
+            url: '/pages/myMerchant/index'
           }, {
             image: '/statics/imgs/center/icon-sc.png',
             value: '我的收益',
@@ -233,7 +233,7 @@ export default class Index extends Component<Props, State> {
         break;
     }
     // @ts-ignore
-    this.setState(initData.user);
+    this.setState(initData.agent);
     this.getUserInfo()
   }
 

@@ -40,4 +40,6 @@ export default {
   applySeller: `${API_BASE}/miniProgram/sellers/applySeller`,
   // 个人中心
   sellersZone: `${API_BASE}/miniProgram/sellers/zone`,
+  // 微信登陆
+  wechatLogin: `${API_BASE}/miniUserInfo/weChat/login`,
 }

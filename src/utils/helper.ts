@@ -1,6 +1,6 @@
-import {getJSON} from "./request";
+import {getJSON, post} from "./request";
 import Taro from "@tarojs/taro";
-import {URL_BASE} from "../constants/api";
+import api, {URL_BASE} from "../constants/api";
 
 /**
  * 检测资源的url是不是带http/https协议的，如果不匹配则补全配置的根域名
@@ -47,11 +47,9 @@ export const wxLogin = () => {
   Taro.login().then(loginRes => {
     console.log('wxlogin获取到的参数：', loginRes);
     loginRes['wxUserInfo'] = Taro.getStorageSync('wxUserInfo');
-    getJSON('apiWxLogin', loginRes, res => {
-      if (res.data.code === 200 && res.header['Set-Cookie']) {
-        const COOKIE = res.header['Set-Cookie'];
-        Taro.setStorageSync('cookie', COOKIE);
-        Taro.setStorageSync('userInfo', res.data.data);
+    post(api.wechatLogin, loginRes, res => {
+      if (res.data.code === 200) {
+        Taro.setStorageSync('token', res.data.token);
       }
     }, true)
   });

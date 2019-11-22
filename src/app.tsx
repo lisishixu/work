@@ -2,6 +2,7 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import Index from './pages/index'
 
 import './app.scss'
+import {wxLogin} from "./utils/helper";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -137,6 +138,11 @@ class App extends Component {
   };
 
   componentDidMount() {
+    if (process.env.TARO_ENV === 'weapp') {
+      wxLogin();//触发微信登陆
+    } else if (process.env.TARO_ENV === 'alipay') {
+
+    }
   }
 
   componentDidShow() {

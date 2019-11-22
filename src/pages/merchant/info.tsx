@@ -2,12 +2,15 @@ import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Text, Image} from '@tarojs/components'
 import './info.scss'
 import {AtList, AtListItem} from "taro-ui";
+import {post} from "../../utils/request";
+import api from "../../constants/api";
+import {MerchantModel} from "../../models/MerchantModel";
 
 export interface Props {
 
 }
 
-export interface State {
+export interface State extends MerchantModel {
 
 }
 
@@ -25,6 +28,7 @@ export default class MerchantInfo extends Component<Props, State> {
   }
 
   componentWillMount() {
+    this.getDetail()
   }
 
   componentDidMount() {
@@ -39,13 +43,28 @@ export default class MerchantInfo extends Component<Props, State> {
   componentDidHide() {
   }
 
+  // 获取商家详情
+  getDetail = () => {
+    post(api.sellersDetail, {}, res => {
+      if (res.code == 200) {
+
+      } else {
+        Taro.showToast({
+          icon: 'none',
+          title: res.msg || '网络繁忙，请稍后再试'
+        })
+      }
+    })
+  };
+
   render() {
     return (
       <View className='info'>
 
         <Image src={''} className="cover"/>
 
-        <View className="container bg-color--f2f2f2 margin-top--30 margin-bottom--30 f__size--30 c--666 flex a__items--center j__content--spbe">
+        <View
+          className="container bg-color--f2f2f2 margin-top--30 margin-bottom--30 f__size--30 c--666 flex a__items--center j__content--spbe">
           <Text>店铺名称</Text>
           <Text>重庆牛哄哄火锅店</Text>
         </View>

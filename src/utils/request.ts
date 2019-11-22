@@ -146,7 +146,7 @@ export const uploadFile = (filePath, callback) => {
       return console.log(res)
     })
 */
-export const allRequest = (arr, callback) => {
+export const allRequest = (arr: any[], callback: Function) => {
   if (!arr) {
     console.error('allRequest 需要传递多个请求方法');
     return;
