@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "maker-miniprogram",
   "description": "maker",
-  "appid": "touristappid",
+  "appid": "wxeb4e5d07c99360c8",
   "setting": {
     "urlCheck": true,
     "es6": false,

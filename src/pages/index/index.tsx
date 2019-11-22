@@ -120,6 +120,8 @@ export default class Index extends Component<Props, State> {
 
   render() {
     const {goodsList} = this.state;
+
+
     return (
       <View className='index'>
 

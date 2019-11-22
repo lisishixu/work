@@ -7,22 +7,4 @@ export interface MerchantModel {
   idcard: string,//身份证
   businessLicense?: string,//营业执照
   time: string | number,//入驻时间
-  selector:any[],
-  selectorChecked:string,
-  addressId:any[],
-  addressIdChecked:string,
-  checkedCity:string,
-  AddressIdCity:string,
-  countycheckedAddress:string,
-  countychecked:string,
-  Cityselector:any[],
-  CityaddressId:any[],
-  countySelector:any[],
-  countyAddressId:any[],
-  userTel:string,
-  userCode:string,
-  userId:string,
-  userName:string,
-  zheng:string,
-  fan:string,
 }

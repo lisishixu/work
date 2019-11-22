@@ -18,6 +18,7 @@ export interface State {
   auth_code: string
   imgCode: string
   codeImg: string
+
 }
 
 
