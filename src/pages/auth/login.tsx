@@ -1,7 +1,7 @@
 import Taro, {Component, Config} from '@tarojs/taro'
 import {View, Button} from '@tarojs/components'
 import './login.scss'
-import {wxLogin} from "../../utils/helper";
+import {getDATA, wxLogin} from "../../utils/helper";
 
 export interface Props {
 
@@ -41,13 +41,11 @@ export default class WechatLogin extends Component<Props, State> {
 
 
   onGetUserInfo = () => {
-    // const previousPage = getDATA('previousPage');
-    // if (previousPage.type === 'switch') {
-    //
-    // }
     wxLogin();
-    Taro.switchTab({
-      url: '/pages/index/index'
+    const previousPage = getDATA('previousPage');
+    const options = previousPage.options ? decodeURIComponent(previousPage.options) : '';
+    Taro.reLaunch({
+      url: `/${previousPage.route}${options}`
     })
   };
 

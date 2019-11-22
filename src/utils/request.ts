@@ -2,8 +2,6 @@ import {dateFormat} from "./time";
 import Taro from "@tarojs/taro";
 import api from "../constants/api";
 
-export const token = Taro.getStorageSync('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQ0MTE5NzYsInVzZXJJZCI6MX0.z4l_akdJaPj4dJpHo6CVMVE8DKPN1NUQ3AZ9q7jPHp8';
-
 /**
  * 封装的统一请求方法
  * @param params
@@ -16,6 +14,7 @@ function request(params, callbak, header = false) {
     data,
     method
   } = params;
+  const token = Taro.getStorageSync('token');
   data['token'] = token;
   method = params.method || 'GET';
   let contentType = 'application/x-www-from-urlencoded';
@@ -104,6 +103,7 @@ export const uploadFile = (filePath, callback) => {
     mask: true
   });
   console.log('filePath', filePath);
+  const token = Taro.getStorageSync('token');
   Taro.uploadFile({
     url: api.uploadImg,
     filePath,

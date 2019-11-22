@@ -48,18 +48,22 @@ export const wxLogin = () => {
     console.log('wxlogin获取到的参数：', loginRes);
     Taro.getUserInfo({
       withCredentials: true
-    }).then(res => {
-      console.log('getUserInfo获取到的参数：', res);
-      Taro.setStorageSync('wxUserInfo', res.userInfo);
-      post(api.wechatLogin, res, res => {
-        if (res.data.code === 200) {
-          Taro.setStorageSync('token', res.data.token);
+    }).then(userRes => {
+      console.log('getUserInfo获取到的参数：', userRes);
+      userRes['jsCode'] = loginRes['code'];
+      Taro.setStorageSync('wxUserInfo', userRes.userInfo);
+      post(api.wechatLogin, userRes, res => {
+        if (res.code == 200) {
+          Taro.setStorageSync('token', res.msg || '');
         }
-      }, true)
+      })
     }).catch(() => {
       // 回调失败，通常是未授权
-      // setDATA('',)
-      // console.log(.$router);
+      console.log(Taro.getCurrentPages()[0]);
+      setDATA('previousPage', {
+        route: Taro.getCurrentPages()[0].route,
+        options: Taro.getCurrentPages()[0].__displayReporter.showOptions.query,
+      });
       Taro.redirectTo({
         url: '/pages/auth/login'
       })
