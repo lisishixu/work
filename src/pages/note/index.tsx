@@ -8,6 +8,7 @@ import NoteComment from '../../components/note-comment/note-comment';
 import IconFont from "../../components/iconfont";
 import {post} from "../../utils/request";
 import api from "../../constants/api";
+import showToast = Taro.showToast;
 
 export interface Props {
 
@@ -19,7 +20,7 @@ export interface State {
   currentTab: number,//0 推荐，1关注
   isOpend: boolean,
   comments: any[],
-  noteList: any[] | null
+  noteList: any[] | null,
 }
 
 export default class Index extends Component<Props, State> {
@@ -39,7 +40,7 @@ export default class Index extends Component<Props, State> {
       currentTab: 0,
       isOpend: false,
       comments: [0, 1, 2, 3, 4, 5, 6],
-      noteList: null
+      noteList: null,
     }
   }
 
@@ -62,9 +63,22 @@ export default class Index extends Component<Props, State> {
   onNoteItemButton = (type, index, item) => {
     switch (type) {
       case "like":
-        Taro.showToast({
-          title: '触发喜欢'
-        });
+        console.log(item)
+        post(api.userLikeShare,{
+          userEndorseCommentId:item.user_endorse_id
+        },res=>{
+          if (res.code==200){
+            Taro.showToast({
+              icon:'null',
+              title:'点赞成功'
+            })
+          }else{
+            Taro:showToast({
+              icon:'null',
+              title:'网络连接失败！'
+            })
+          }
+        })
         break;
       case "share":
         Taro.showToast({
@@ -74,6 +88,11 @@ export default class Index extends Component<Props, State> {
         break;
       case "comment":
         this.setState({isOpend: true});
+        post(api.directComments,{
+          userCommentsId:item.user_endorse_id
+        },res=>{
+         this.setState({comments:res.data.list})
+        })
         break;
     }
   };
@@ -95,6 +114,8 @@ export default class Index extends Component<Props, State> {
       showCancel: false,
     })
   };
+
+
 
   // 你可能感兴趣的切换数据
   onToggleInterested = () => {
@@ -119,8 +140,9 @@ export default class Index extends Component<Props, State> {
       pageNum, pageSize
     }, res => {
       if (res.code == 200) {
+        console.log(res)
         this.setState({
-          noteList: res.data.list || []
+          noteList: res.data.list || [],
         })
       } else {
         this.setState({

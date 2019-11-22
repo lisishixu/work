@@ -146,7 +146,6 @@ class App extends Component {
         wxLogin();//触发微信登陆
       }
     } else if (process.env.TARO_ENV === 'alipay') {
-
     }
   }
 

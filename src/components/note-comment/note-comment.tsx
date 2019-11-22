@@ -70,8 +70,8 @@ export default class NoteComment extends Component<Props, State> {
           <View className="header">
             <Navigator url={"/pages/user/homepage?userID="} className={"header__left"}>
               <AtAvatar circle size={"small"}/>
-              <Text className="username">是又优雅</Text>
-              <Text className="post-time">12:37</Text>
+              <Text className="username">{this.props.data.user_name}</Text>
+              <Text className="post-time">{this.props.data.insert_time}</Text>
             </Navigator>
             <Button className="btn" onClick={this.onLike}>
               <IconFont name={"xihuan"} size={30} color={true ? '#F12737' : '#888'}/>
@@ -79,7 +79,7 @@ export default class NoteComment extends Component<Props, State> {
             </Button>
           </View>
           <View className="content" onClick={() => this.setState({isOpened: true})}>
-            聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机发送卡和科三聚划算杀机
+            {this.props.data.comment}
           </View>
 
           {1 + 1 > 1 &&
