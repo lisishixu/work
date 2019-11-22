@@ -1,6 +1,6 @@
 export const URL_BASE = 'http://192.168.1.174:8081';
-// export const API_BASE = 'http://192.168.1.174:8081';
-export const API_BASE = 'http://192.168.1.197:8080';
+export const API_BASE = 'http://192.168.1.192:8081';  //杨举
+// export const API_BASE = 'http://192.168.1.197:8080'; //倩倩
 
 /**
  * 2019/11/20 约定：
@@ -42,4 +42,6 @@ export default {
   sellersZone: `${API_BASE}/miniProgram/sellers/zone`,
   // 微信登陆
   wechatLogin: `${API_BASE}/miniUserInfo/weChat/login`,
+  // 首页数据集合（轮播、9个分类、秒杀选项卡）
+  homeMain: `${API_BASE}//miniProgram/homePage/index`,
 }

@@ -10,6 +10,8 @@ import {ClassifyData, GoodsData, SwiperData} from "../../data";
 import {GoodsModel} from "../../models/GoodsModel";
 import {SeckillGoodsModel} from "../../models/SeckillGoodsModel";
 import GoodsListCard from "../../components/goods-list--card/goods-list--card";
+import {post} from "../../utils/request";
+import api from "../../constants/api";
 
 export interface Props {
 
@@ -83,13 +85,16 @@ export default class Index extends Component<Props, State> {
   }
 
   componentWillMount() {
-  }
-
-  componentDidMount() {
     this.setState({
       swipers: SwiperData,
       classify: ClassifyData
     });
+    this.getHome();
+  }
+
+  componentDidMount() {
+
+
   }
 
   componentWillUnmount() {
@@ -115,6 +120,20 @@ export default class Index extends Component<Props, State> {
   handleClick(value) {
     this.setState({
       current: value
+    })
+  };
+
+  // 获取首页主要数据
+  getHome = () => {
+    post(api.homeMain, {}, res => {
+      if (res.code == 200) {
+
+      } else {
+        Taro.showToast({
+          icon: 'none',
+          title: res.msg || '网络繁忙，请稍后再试'
+        })
+      }
     })
   };
 

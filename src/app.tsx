@@ -91,7 +91,7 @@ class App extends Component {
       'pages/user/withdraw-deposit',
       'pages/order/after-sales',
       'pages/refund/index',
-
+      'pages/auth/login',
     ],
     window: {
       backgroundTextStyle: 'light',
